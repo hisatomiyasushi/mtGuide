@@ -6,8 +6,17 @@
 //  Copyright (c) 2013年 hisatomiyasushi. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface JSONFlickrViewController : UITableViewController
+#import "NetworkPhotoAlbumViewController.h"
+
+@interface JSONFlickrViewController : NetworkPhotoAlbumViewController
+
+- (id)initWith:(id)object;
+
+//@property (nonatomic, retain) NSString *mtStr;
+@property (nonatomic, readwrite, copy) NSString* flickrAlbumId;
+@property (nonatomic, retain) NSDictionary *mtItem;
 
 @end

@@ -7,16 +7,17 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
+#import "DetailViewController.h"
 
 @implementation AppDelegate
 
+@synthesize window;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
     // Override point for customization after application launch.
-    return YES;
+return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

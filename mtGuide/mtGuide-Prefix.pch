@@ -11,8 +11,8 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h> // or #import <CoreServices/CoreServices.h> for Mac OS X
 #import <QuartzCore/QuartzCore.h>
 #import "NimbusCore.h"
 #import "NimbusWebController.h"

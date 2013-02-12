@@ -12,28 +12,41 @@
 #import "InfoViewController.h"
 #import "CustomAnnotation.h"
 #import "InfoDetailViewController.h"
-//#import "Photo.h"
-//#import "FlickrPhotoParser.h"
-
+#import "JSONFlickrViewController.h"
+#import "UIViewController+KNSemiModal.h"
+#import "WeatherSubViewController.h"
+#import "CheckSubViewController.h"
+#import "StatsSubViewController.h"
+#import "TileOverlay.h"
+#import "TileOverlayView.h"
 
 @interface DetailViewController ()
+<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITableView *detailTableView;
+@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
+@property (nonatomic, retain) TileOverlay *overlay;
+
+- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
+- (IBAction)mtButton:(id)sender;
+- (IBAction)weButton:(id)sender;
+- (IBAction)ckButton:(id)sender;
+- (IBAction)stButton:(id)sender;
+
 
 @end
 
 @implementation DetailViewController
-@synthesize mtStr,
-            introStr,
-            yomiStr,
-            detailTableView,
-            mtInformation,
-            mtlatStr,
-            mtlngStr,
-            detailMapView,
-            mttrails,
-            mtcamping;
+{
+    IBOutlet UISegmentedControl *detailsegmentedcontrol;
+    WeatherSubViewController *semiVC;
+    CheckSubViewController *semiCheckVC;
+    StatsSubViewController *semiStatsVC;
+
+}
 
 #pragma mark - Managing the detail item
-
 
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -60,15 +73,28 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [detailMapView setDelegate:self];
+    [_detailMapView setDelegate:self];
     [self configureView];
+    
+    _overlay = [[TileOverlay alloc] initOverlay];
+    [_detailMapView addOverlay:_overlay];
 
-    self.title = mtStr;
-    self.detailDescriptionLabel.text = introStr;
+    MKMapRect visibleRect = [_detailMapView mapRectThatFits:_overlay.boundingMapRect];
+    _detailMapView.visibleMapRect = visibleRect;
+    visibleRect.size.width /= 2;
+    visibleRect.size.height /= 2;
+    visibleRect.origin.x += visibleRect.size.width / 2;
+    visibleRect.origin.y += visibleRect.size.height / 2;
+    _detailMapView.visibleMapRect = visibleRect;
+
+    NSString *mtName = [_mtItem objectForKey:@"name"];
+    NSString *mtIntro = [_mtItem objectForKey:@"introduction"];
+    self.title = mtName;
+    self.detailDescriptionLabel.text = mtIntro;
     self.detailTableView.dataSource = self;
     self.detailTableView.delegate = self;
     
-    detailData = [[NSArray alloc]initWithObjects:
+    _detailData = [[NSArray alloc]initWithObjects:
                   @"山の基本情報",
                   @"登山ルート",
                   @"自然・遊び",
@@ -76,15 +102,20 @@
                   @"キャンプ場・山小屋", nil];
     
     //詳細地図での緯度・経度の取り出しと全体地図にピン表示
+    
+    NSString *mtlatStr = [_mtItem objectForKey:@"mtlatitude"];
+    NSString *mtlngStr = [_mtItem objectForKey:@"mtlongitude"];
+    NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
+    
     NSMutableArray *annotations=[[NSMutableArray alloc] init];
     CustomAnnotation *myAnnotation = [[CustomAnnotation alloc] init];
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = [mtlatStr doubleValue];
     coordinate.longitude = [mtlngStr doubleValue];
     myAnnotation.coordinate = coordinate;
-    myAnnotation.annotationTitle = mtStr;
-    myAnnotation.annotationSubtitle = yomiStr;
-    [detailMapView addAnnotation:myAnnotation];
+    myAnnotation.annotationTitle = mtName;
+    myAnnotation.annotationSubtitle = mtYomi;
+    [_detailMapView addAnnotation:myAnnotation];
     [annotations addObject:myAnnotation];
 
     
@@ -95,7 +126,7 @@
     double maxLng = -9999.0;
     double lat, lng;
     
-    for (id<MKAnnotation> annotation in detailMapView.annotations){
+    for (id<MKAnnotation> annotation in _detailMapView.annotations){
         lat = annotation.coordinate.latitude;
         lng = annotation.coordinate.longitude;
         
@@ -121,56 +152,38 @@
     co.longitude = (maxLng + minLng) / 2.0; // 経度
     
     
-    MKCoordinateRegion cr = detailMapView.region;
+    MKCoordinateRegion cr = _detailMapView.region;
     cr.center = co;
-    cr.span.latitudeDelta = maxLat - minLat + 0.5;
-    cr.span.longitudeDelta = maxLng - minLng + 0.5;
-    [detailMapView setRegion:cr animated:YES];
+    cr.span.latitudeDelta = maxLat - minLat + 0.1;
+    cr.span.longitudeDelta = maxLng - minLng + 0.1;
+    ;
+    [_detailMapView setRegion:cr animated:YES];
 
     //詳細TOPと詳細地図表示切り替えボタンの初期設定
     detailsegmentedcontrol.selectedSegmentIndex = 0;
 
-}
-
-/*
- BOOL fetchPhotoDone = NO;
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (!fetchPhotoDone) {
-        fetchPhotoDone = YES;
-        FlickrPhotoParser *parser = [[FlickrPhotoParser alloc]init];
-        NSArray *photoList = [parser fetchNearbyPhotos: [newLocation coordinate]];
-        for (int i=0, l=[photoList count]; i<l; i++) {
-            Photo *photo = [photoList objectAtIndex:i];
-            [detailMapView addAnnotation: photo];
-        }
-    }
-}
-
-//アノテーションをオリジナルの画像にカスタマイズ
-
--(MKAnnotationView*)mapView:(MKMapView*)anoMapView
-          viewForAnnotation:(id <MKAnnotation>)annotation {
+    //天気情報ビューの初期化
+    UIStoryboard *storyboard = self.storyboard;
+    semiVC = [storyboard instantiateViewControllerWithIdentifier:@"WeatherSubViewController"];    
     
-    if (annotation == anoMapView.userLocation) { //……【2】
-        return nil;
-    } else {
-        CustomAnnotationView *annotationView;
-        NSString* identifier = @"flag"; // 再利用時の識別子
-        
-        // 再利用可能な MKAnnotationView を取得
-        annotationView = (CustomAnnotationView*)[anoMapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        
-        if(nil == annotationView) {
-            //再利用可能な MKAnnotationView がなければ新規作成
-            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        }
-        annotationView.annotation = annotation;
-        return annotationView;
-    }
+    //Checkビューの初期化
+    semiCheckVC = [storyboard instantiateViewControllerWithIdentifier:@"CheckSubViewController"];
+    
+    //Statsビューの初期化
+    semiStatsVC = [storyboard instantiateViewControllerWithIdentifier:@"StatsSubViewController"];
+
 }
 
-*/
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl
+{
+    TileOverlayView *view = [[TileOverlayView alloc] initWithOverlay:ovl];
+    view.tileAlpha = 1.0; // e.g. 0.6 alpha for semi-transparent overlay
+    return view;
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload]; // Release any retained subviews of the main view.
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -190,7 +203,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [detailData count]; //項目数
+    return [_detailData count]; //項目数
 }
 
 //各セルの表示内容設定
@@ -200,7 +213,7 @@
     if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 4) {
         static NSString *CellIdentififer = @"detailCell";
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
-        cell.detailCellLabel.text = [detailData objectAtIndex:indexPath.row];
+        cell.detailCellLabel.text = [_detailData objectAtIndex:indexPath.row];
         cell.detailCellImageView.image = [UIImage imageNamed:@"kingslime.gif"];
         
         return cell;
@@ -209,7 +222,7 @@
     else {
         static NSString *CellIdentififer = @"detailCell2";
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
-        cell.detailCellLabel.text = [detailData objectAtIndex:indexPath.row];
+        cell.detailCellLabel.text = [_detailData objectAtIndex:indexPath.row];
         cell.detailCellImageView.image = [UIImage imageNamed:@"slimeknight.gif"];
         
         return cell;
@@ -241,25 +254,80 @@
     }
 }
 
+
+
+
+//Photoボタンがタップされたとき
+- (IBAction)mtButton:(id)sender {
+}
+
+//Weatherボタンがタップされたとき
+- (IBAction)weButton:(id)sender {
+    
+    NSString *mtweather = [_mtItem objectForKey:@"weather"];
+    [semiVC setWeatherSpotKeyNumber: mtweather];
+    
+    [self presentSemiViewController:semiVC withOptions:@{
+     KNSemiModalOptionKeys.pushParentBack       : @(YES),
+     KNSemiModalOptionKeys.animationDuration    : @(0.3),
+     KNSemiModalOptionKeys.shadowOpacity        : @(0.3),
+	 }];
+    
+}
+
+//Checkボタンがタップされたとき
+- (IBAction)ckButton:(id)sender {
+    
+    NSString *mtId = [_mtItem objectForKey:@"id"];
+    [semiCheckVC setMtIdForKey: mtId];
+    [self presentSemiViewController:semiCheckVC withOptions:@{
+     KNSemiModalOptionKeys.pushParentBack       : @(YES),
+     KNSemiModalOptionKeys.animationDuration    : @(0.3),
+     KNSemiModalOptionKeys.shadowOpacity        : @(0.3),
+	 }];
+}
+
+//Statsボタンがタップされたとき
+- (IBAction)stButton:(id)sender {
+    NSString *mtName = [_mtItem objectForKey:@"name"];
+    NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
+    NSString *mtHeight = [_mtItem objectForKey:@"height"];
+    NSString *mtRange = [_mtItem objectForKey:@"mtrange"];
+    NSString *mtPrefecture = [_mtItem objectForKey:@"prefecture"];
+    [semiStatsVC setMtName: mtName];
+    [semiStatsVC setMtYomi: mtYomi];
+    [semiStatsVC setMtHeight: mtHeight];
+    [semiStatsVC setMtRange: mtRange];
+    [semiStatsVC setMtPrefecture: mtPrefecture];
+    
+    [self presentSemiViewController:semiStatsVC withOptions:@{
+     KNSemiModalOptionKeys.pushParentBack       : @(YES),
+     KNSemiModalOptionKeys.animationDuration    : @(0.3),
+     KNSemiModalOptionKeys.shadowOpacity        : @(0.3),
+	 }];
+}
+
+
 //詳細ビューに対応する文字データの値を書き込む
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"infoSegue"]) {
         InfoViewController *viewController = [segue destinationViewController];
         NSInteger selectedIndex = [[self.detailTableView indexPathForSelectedRow] row];
-        viewController.detailStr = [detailData objectAtIndex:selectedIndex];
-        viewController.mtStr = mtStr;
-        viewController.mttrails = mttrails;
-        viewController.mtcamping = mtcamping;
-        viewController.mtInformation = mtInformation;
+        viewController.detailStr = [_detailData objectAtIndex:selectedIndex];
+        viewController.mtItem = _mtItem;
     }
     if ([[segue identifier] isEqualToString:@"directinfodetailSegue"]) {
         InfoDetailViewController *viewController = [segue destinationViewController];
         NSInteger selectedIndex = [[self.detailTableView indexPathForSelectedRow] row];
-        viewController.infodetailStr = [detailData objectAtIndex:selectedIndex];
+        viewController.mtItem = _mtItem;
+        viewController.infodetailStr = [_detailData objectAtIndex:selectedIndex];
     }
+    if ([[segue identifier] isEqualToString:@"photoSegue"]) {
+        JSONFlickrViewController *viewController = [segue destinationViewController];
+        viewController.mtItem = _mtItem;
+    }
+
 }
-
-
 
 @end

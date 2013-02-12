@@ -9,37 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "TileOverlay.h"
 
+@class WeatherSubViewController;
+@class CheckSubViewController;
+@class StatsSubViewController;
 
-//文字データを入れる変数を作る
-@interface DetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
-{
-    NSString *mtStr;
-    NSString *introStr;
-    NSString *mtInformation;
-    NSString *mtlatStr;
-    NSString *mtlngStr;
-    NSString *yomiStr;
-    NSArray *mttrails;
-    NSArray *mtcamping;
-    NSArray *detailData;
-    IBOutlet UISegmentedControl *detailsegmentedcontrol;
-}
+@interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
-@property (nonatomic, retain) NSString *mtStr;
-@property (nonatomic, retain) NSString *introStr;
-@property (nonatomic, retain) NSString *mtInformation;
-@property (nonatomic, retain) NSString *yomiStr;
-@property (nonatomic, retain) NSString *mtlatStr;
-@property (nonatomic, retain) NSString *mtlngStr;
-@property (nonatomic, retain) NSArray *mttrails;
-@property (nonatomic, retain) NSArray *mtcamping;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-
-@property (weak, nonatomic) IBOutlet UITableView *detailTableView;
-@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
-
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
+@property (nonatomic, retain) NSDictionary *mtItem;
+@property (nonatomic, retain) NSArray *detailData;
 
 @end

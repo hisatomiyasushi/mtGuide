@@ -9,16 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-//{
-//    UINavigationController *navigationController;
-//}
 
 @property (strong, nonatomic) UIWindow *window;
 
-/*
-// 共通で使用する辞書を宣言
-@property (nonatomic,retain) NSDictionary *commondataSource;
-*/
+//共有データの設定
+@property (nonatomic, retain) NSArray *myregKeys;
+@property (nonatomic, retain) NSArray *dataArray;
+@property (nonatomic, retain) NSDictionary *mydataSource;
 
- 
 @end

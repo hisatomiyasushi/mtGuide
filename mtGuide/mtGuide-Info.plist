@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Logo114.png</string>
-				<string>Logo2.png</string>
+				<string>Icon-mtGuide_114.png</string>
+				<string>Icon-mtGuide_57.png</string>
 			</array>
 		</dict>
 	</dict>
@@ -44,8 +44,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

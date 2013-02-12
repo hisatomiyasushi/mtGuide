@@ -14,13 +14,18 @@
 
 
 @interface InfoViewController ()
+<UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UITableView *infoTableView;
 
 @end
 
 @implementation InfoViewController
-@synthesize mttrails,
-            mtcamping,
-            mtInformation;
+{
+    NSArray *_infoData;
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,10 +35,6 @@
     }
     return self;
 }
-
-@synthesize detailStr;
-@synthesize infoTableView, mtStr;
-
 
 #pragma mark - Managing the detail item
 
@@ -66,15 +67,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    self.title = detailStr;
-    self.infoLabel.text = detailStr;
+    self.title = _detailStr;
+    self.infoLabel.text = _detailStr;
     
     self.infoTableView.dataSource = self;
     self.infoTableView.delegate = self;
 
-       
-    if ([detailStr isEqualToString:@"山の基本情報"]) {
-        infoData = [[NSArray alloc]initWithObjects:
+    NSArray *mtTrails = [_mtItem objectForKey:@"trails"];
+    NSArray *mtCamping = [_mtItem objectForKey:@"camping"];
+
+    if ([_detailStr isEqualToString:@"山の基本情報"]) {
+        _infoData = [[NSArray alloc]initWithObjects:
                 @"概要",
                 @"アクセス",
                 @"登山適期",
@@ -82,14 +85,15 @@
                 @"登山案内・管轄警察",
                 @"家族・ペット・障害者", nil];
     }
-    if ([detailStr isEqualToString:@"登山ルート情報"]){
-        infoData = mttrails;
+    if ([_detailStr isEqualToString:@"登山ルート情報"]){
+        _infoData = mtTrails;
 
     }
-    if ([detailStr isEqualToString:@"キャンプ場・山小屋情報"]){
-        infoData = mtcamping;
+    if ([_detailStr isEqualToString:@"キャンプ場・山小屋情報"]){
+        _infoData = mtCamping;
 
     }
+    
 
 }
 
@@ -112,7 +116,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [infoData count];
+    return [_infoData count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,7 +126,7 @@
     if (!cell) {
         cell = [[DetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentififer];
     }
-    cell.infoCellLabel.text = [infoData objectAtIndex:indexPath.row];
+    cell.infoCellLabel.text = [_infoData objectAtIndex:indexPath.row];
     cell.infoCellImageView.image = [UIImage imageNamed:@"metalking.gif"];
     
     return cell;
@@ -141,8 +145,8 @@
     if ([[segue identifier] isEqualToString:@"infodetailSegue"]) {
         InfoDetailViewController *viewController = [segue destinationViewController];
         NSInteger selectedIndex = [[self.infoTableView indexPathForSelectedRow] row];
-        viewController.infodetailStr = [infoData objectAtIndex:selectedIndex];
-        viewController.mtInformation = mtInformation;
+        viewController.infodetailStr = [_infoData objectAtIndex:selectedIndex];
+        viewController.mtItem = _mtItem;
     }
 }
 

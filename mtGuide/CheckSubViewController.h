@@ -6,8 +6,23 @@
 //  Copyright (c) 2013年 hisatomiyasushi. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CheckSubViewController : UIViewController
+@class DetailViewController;
 
+
+@interface CheckSubViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *mapCheckButton;
+@property (weak, nonatomic) IBOutlet UIButton *favCheckButton;
+@property (weak, nonatomic) IBOutlet UIButton *hikeCheckButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *itiButton;
+@property (nonatomic, copy) NSString *mtIdForKey;
+
+- (IBAction)mcbDidTouch:(id)sender;
+- (IBAction)fcbDidTouch:(id)sender;
+- (IBAction)hcbDidTouch:(id)sender;
+- (IBAction)shbDidTouch:(id)sender;
+- (IBAction)itbDidTouch:(id)sender;
 @end

@@ -43,12 +43,14 @@
 		<key>fun</key>
 		<string>楽しみ5</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉5</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=012011&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>012010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -91,12 +93,14 @@
 		<key>fun</key>
 		<string>楽しみ11</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉11</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=020202&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>020010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -139,12 +143,14 @@
 		<key>fun</key>
 		<string>楽しみ26</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉26</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=171305&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>100020</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -187,12 +193,14 @@
 		<key>fun</key>
 		<string>楽しみ27</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉27</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090402&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>100020</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -235,12 +243,14 @@
 		<key>fun</key>
 		<string>楽しみ36</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉36</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090508&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>100020</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -283,12 +293,14 @@
 		<key>fun</key>
 		<string>楽しみ39</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉39</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090508&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>090010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -331,12 +343,14 @@
 		<key>fun</key>
 		<string>楽しみ44</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉44</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=150302&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>130010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -379,61 +393,65 @@
 		<key>fun</key>
 		<string>楽しみ49</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉49</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=080502&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>090020</string>
 	</dict>
 	<dict>
-      <key>id</key>
-      <string>52</string>
-      <key>name</key>
-      <string>富士山</string>
-      <key>yomi</key>
-      <string>ふじさん</string>
-      <key>region</key>
-      <string>関東周辺</string>
-      <key>prefecture</key>
-      <string>山梨県</string>
-      <key>mtlatitude</key>
-      <string>35.360628</string>
-      <key>mtlongitude</key>
-      <string>138.727365</string>
-      <key>introduction</key>
-      <string>富士山のイントロダクション</string>
-      <key>height</key>
-      <string>3776</string>
-      <key>mtrange</key>
-      <string>独立峰</string>
-      <key>information</key>
-      <string>概要52</string>
-      <key>access</key>
-      <string>アクセス52</string>
-      <key>season</key>
-      <string>季節52</string>
-      <key>plan</key>
-      <string>登り方52</string>
-      <key>contact</key>
-      <string>問い合わせ52</string>
-      <key>family</key>
-      <string>家族・ペット・障害52</string>
-      <key>trails</key>
-      <array>
-        <string>トレイルA</string>
-        <string>トレイルB</string>
-      </array>
-      <key>fun</key>
-      <string>楽しみ52</string>
-      <key>hotsprings</key>
-      <string>温泉紅葉52</string>
-      <key>camping</key>
-      <array>
-        <string>キャンプ場A</string>
-        <string>山小屋A</string>
-      </array>
-    </dict>
+		<key>id</key>
+		<string>52</string>
+		<key>name</key>
+		<string>富士山</string>
+		<key>yomi</key>
+		<string>ふじさん</string>
+		<key>region</key>
+		<string>関東周辺</string>
+		<key>prefecture</key>
+		<string>山梨県</string>
+		<key>mtlatitude</key>
+		<string>35.360628</string>
+		<key>mtlongitude</key>
+		<string>138.727365</string>
+		<key>introduction</key>
+		<string>富士山のイントロダクション</string>
+		<key>height</key>
+		<string>3776</string>
+		<key>mtrange</key>
+		<string>独立峰</string>
+		<key>information</key>
+		<string>概要52</string>
+		<key>access</key>
+		<string>アクセス52</string>
+		<key>season</key>
+		<string>季節52</string>
+		<key>plan</key>
+		<string>登り方52</string>
+		<key>contact</key>
+		<string>問い合わせ52</string>
+		<key>family</key>
+		<string>家族・ペット・障害52</string>
+		<key>trails</key>
+		<array>
+			<string>トレイルA</string>
+			<string>トレイルB</string>
+		</array>
+		<key>fun</key>
+		<string>楽しみ52</string>
+		<key>hotsprings</key>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=150602&amp;xml_ptn=1</string>
+		<key>camping</key>
+		<array>
+			<string>キャンプ場A</string>
+			<string>山小屋A</string>
+		</array>
+		<key>weather</key>
+		<string>190020</string>
+	</dict>
 	<dict>
 		<key>id</key>
 		<string>54</string>
@@ -475,12 +493,14 @@
 		<key>fun</key>
 		<string>楽しみ54</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉54</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=162002&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>200010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -523,12 +543,14 @@
 		<key>fun</key>
 		<string>楽しみ69</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉69</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=163205&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>200030</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -548,7 +570,7 @@
 		<key>introduction</key>
 		<string>八ヶ岳のイントロダクション</string>
 		<key>height</key>
-		<string>2899</string>
+		<string>200020</string>
 		<key>mtrange</key>
 		<string>八ヶ岳連峰</string>
 		<key>information</key>
@@ -571,12 +593,14 @@
 		<key>fun</key>
 		<string>楽しみ73</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉73</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=151405&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>200020</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -619,12 +643,14 @@
 		<key>fun</key>
 		<string>楽しみ74</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉74</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=163205&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>200030</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -667,12 +693,14 @@
 		<key>fun</key>
 		<string>楽しみ80</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉80</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area= 151102&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>190010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -715,12 +743,14 @@
 		<key>fun</key>
 		<string>楽しみ87</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉87</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=192302&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>170010</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -763,12 +793,14 @@
 		<key>fun</key>
 		<string>楽しみ91</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉91</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=290802&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>290020</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -811,12 +843,14 @@
 		<key>fun</key>
 		<string>楽しみ95</string>
 		<key>hotsprings</key>
-		<string>温泉紅葉95</string>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=441402&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
 			<string>キャンプ場A</string>
 			<string>山小屋A</string>
 		</array>
+		<key>weather</key>
+		<string>440030</string>
 	</dict>
 </array>
 </plist>

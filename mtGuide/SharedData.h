@@ -10,4 +10,7 @@
 
 @interface SharedData : NSObject
 
+
+- (void)SetMountainsMethod;
+
 @end

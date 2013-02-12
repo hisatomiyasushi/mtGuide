@@ -25,7 +25,14 @@
     coordinate = _coordinate;
     self.annotationTitle = _annotationTitle;
     self.annotationSubtitle = _annotationSubtitle;
+        
     return self;
 }
+
+
+
+
+
+
 
 @end
