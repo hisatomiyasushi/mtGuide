@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>73</string>
+		<key>name</key>
+		<string>八ヶ岳</string>
+		<key>yomi</key>
+		<string>やつがたけ</string>
+		<key>region</key>
+		<string>八ヶ岳・中信高原</string>
+		<key>prefecture</key>
+		<string>長野県</string>
+		<key>mtlatitude</key>
+		<string>35.970833</string>
+		<key>mtlongitude</key>
+		<string>138.37</string>
+		<key>introduction</key>
+		<string>八ヶ岳のイントロダクション</string>
+		<key>height</key>
+		<string>200020</string>
+		<key>mtrange</key>
+		<string>八ヶ岳連峰</string>
+		<key>information</key>
+		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E5%85%AB%E3%83%B6%E5%B2%B3</string>
+		<key>access</key>
+		<string>アクセス73</string>
+		<key>season</key>
+		<string>季節73</string>
+		<key>plan</key>
+		<string>登り方73</string>
+		<key>contact</key>
+		<string>問い合わせ73</string>
+		<key>family</key>
+		<string>家族・ペット・障害73</string>
+		<key>trails</key>
+		<array>
+			<string>トレイルA</string>
+			<string>トレイルB</string>
+		</array>
+		<key>fun</key>
+		<string>楽しみ73</string>
+		<key>hotsprings</key>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=151405&amp;xml_ptn=1</string>
+		<key>camping</key>
+		<array>
+			<string>キャンプ場A</string>
+			<string>山小屋A</string>
+		</array>
+		<key>weather</key>
+		<string>200020</string>
+	</dict>
+</array>
+</plist>

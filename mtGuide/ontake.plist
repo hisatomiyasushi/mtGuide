@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>69</string>
+		<key>name</key>
+		<string>御嶽山</string>
+		<key>yomi</key>
+		<string>おんたけさん</string>
+		<key>region</key>
+		<string>御嶽山</string>
+		<key>prefecture</key>
+		<string>長野県</string>
+		<key>mtlatitude</key>
+		<string>35.892778</string>
+		<key>mtlongitude</key>
+		<string>137.480278</string>
+		<key>introduction</key>
+		<string>御嶽山のイントロダクション</string>
+		<key>height</key>
+		<string>3067</string>
+		<key>mtrange</key>
+		<string>独立峰</string>
+		<key>information</key>
+		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E5%BE%A1%E5%B6%BD%E5%B1%B1_(%E9%95%B7%E9%87%8E%E7%9C%8C)</string>
+		<key>access</key>
+		<string>アクセス69</string>
+		<key>season</key>
+		<string>季節69</string>
+		<key>plan</key>
+		<string>登り方69</string>
+		<key>contact</key>
+		<string>問い合わせ69</string>
+		<key>family</key>
+		<string>家族・ペット・障害69</string>
+		<key>trails</key>
+		<array>
+			<string>トレイルA</string>
+			<string>トレイルB</string>
+		</array>
+		<key>fun</key>
+		<string>楽しみ69</string>
+		<key>hotsprings</key>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=163205&amp;xml_ptn=1</string>
+		<key>camping</key>
+		<array>
+			<string>キャンプ場A</string>
+			<string>山小屋A</string>
+		</array>
+		<key>weather</key>
+		<string>200030</string>
+	</dict>
+</array>
+</plist>

@@ -9,6 +9,13 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "NimbusCore.h"
+#import "NimbusWebController.h"
+#import "NimbusPhotos.h"
+#import "NimbusPagingScrollView.h"
 #endif

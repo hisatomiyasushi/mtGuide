@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>5</string>
+		<key>name</key>
+		<string>大雪山</string>
+		<key>yomi</key>
+		<string>たいせつざん</string>
+		<key>region</key>
+		<string>北海道</string>
+		<key>prefecture</key>
+		<string>北海道</string>
+		<key>mtlatitude</key>
+		<string>43.663611</string>
+		<key>mtlongitude</key>
+		<string>142.854167</string>
+		<key>introduction</key>
+		<string>大雪山のイントロダクション</string>
+		<key>height</key>
+		<string>2291</string>
+		<key>mtrange</key>
+		<string>大雪山系</string>
+		<key>information</key>
+		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E6%97%AD%E5%B2%B3</string>
+		<key>access</key>
+		<string>アクセス5</string>
+		<key>season</key>
+		<string>季節5</string>
+		<key>plan</key>
+		<string>登り方5</string>
+		<key>contact</key>
+		<string>問い合わせ5</string>
+		<key>family</key>
+		<string>家族・ペット・障害5</string>
+		<key>trails</key>
+		<array>
+			<string>トレイルA</string>
+			<string>トレイルB</string>
+		</array>
+		<key>fun</key>
+		<string>楽しみ5</string>
+		<key>hotsprings</key>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=012011&amp;xml_ptn=1</string>
+		<key>camping</key>
+		<array>
+			<string>キャンプ場A</string>
+			<string>山小屋A</string>
+		</array>
+		<key>weather</key>
+		<string>012010</string>
+	</dict>
+</array>
+</plist>

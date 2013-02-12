@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>87</string>
+		<key>name</key>
+		<string>白山</string>
+		<key>yomi</key>
+		<string>はくさん</string>
+		<key>region</key>
+		<string>北陸</string>
+		<key>prefecture</key>
+		<string>岐阜県</string>
+		<key>mtlatitude</key>
+		<string>36.155</string>
+		<key>mtlongitude</key>
+		<string>136.771389</string>
+		<key>introduction</key>
+		<string>白山のイントロダクション</string>
+		<key>height</key>
+		<string>2702</string>
+		<key>mtrange</key>
+		<string>両白山地</string>
+		<key>information</key>
+		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E7%99%BD%E5%B1%B1</string>
+		<key>access</key>
+		<string>アクセス87</string>
+		<key>season</key>
+		<string>季節87</string>
+		<key>plan</key>
+		<string>登り方87</string>
+		<key>contact</key>
+		<string>問い合わせ87</string>
+		<key>family</key>
+		<string>家族・ペット・障害87</string>
+		<key>trails</key>
+		<array>
+			<string>トレイルA</string>
+			<string>トレイルB</string>
+		</array>
+		<key>fun</key>
+		<string>楽しみ87</string>
+		<key>hotsprings</key>
+		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=192302&amp;xml_ptn=1</string>
+		<key>camping</key>
+		<array>
+			<string>キャンプ場A</string>
+			<string>山小屋A</string>
+		</array>
+		<key>weather</key>
+		<string>170010</string>
+	</dict>
+</array>
+</plist>
