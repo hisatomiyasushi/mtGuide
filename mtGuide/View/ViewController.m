@@ -51,6 +51,12 @@
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
     
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.myTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.myMapView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+
     
     //一覧リストと全体地図表示切り替えボタンの初期設定
     segmentedcontrol.selectedSegmentIndex = 0;

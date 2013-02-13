@@ -73,6 +73,11 @@
     self.infoTableView.dataSource = self;
     self.infoTableView.delegate = self;
 
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.infoTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+
     NSArray *mtTrails = [_mtItem objectForKey:@"trails"];
     NSArray *mtCamping = [_mtItem objectForKey:@"camping"];
 

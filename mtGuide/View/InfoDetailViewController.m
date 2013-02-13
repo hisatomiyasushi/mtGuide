@@ -56,7 +56,10 @@
     _myTextView.text = @"";
     _myTextView.editable = NO;
     
-
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.myTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
     //////概要を開いたときだけwikipediaから山の概要情報を取得する/////////////////////////////////////////////////////
     NSString *mtInformation = [_mtItem objectForKey:@"information"];

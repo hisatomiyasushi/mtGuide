@@ -191,7 +191,11 @@
 
     
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"]; self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.twitterTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
 }
 
