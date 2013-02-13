@@ -76,6 +76,9 @@
 		574D54CB16C384D3006DD1A9 /* 59-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 574D54CA16C384D3006DD1A9 /* 59-flag.png */; };
 		574D54CD16C38534006DD1A9 /* 09-chat-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 574D54CC16C38533006DD1A9 /* 09-chat-2.png */; };
 		574D54CF16C3855A006DD1A9 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = 574D54CE16C3855A006DD1A9 /* 179-notepad.png */; };
+		57727EB116CB08D200DD3EA7 /* back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57727EB016CB08D200DD3EA7 /* back.jpg */; };
+		57727EB516CBB58800DD3EA7 /* URLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57727EB416CBB58800DD3EA7 /* URLLoader.m */; };
+		57727EB816CBB96900DD3EA7 /* StatusXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */; };
 		578C8B0E16B90D7500135A92 /* JSONFlickrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 578C8B0D16B90D7500135A92 /* JSONFlickrViewController.m */; };
 		578C8B3B16BA6E8900135A92 /* NICellBackgrounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 578C8B2616BA6E8900135A92 /* NICellBackgrounds.m */; };
 		578C8B3C16BA6E8900135A92 /* NICellCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 578C8B2816BA6E8900135A92 /* NICellCatalog.m */; };
@@ -242,6 +245,11 @@
 		574D54CA16C384D3006DD1A9 /* 59-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-flag.png"; sourceTree = "<group>"; };
 		574D54CC16C38533006DD1A9 /* 09-chat-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2.png"; sourceTree = "<group>"; };
 		574D54CE16C3855A006DD1A9 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
+		57727EB016CB08D200DD3EA7 /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
+		57727EB316CBB58800DD3EA7 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLLoader.h; path = TwitterView/URLLoader.h; sourceTree = "<group>"; };
+		57727EB416CBB58800DD3EA7 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLLoader.m; path = TwitterView/URLLoader.m; sourceTree = "<group>"; };
+		57727EB616CBB96900DD3EA7 /* StatusXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusXMLParser.h; path = TwitterView/StatusXMLParser.h; sourceTree = "<group>"; };
+		57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusXMLParser.m; path = TwitterView/StatusXMLParser.m; sourceTree = "<group>"; };
 		578C8B0C16B90D7500135A92 /* JSONFlickrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONFlickrViewController.h; sourceTree = "<group>"; };
 		578C8B0D16B90D7500135A92 /* JSONFlickrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONFlickrViewController.m; sourceTree = "<group>"; };
 		578C8B2516BA6E8900135A92 /* NICellBackgrounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NICellBackgrounds.h; sourceTree = "<group>"; };
@@ -368,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				5736846C16CADFD20056F5F8 /* Icon-mtGuide_57.png */,
+				57727EB016CB08D200DD3EA7 /* back.jpg */,
 				5736846D16CADFD20056F5F8 /* Icon-mtGuide_114.png */,
 				574D54CC16C38533006DD1A9 /* 09-chat-2.png */,
 				574D54CA16C384D3006DD1A9 /* 59-flag.png */,
@@ -426,6 +435,17 @@
 				571FD3D216CA6F3E0037E4B7 /* StatsSubViewController.m */,
 			);
 			path = SubView;
+			sourceTree = "<group>";
+		};
+		57727EB216CBB50F00DD3EA7 /* TwiiterView */ = {
+			isa = PBXGroup;
+			children = (
+				57727EB316CBB58800DD3EA7 /* URLLoader.h */,
+				57727EB416CBB58800DD3EA7 /* URLLoader.m */,
+				57727EB616CBB96900DD3EA7 /* StatusXMLParser.h */,
+				57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */,
+			);
+			name = TwiiterView;
 			sourceTree = "<group>";
 		};
 		578C8B2316BA6E6F00135A92 /* models */ = {
@@ -529,6 +549,7 @@
 				579951DB169E3B7600E3A480 /* MainStoryboard.storyboard */,
 				5795943216BB3401007595A8 /* View */,
 				57FCC2F716BAA33300D0C3F5 /* NetworkPhotoAlbumView */,
+				57727EB216CBB50F00DD3EA7 /* TwiiterView */,
 				579951CA169E3B7600E3A480 /* Supporting Files */,
 			);
 			path = mtGuide;
@@ -783,6 +804,7 @@
 				5736846E16CADFD20056F5F8 /* Icon-mtGuide_57.png in Resources */,
 				5736846F16CADFD20056F5F8 /* Icon-mtGuide_114.png in Resources */,
 				5736847516CAE0630056F5F8 /* InfoPlist.strings in Resources */,
+				57727EB116CB08D200DD3EA7 /* back.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +878,8 @@
 				573684D816CAE7E90056F5F8 /* NIState.m in Sources */,
 				573684D916CAE7E90056F5F8 /* NIViewRecycler.m in Sources */,
 				573684DA16CAE7E90056F5F8 /* NSString+NimbusCore.m in Sources */,
+				57727EB516CBB58800DD3EA7 /* URLLoader.m in Sources */,
+				57727EB816CBB96900DD3EA7 /* StatusXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,9 @@
 #import "StatsSubViewController.h"
 #import "TileOverlay.h"
 #import "TileOverlayView.h"
+#import "URLLoader.h"
+#import "StatusXMLParser.h"
+
 
 @interface DetailViewController ()
 <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
@@ -45,6 +48,9 @@
     StatsSubViewController *semiStatsVC;
 
 }
+
+@synthesize statuses;
+
 
 #pragma mark - Managing the detail item
 
@@ -76,9 +82,20 @@
     [_detailMapView setDelegate:self];
     [self configureView];
     
+    //画面縦幅（スクロールビュー）の設定
+    self.view.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 800.0);
+    _scrollView.delegate = self;
+    [self.view addSubview: _scrollView];
+    
+    //apple地図に国土地理院地図をオーバーレイ
     _overlay = [[TileOverlay alloc] initOverlay];
     [_detailMapView addOverlay:_overlay];
 
+    //Twitterタイムライン読み込み
+    [self loadTimeLineByUserName:@"NorthernAlps"];
+
+    
     MKMapRect visibleRect = [_detailMapView mapRectThatFits:_overlay.boundingMapRect];
     _detailMapView.visibleMapRect = visibleRect;
     visibleRect.size.width /= 2;
@@ -172,6 +189,10 @@
     //Statsビューの初期化
     semiStatsVC = [storyboard instantiateViewControllerWithIdentifier:@"StatsSubViewController"];
 
+    
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"]; self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl
@@ -242,11 +263,11 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.detailMapView.hidden = YES;
-            self.detailTableView.hidden = NO;
+            self.scrollView.hidden = NO;
             break;
         case 1:
             self.detailMapView.hidden = NO;
-            self.detailTableView.hidden = YES;
+            self.scrollView.hidden = YES;
             break;
             
         default:
@@ -306,6 +327,71 @@
      KNSemiModalOptionKeys.shadowOpacity        : @(0.3),
 	 }];
 }
+
+
+//Twitterタイムライン読み込み/////////////////////////////////////////////////////////////////////////////////////////////////
+
+// （6）
+- (void) loadTimeLineByUserName: (NSString *) userName {
+    static NSString *urlFormat = @"http://twitter.com/status/user_timeline/NorthernAlps";
+    
+    NSString *url = [NSString stringWithFormat:urlFormat, userName];
+    
+    URLLoader *loder = [[URLLoader alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(loadTimeLineDidEnd:)
+                                                 name: @"connectionDidFinishNotification"
+                                               object: loder];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(loadTimeLineFailed:)
+                                                 name: @"connectionDidFailWithError"
+                                               object: loder];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    [loder loadFromUrl:url method: @"GET"];
+}
+
+// （7）
+- (void) loadTimeLineDidEnd: (NSNotification *)notification {
+    URLLoader *loder = (URLLoader *)[notification object];
+    NSData *xmlData = loder.data;
+    
+//    NSLog(@"%@", [[NSString alloc] initWithData:xmlData encoding:NSUTF8StringEncoding]);
+
+    StatusXMLParser *parser = [[StatusXMLParser alloc] init];
+    self.statuses = [parser parseStatuses:xmlData];
+    
+    NSString *name = [[statuses objectAtIndex:0] objectForKey:@"name"];
+    NSString *text = [[statuses objectAtIndex:0] objectForKey:@"text"];
+    
+    // ユーザー名
+    self.twitterLabel.text = name;
+    
+    // テキスト
+    self.twitterTextView.text = text;
+
+
+
+}
+
+// （8）
+- (void) loadTimeLineFailed: (NSNotification *)notification {
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"エラー"
+                          message:@"タイムラインの取得に失敗しました。"
+                          delegate:self
+                          cancelButtonTitle:@"閉じる"
+                          otherButtonTitles:nil];
+    [alert show];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 //詳細ビューに対応する文字データの値を書き込む

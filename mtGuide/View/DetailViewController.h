@@ -20,5 +20,9 @@
 @property (strong, nonatomic) id detailItem;
 @property (nonatomic, retain) NSDictionary *mtItem;
 @property (nonatomic, retain) NSArray *detailData;
+@property (weak, nonatomic) IBOutlet UILabel *twitterLabel;
+@property (weak, nonatomic) IBOutlet UITextView *twitterTextView;
+@property(retain, nonatomic) NSArray *statuses;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
