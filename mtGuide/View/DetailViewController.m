@@ -88,9 +88,6 @@
     _scrollView.delegate = self;
     [self.view addSubview: _scrollView];
     
-    //apple地図に国土地理院地図をオーバーレイ
-    _overlay = [[TileOverlay alloc] initOverlay];
-    [_detailMapView addOverlay:_overlay];
 
     //Twitterタイムライン読み込み
     [self loadTimeLineByUserName:@"NorthernAlps"];
@@ -159,10 +156,7 @@
         if(lng > maxLng)
             maxLng = lng;
     }
-    
-//    NSLog(@"%f",lat);
-//    NSLog(@"%f",lng);
-    
+       
     
     CLLocationCoordinate2D co;
     co.latitude = (maxLat + minLat) / 2.0; // 緯度
@@ -272,6 +266,11 @@
         case 1:
             self.detailMapView.hidden = NO;
             self.scrollView.hidden = YES;
+            
+            //apple地図に国土地理院地図をオーバーレイ
+            _overlay = [[TileOverlay alloc] initOverlay];
+            [_detailMapView addOverlay:_overlay];
+
             break;
             
         default:
@@ -360,6 +359,7 @@
 
 // （7）
 - (void) loadTimeLineDidEnd: (NSNotification *)notification {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     URLLoader *loder = (URLLoader *)[notification object];
     NSData *xmlData = loder.data;
     

@@ -52,6 +52,8 @@
         _weatherData = [[NSMutableData alloc]init];
     }
 
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
 }
 
 - (void)viewDidUnload {
@@ -128,6 +130,8 @@
                             [[_weatherInformation objectAtIndex:i] objectForKey:@"lowTemp"],
                             [[_weatherInformation objectAtIndex:i] objectForKey:@"highTemp"]];
     }
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
 }
 

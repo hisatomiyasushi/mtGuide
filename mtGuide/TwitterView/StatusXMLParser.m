@@ -22,7 +22,11 @@
 }
 
 // （10）
-- (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+- (void) parser:(NSXMLParser *)parser
+didStartElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName
+     attributes:(NSDictionary *)attributeDict {
     [self.currentXpath appendString: elementName];
     [self.currentXpath appendString: @"/"];
     
@@ -34,7 +38,10 @@
 }
 
 // （11）
-- (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+- (void) parser:(NSXMLParser *)parser
+  didEndElement:(NSString *)elementName
+   namespaceURI:(NSString *)namespaceURI
+  qualifiedName:(NSString *)qName {
     
     NSString *textData = [self.textNodeCharacters stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -56,7 +63,8 @@
 }
 
 // （12）
-- (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+- (void) parser:(NSXMLParser *)parser
+foundCharacters:(NSString *)string {
     [self.textNodeCharacters appendString:string];
 }
 
@@ -68,4 +76,10 @@
     
     return self.statuses;
 }
+
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+	NSLog(@"解析が完了しました");
+    
+}
+
 @end

@@ -35,6 +35,11 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setStatsLabel:nil];
+    [super viewDidUnload];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

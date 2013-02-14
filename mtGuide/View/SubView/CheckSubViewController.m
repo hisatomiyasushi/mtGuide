@@ -90,6 +90,16 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setMapCheckButton:nil];
+    [self setFavCheckButton:nil];
+    [self setHikeCheckButton:nil];
+    [self setShareButton:nil];
+    [self setItiButton:nil];
+    [super viewDidUnload];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

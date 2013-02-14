@@ -40,10 +40,9 @@
     return self;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-//文字データ・その他を読み込み、表示する
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,7 +60,8 @@
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.myTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
-    //////概要を開いたときだけwikipediaから山の概要情報を取得する/////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////    
+    //概要を開いたときだけwikipediaから山の概要情報を取得する
     NSString *mtInformation = [_mtItem objectForKey:@"information"];
     NSString *mtHotsprings = [_mtItem objectForKey:@"hotsprings"];
     NSString *mtName = [_mtItem objectForKey:@"name"];
@@ -76,37 +76,37 @@
         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:data];
 
         xmlParser.delegate = self;
-//        NSLog(@"index>>>>>>>>>%@",xmlParser);
 
         [xmlParser parse];
     }
-    //////周辺の温泉を開いたときだけじゃらんから温泉情報を取得する/////////////////////////////////////////////////////
-   
+    
+    
+    //周辺の温泉を開いたときだけじゃらんから温泉情報を取得する
     else if ([_infodetailStr isEqualToString:@"周辺の温泉"]) {
+            
         self.infodetailLabel.text = [NSString stringWithFormat:@"%@周辺の温泉",mtName];
 
         //URLを指定してXMLパーサーをつくる
         NSURL *url = [[NSURL alloc] initWithString: mtHotsprings];
-
+        
         NSData *data = [[NSData alloc] initWithContentsOfURL:url];
         NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:data];
         
         xmlParser.delegate = self;
 
         [xmlParser parse];
-
+        
+            
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
-////概要・温泉情報の解析///////////////////////////////////////////////////////////////////////////////////////////////
-//- (void) parserDidStartDocument:(NSXMLParser *)parser{
-//    onsenList = [[NSMutableArray alloc]init];
-//}
+//概要・温泉情報の解析
+- (void) parserDidStartDocument:(NSXMLParser *)parser{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
 
 
 - (void) parser:(NSXMLParser *)parser
@@ -202,7 +202,6 @@ didStartElement:(NSString *)elementName
             NSLog(@"正規表現エラーです。%@",error01);
             
         } else {
-            NSLog(@"regexp>>>>>%@",regexp01);
         
         //正規表現を対象xmlにかけてみる
         //正規表現にマッチした件数分、結果が取得できる
@@ -236,6 +235,8 @@ didStartElement:(NSString *)elementName
         _myTextView.text = [_myTextView.text stringByAppendingFormat:@"%@",replaced];
             
         }
+        
+
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     else if ([elementName isEqualToString:@"OnsenName"]){
@@ -245,13 +246,20 @@ didStartElement:(NSString *)elementName
     } else if ([elementName isEqualToString:@"Onsen"]){
         return;
     }
+    
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSLog(@"概要・温泉の解析が完了しました");
+}
 
 
-
+- (void)viewDidUnload {
+    [super viewDidUnload]; // Release any retained subviews of the main view.
+}
 
 
 - (void)didReceiveMemoryWarning
