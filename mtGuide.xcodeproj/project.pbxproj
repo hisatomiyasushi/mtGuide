@@ -64,8 +64,6 @@
 		574D53F416C0DF05006DD1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574D53F316C0DF05006DD1A9 /* QuartzCore.framework */; };
 		574D53F816C0F5C0006DD1A9 /* WeatherSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 574D53F716C0F5C0006DD1A9 /* WeatherSubViewController.m */; };
 		574D54B716C37402006DD1A9 /* CheckSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 574D54B616C37402006DD1A9 /* CheckSubViewController.m */; };
-		57727EB516CBB58800DD3EA7 /* URLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57727EB416CBB58800DD3EA7 /* URLLoader.m */; };
-		57727EB816CBB96900DD3EA7 /* StatusXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */; };
 		57727F0D16CC5F7800DD3EA7 /* icon-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 57727F0016CC5F7800DD3EA7 /* icon-chat.png */; };
 		57727F0E16CC5F7800DD3EA7 /* icon-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 57727F0116CC5F7800DD3EA7 /* icon-heart.png */; };
 		57727F0F16CC5F7800DD3EA7 /* icon-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 57727F0216CC5F7800DD3EA7 /* icon-flag.png */; };
@@ -122,6 +120,8 @@
 		579951EC169E3D7B00E3A480 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 579951EB169E3D7B00E3A480 /* DetailCell.m */; };
 		57995202169E563D00E3A480 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57995201169E563D00E3A480 /* MapKit.framework */; };
 		57995204169E565200E3A480 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57995203169E565200E3A480 /* CoreLocation.framework */; };
+		57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052916CD68F2002B2667 /* StatusXMLParser.m */; };
+		57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052B16CD68F2002B2667 /* URLLoader.m */; };
 		57FCC2FB16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */; };
 		57FCC31016BAA43A00D0C3F5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FE16BAA43A00D0C3F5 /* AFHTTPClient.m */; };
 		57FCC31116BAA43A00D0C3F5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC30016BAA43A00D0C3F5 /* AFHTTPRequestOperation.m */; };
@@ -250,10 +250,6 @@
 		574D53F716C0F5C0006DD1A9 /* WeatherSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherSubViewController.m; sourceTree = "<group>"; };
 		574D54B516C37402006DD1A9 /* CheckSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckSubViewController.h; sourceTree = "<group>"; };
 		574D54B616C37402006DD1A9 /* CheckSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckSubViewController.m; sourceTree = "<group>"; };
-		57727EB316CBB58800DD3EA7 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLLoader.h; path = TwitterView/URLLoader.h; sourceTree = "<group>"; };
-		57727EB416CBB58800DD3EA7 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLLoader.m; path = TwitterView/URLLoader.m; sourceTree = "<group>"; };
-		57727EB616CBB96900DD3EA7 /* StatusXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusXMLParser.h; path = TwitterView/StatusXMLParser.h; sourceTree = "<group>"; };
-		57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusXMLParser.m; path = TwitterView/StatusXMLParser.m; sourceTree = "<group>"; };
 		57727F0016CC5F7800DD3EA7 /* icon-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chat.png"; sourceTree = "<group>"; };
 		57727F0116CC5F7800DD3EA7 /* icon-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart.png"; sourceTree = "<group>"; };
 		57727F0216CC5F7800DD3EA7 /* icon-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-flag.png"; sourceTree = "<group>"; };
@@ -330,6 +326,10 @@
 		579951EB169E3D7B00E3A480 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		57995201169E563D00E3A480 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		57995203169E565200E3A480 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		57B1052816CD68F2002B2667 /* StatusXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusXMLParser.h; path = TwitterView/StatusXMLParser.h; sourceTree = "<group>"; };
+		57B1052916CD68F2002B2667 /* StatusXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusXMLParser.m; path = TwitterView/StatusXMLParser.m; sourceTree = "<group>"; };
+		57B1052A16CD68F2002B2667 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLLoader.h; path = TwitterView/URLLoader.h; sourceTree = "<group>"; };
+		57B1052B16CD68F2002B2667 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLLoader.m; path = TwitterView/URLLoader.m; sourceTree = "<group>"; };
 		57FCC2F916BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		57FCC2FD16BAA43A00D0C3F5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -475,10 +475,10 @@
 		57727EB216CBB50F00DD3EA7 /* TwiiterView */ = {
 			isa = PBXGroup;
 			children = (
-				57727EB316CBB58800DD3EA7 /* URLLoader.h */,
-				57727EB416CBB58800DD3EA7 /* URLLoader.m */,
-				57727EB616CBB96900DD3EA7 /* StatusXMLParser.h */,
-				57727EB716CBB96900DD3EA7 /* StatusXMLParser.m */,
+				57B1052A16CD68F2002B2667 /* URLLoader.h */,
+				57B1052B16CD68F2002B2667 /* URLLoader.m */,
+				57B1052816CD68F2002B2667 /* StatusXMLParser.h */,
+				57B1052916CD68F2002B2667 /* StatusXMLParser.m */,
 			);
 			name = TwiiterView;
 			sourceTree = "<group>";
@@ -954,8 +954,8 @@
 				573684D816CAE7E90056F5F8 /* NIState.m in Sources */,
 				573684D916CAE7E90056F5F8 /* NIViewRecycler.m in Sources */,
 				573684DA16CAE7E90056F5F8 /* NSString+NimbusCore.m in Sources */,
-				57727EB516CBB58800DD3EA7 /* URLLoader.m in Sources */,
-				57727EB816CBB96900DD3EA7 /* StatusXMLParser.m in Sources */,
+				57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */,
+				57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -363,7 +363,6 @@
     URLLoader *loder = (URLLoader *)[notification object];
     NSData *xmlData = loder.data;
     
-//    NSLog(@"%@", [[NSString alloc] initWithData:xmlData encoding:NSUTF8StringEncoding]);
 
     StatusXMLParser *parser = [[StatusXMLParser alloc] init];
     self.statuses = [parser parseStatuses:xmlData];
