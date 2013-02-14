@@ -313,7 +313,7 @@
                                 <rect key="frame" x="1" y="26" width="318" height="57"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" MAP上でポイントをCHECK" image="103-map.png">
+                                <state key="normal" title=" MAP上でポイントをCHECK" image="icon-map.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -328,7 +328,7 @@
                                 <rect key="frame" x="1" y="84" width="158" height="57"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title=" お気に入り" image="29-heart.png">
+                                <state key="normal" title=" お気に入り" image="icon-heart.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -343,7 +343,7 @@
                                 <rect key="frame" x="160" y="84" width="159" height="57"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title=" 登ったCHECK" image="59-flag.png">
+                                <state key="normal" title=" 登ったCHECK" image="icon-flag.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -372,7 +372,7 @@
                                 <rect key="frame" x="1" y="142" width="158" height="57"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title=" 友達とシェア" image="09-chat-2.png">
+                                <state key="normal" title=" 友達とシェア" image="icon-chat.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -387,7 +387,7 @@
                                 <rect key="frame" x="160" y="142" width="159" height="57"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" 旅程表に追加" image="179-notepad.png">
+                                <state key="normal" title=" 旅程表に追加" image="icon-notepad.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -608,11 +608,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="09-chat-2.png" width="24" height="22"/>
-        <image name="103-map.png" width="26" height="21"/>
-        <image name="179-notepad.png" width="22" height="28"/>
-        <image name="29-heart.png" width="24" height="21"/>
-        <image name="59-flag.png" width="18" height="26"/>
+        <image name="icon-chat.png" width="24" height="22"/>
+        <image name="icon-flag.png" width="18" height="26"/>
+        <image name="icon-heart.png" width="24" height="21"/>
+        <image name="icon-map.png" width="26" height="21"/>
+        <image name="icon-notepad.png" width="22" height="28"/>
         <image name="tsurugidake.jpg" width="1024" height="684"/>
     </resources>
     <classes>

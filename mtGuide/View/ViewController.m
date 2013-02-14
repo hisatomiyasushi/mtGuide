@@ -134,10 +134,11 @@
     
     //セクション名のセクションにあるrow番目のデータを取り出す
     NSString *text = [[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"name"];
-    NSString *subtext =  [[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"yomi"];
+    NSString *subtext = [[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"yomi"];
+    NSString *thumbtext = [NSString stringWithFormat:@"%@_thumb.jpg",[[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"id"]];
     cell.myLabel.text = text;
     cell.mySubLabel.text = subtext;
-    cell.myImageView.image = [UIImage imageNamed:@"moutain_thumb.jpg"];
+    cell.myImageView.image = [UIImage imageNamed: thumbtext];
     
     return cell;
 }
