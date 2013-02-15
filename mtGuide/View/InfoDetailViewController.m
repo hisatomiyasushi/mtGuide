@@ -9,6 +9,8 @@
 #import "InfoDetailViewController.h"
 #import "InfoViewController.h"
 #import "DetailViewController.h"
+#import "URLLoader.h"
+#import "StatusXMLParser.h"
 
 @interface InfoDetailViewController ()
 <NSXMLParserDelegate>
@@ -20,15 +22,7 @@
 
 @implementation InfoDetailViewController
 {
-    NSString *_nowTagStr;
-    NSString *_gaiyouStr;
-    NSString *_txtBuffer;
-    NSString *_txtBuffer02;
-    NSString *_txtBufferName;
-    NSString *_txtBufferNature;
-    NSString *_txtBufferURL;
-    NSString *_txtBufferCaption;
-    NSMutableString *_currentElementValue;
+    NSString *_wikiText_second;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,7 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 
     self.title = _infodetailStr;
     self.infodetailLabel.text = _infodetailStr;
@@ -60,201 +53,177 @@
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.myTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////    
-    //概要を開いたときだけwikipediaから山の概要情報を取得する
-    NSString *mtInformation = [_mtItem objectForKey:@"information"];
-    NSString *mtHotsprings = [_mtItem objectForKey:@"hotsprings"];
-    NSString *mtName = [_mtItem objectForKey:@"name"];
 
+    // 「概要」か「温泉情報」の場合、XMLパース処理の呼び出し処理を開始
     if ([_infodetailStr isEqualToString:@"概要"]) {
         self.infodetailLabel.text = _infodetailStr;
         
-        //URLを指定してXMLパーサーをつくる
-        NSURL *url = [[NSURL alloc] initWithString: mtInformation];
- 
-        NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-        NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:data];
-
-        xmlParser.delegate = self;
-
-        [xmlParser parse];
+        //wikiXMLパース処理の呼び出し
+        [self loadTimeLineByUserName:@"Wikipedia"];
     }
     
-    
-    //周辺の温泉を開いたときだけじゃらんから温泉情報を取得する
     else if ([_infodetailStr isEqualToString:@"周辺の温泉"]) {
-            
+        NSString *mtName = [_mtItem objectForKey:@"name"];
         self.infodetailLabel.text = [NSString stringWithFormat:@"%@周辺の温泉",mtName];
-
-        //URLを指定してXMLパーサーをつくる
-        NSURL *url = [[NSURL alloc] initWithString: mtHotsprings];
-        
-        NSData *data = [[NSData alloc] initWithContentsOfURL:url];
-        NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:data];
-        
-        xmlParser.delegate = self;
-
-        [xmlParser parse];
-        
-            
+        //温泉XMLパース処理の呼び出し
+        [self loadTimeLineByUserName:@"Onsen"];
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-
 }
 
+//XML読み込み/////////////////////////////////////////////////////////////////////////////////////////////////
 
-//概要・温泉情報の解析
-- (void) parserDidStartDocument:(NSXMLParser *)parser{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-
-- (void) parser:(NSXMLParser *)parser
-didStartElement:(NSString *)elementName
-   namespaceURI:(NSString *)namespaceURI
-  qualifiedName:(NSString *)qName
-     attributes:(NSDictionary *)attributeDict {
+- (void) loadTimeLineByUserName: (NSString *) userName {
     
-    //開始タグが"text"だったら
-    if ([elementName isEqualToString:@"text"]) {
-        //解析タグに設定
-        _gaiyouStr = [NSString stringWithString:elementName];
-        //テキストバッファの初期化
-        _txtBuffer = @"";
-    }
-    
-    if ([elementName isEqualToString:@"Onsen"]) {
+    if ([userName isEqualToString:@"Wikipedia"]){
 
-        _onsenList = [[NSMutableArray alloc] init];
+        NSString *mtInformation = [_mtItem objectForKey:@"information"];
+        NSString *urlFormat = mtInformation;
+        NSString *url = [NSString stringWithFormat:urlFormat, userName];
+        URLLoader *loder = [[URLLoader alloc] init];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(loadTimeLineDidEnd:)
+                                                     name: @"connectionDidFinishNotification"
+                                                   object: loder];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(loadTimeLineFailed:)
+                                                     name: @"connectionDidFailWithError"
+                                                   object: loder];
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        
+        [loder loadFromUrl:url method: @"GET"];
 
-        }
-    
-    else if ([elementName isEqualToString:@"OnsenName"]) {
-        _nowTagStr = [NSString stringWithString:elementName];
-        _txtBufferName = @"";
-    }
-    
-    else if ([elementName isEqualToString:@"NatureOfOnsen"]) {
-        _nowTagStr = [NSString stringWithString:elementName];
-        _txtBufferNature = @"";
-    }
-    else if ([elementName isEqualToString:@"OnsenAreaURL"]) {
-        _nowTagStr = [NSString stringWithString:elementName];
-        _txtBufferURL = @"";
-    }
-    else if ([elementName isEqualToString:@"OnsenAreaCaption"]) {
-        _nowTagStr = [NSString stringWithString:elementName];
-        _txtBufferCaption = @"";
+    } else if ([userName isEqualToString:@"Onsen"]){
+        
+        NSString *mtHotsprings = [_mtItem objectForKey:@"hotsprings"];
+        NSString *urlFormat = mtHotsprings;
+        NSString *url = [NSString stringWithFormat:urlFormat, userName];
+        URLLoader *loder = [[URLLoader alloc] init];
+
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(loadTimeLineDidEnd:)
+                                                     name: @"connectionDidFinishNotification"
+                                                   object: loder];
+
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(loadTimeLineFailed:)
+                                                     name: @"connectionDidFailWithError"
+                                                   object: loder];
+
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+        [loder loadFromUrl:url method: @"GET"];
     }
     
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
--(void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    
-    //解析中のタグが"text"だったら
-    if ([_gaiyouStr isEqualToString:@"text"]) {
-        //テキストバッファに文字を追加する
-        _txtBuffer = [_txtBuffer stringByAppendingString:string];
-    }
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    else if ([_nowTagStr isEqualToString:@"OnsenName"]){
-        _txtBufferName = [_txtBufferName stringByAppendingString:string];
-    } else if ([_nowTagStr isEqualToString:@"NatureOfOnsen"]){
-        _txtBufferNature = [_txtBufferNature stringByAppendingString:string];
-    } else if ([_nowTagStr isEqualToString:@"OnsenAreaURL"]){
-        _txtBufferURL = [_txtBufferURL stringByAppendingString:string];
-    } else if ([_nowTagStr isEqualToString:@"OnsenAreaCaption"]){
-        _txtBufferCaption = [_txtBufferCaption stringByAppendingString:string];
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    //終了タグが"text"だったら 要素の整形を開始
-    if ([elementName isEqualToString:@"text"]) {
-
-        //正規表現のオブジェクトを生成する
-        //options:0は、正規表現のmatch範囲をできるだけ狭くするように指定
-        NSError *error01 = nil;
-        
-            NSRegularExpression *regexp01 = [[NSRegularExpression alloc] initWithPattern:@"('{3})(.|[\r\n])*?(== )"
-                                                                                 options:0
-                                                                                   error:&error01];//大雪山
-//            NSRegularExpression *regexp01 = [[NSRegularExpression alloc] initWithPattern:@"('{3})(.|[\r\n])*(== 概要 ==)(.|[\r\n])*?(== )"
-//                                                                             options:0
-//                                                                               error:&error01];//大雪山
-//            NSRegularExpression *regexp01 = [[NSRegularExpression alloc] initWithPattern:@"('{3})(.|[\r\n])*(== )"
-//                                                                                 options:0
-//                                                                                   error:&error01];//巻機山
-//            NSRegularExpression *regexp01 = [[NSRegularExpression alloc] initWithPattern:@"('''富士山'''（ふじさん)(.|[\r\n])*(== 概要 ==)(.|[\r\n])*?(== )"
-//                                                                                 options:0
-//                                                                                   error:&error01];//富士山
-            
-        if (error01 != nil) {
-            NSLog(@"正規表現エラーです。%@",error01);
-            
-        } else {
-        
-        //正規表現を対象xmlにかけてみる
-        //正規表現にマッチした件数分、結果が取得できる
-        NSArray *results01 = [regexp01 matchesInString:_txtBuffer
-                                           options:0
-                                             range:NSMakeRange(0, [_txtBuffer length])];
-        
-        
-            for ( int i = 0; i <results01.count; i++){
-                NSTextCheckingResult *result01 = [results01 objectAtIndex:i];
-                _txtBuffer02 = [_txtBuffer substringWithRange:[result01 rangeAtIndex:0]];
-            }
-        }
-        
-        //得られた抽出テキストから不要部分を削除するためにさらに正規表現置き換え処理
-        NSError *error02 = nil;
-        NSString *template = @""; //置換（＝削除）用文字列の設定
-        
-        NSRegularExpression *regexp02 = [[NSRegularExpression alloc] initWithPattern:@"(\'\'\'|==|概要|\\[|\\]|<ref.*?/>|<ref.*?ref>)"
-                                                                             options:0
-                                                                               error:&error02];
-        if (error02 != nil) {
-            NSLog(@"正規表現エラーです。%@",error02);            
-        } else {
-            
-            NSString *replaced = [regexp02 stringByReplacingMatchesInString:_txtBuffer02
-                                             options:0
-                                               range:NSMakeRange(0,_txtBuffer02.length)
-                                        withTemplate:template];
-        
-        _myTextView.text = [_myTextView.text stringByAppendingFormat:@"%@",replaced];
-            
-        }
-        
-
-    }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    else if ([elementName isEqualToString:@"OnsenName"]){
-        _myTextView.text = [_myTextView.text stringByAppendingFormat:@"温泉名：%@\n",_txtBufferName];
-    } else if ([elementName isEqualToString:@"OnsenAreaCaption"]){
-        _myTextView.text = [_myTextView.text stringByAppendingFormat:@"概要：%@\n\n",_txtBufferCaption];
-    } else if ([elementName isEqualToString:@"Onsen"]){
-        return;
-    }
-    
-
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
+- (void) loadTimeLineDidEnd: (NSNotification *)notification {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSLog(@"概要・温泉の解析が完了しました");
+    URLLoader *loder = (URLLoader *)[notification object];
+    NSData *xmlData = loder.data;
+    
+    StatusXMLParser *parser = [[StatusXMLParser alloc] init];
+    self.statuses = [parser parseStatuses:xmlData];
+
+    
+//    // Wikipedia情報の表示
+//    if ([_infodetailStr isEqualToString:@"概要"]) {
+//        
+//        NSString *wikiText = [[_statuses objectAtIndex:0] objectForKey:@"wikiText"];
+//
+//            //正規表現のオブジェクトを生成する
+//            //options:0は、正規表現のmatch範囲をできるだけ狭くするように指定
+//            NSError *error = nil;
+//            
+//            NSRegularExpression *regexp_first = [[NSRegularExpression alloc] initWithPattern:@"('{3})(.|[\r\n])*?(== )"
+//                                                                                 options:0
+//                                                                                   error:&error];//大雪山
+//            if (error != nil) {
+//                NSLog(@"正規表現エラーです。%@",error);
+//            
+//            } else {
+//
+//                //正規表現を対象xmlにかけてみる
+//                //正規表現にマッチした件数分、結果が取得できる
+//                NSArray *results_first = [regexp_first matchesInString:wikiText
+//                                                       options:0
+//                                                         range:NSMakeRange(0, [wikiText length])];
+//                
+//                
+//                for ( int i = 0; i < results_first.count; i++){
+//                    NSTextCheckingResult *result_first = [results_first objectAtIndex:i];
+//                    _wikiText_second = [wikiText substringWithRange:[result_first rangeAtIndex:0]];
+//                }
+//            }
+//            
+//            //得られた抽出テキストから不要部分を削除するためにさらに正規表現置き換え処理
+//            error = nil;
+//            NSString *template = @""; //置換（＝削除）用文字列の設定
+//            
+//            NSRegularExpression *regexp_second = [[NSRegularExpression alloc] initWithPattern:@"(\'\'\'|==|概要|\\[|\\]|<ref.*?/>|<ref.*?ref>)"
+//                                                                                 options:0
+//                                                                                   error:&error];
+//            if (error != nil) {
+//                NSLog(@"正規表現エラーです。%@",error);
+//            } else {
+//                
+//                NSString *replaced = [regexp_second stringByReplacingMatchesInString:_wikiText_second
+//                                                                        options:0
+//                                                                          range:NSMakeRange(0,_wikiText_second.length)
+//                                                                   withTemplate:template];
+//                
+//                _myTextView.text = [_myTextView.text stringByAppendingFormat:@"%@",replaced];
+//                
+//            }
+    
+    if ([_infodetailStr isEqualToString:@"周辺の温泉"]) {
+        
+        // 温泉情報の表示
+        for (int i = 0; i < [_statuses count]; i++) {
+            
+        NSString *OnsenName = [[_statuses objectAtIndex:i] objectForKey:@"OnsenName"];
+        NSString *NatureOfOnsen = [[_statuses objectAtIndex:i] objectForKey:@"NatureOfOnsen"];
+        NSString *OnsenAreaCaption = [[_statuses objectAtIndex:i] objectForKey:@"OnsenAreaCaption"];
+
+        _myTextView.text = [_myTextView.text stringByAppendingFormat:@"温泉名：%@\n泉質：%@\n概要：%@\n\n",OnsenName,NatureOfOnsen,OnsenAreaCaption];
+        }
+    }
 }
+
+- (void) loadTimeLineFailed: (NSNotification *)notification {
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"エラー"
+                          message:@"タイムラインの取得に失敗しました。"
+                          delegate:self
+                          cancelButtonTitle:@"閉じる"
+                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFinishNotification"
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFailWithError"
+                                                  object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFinishNotification"
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFailWithError"
+                                                  object:nil];
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 - (void)viewDidUnload {

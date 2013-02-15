@@ -49,9 +49,6 @@
 
 }
 
-@synthesize statuses;
-
-
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -88,6 +85,9 @@
     _scrollView.delegate = self;
     [self.view addSubview: _scrollView];
     
+    //テキストビューの初期化と編集不可に設定
+    _twitterTextView.text = @"";
+    _twitterTextView.editable = NO;
 
     //Twitterタイムライン読み込み
     [self loadTimeLineByUserName:@"NorthernAlps"];
@@ -367,8 +367,8 @@
     StatusXMLParser *parser = [[StatusXMLParser alloc] init];
     self.statuses = [parser parseStatuses:xmlData];
     
-    NSString *name = [[statuses objectAtIndex:0] objectForKey:@"name"];
-    NSString *text = [[statuses objectAtIndex:0] objectForKey:@"text"];
+    NSString *name = [[_statuses objectAtIndex:0] objectForKey:@"name"];
+    NSString *text = [[_statuses objectAtIndex:0] objectForKey:@"text"];
     
     // ユーザー名
     self.twitterLabel.text = name;
@@ -376,8 +376,7 @@
     // テキスト
     self.twitterTextView.text = text;
 
-
-
+    
 }
 
 // （8）
@@ -392,6 +391,25 @@
     [alert show];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFinishNotification"
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFailWithError"
+                                                  object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFinishNotification"
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"connectionDidFailWithError"
+                                                  object:nil];
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 

@@ -23,7 +23,6 @@
 		571FD3C716CA3EF80037E4B7 /* tohoku.plist in Resources */ = {isa = PBXBuildFile; fileRef = 571FD3B816CA3EF80037E4B7 /* tohoku.plist */; };
 		571FD3C816CA3EF80037E4B7 /* tyuoha.plist in Resources */ = {isa = PBXBuildFile; fileRef = 571FD3B916CA3EF80037E4B7 /* tyuoha.plist */; };
 		571FD3C916CA3EF80037E4B7 /* yatsugatake.plist in Resources */ = {isa = PBXBuildFile; fileRef = 571FD3BA16CA3EF80037E4B7 /* yatsugatake.plist */; };
-		571FD3D016CA439D0037E4B7 /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 571FD3CF16CA439D0037E4B7 /* SharedData.m */; };
 		571FD3D316CA6F3F0037E4B7 /* StatsSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571FD3D216CA6F3E0037E4B7 /* StatsSubViewController.m */; };
 		571FD3D916CA76D40037E4B7 /* TileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 571FD3D616CA76D40037E4B7 /* TileOverlay.m */; };
 		571FD3DA16CA76D40037E4B7 /* TileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 571FD3D816CA76D40037E4B7 /* TileOverlayView.m */; };
@@ -122,6 +121,7 @@
 		57995204169E565200E3A480 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57995203169E565200E3A480 /* CoreLocation.framework */; };
 		57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052916CD68F2002B2667 /* StatusXMLParser.m */; };
 		57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052B16CD68F2002B2667 /* URLLoader.m */; };
+		57B1053016CD9A7E002B2667 /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052F16CD9A7E002B2667 /* SharedData.m */; };
 		57FCC2FB16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */; };
 		57FCC31016BAA43A00D0C3F5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FE16BAA43A00D0C3F5 /* AFHTTPClient.m */; };
 		57FCC31116BAA43A00D0C3F5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC30016BAA43A00D0C3F5 /* AFHTTPRequestOperation.m */; };
@@ -152,7 +152,6 @@
 		571FD3B916CA3EF80037E4B7 /* tyuoha.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tyuoha.plist; sourceTree = "<group>"; };
 		571FD3BA16CA3EF80037E4B7 /* yatsugatake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = yatsugatake.plist; sourceTree = "<group>"; };
 		571FD3CE16CA439D0037E4B7 /* SharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
-		571FD3CF16CA439D0037E4B7 /* SharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedData.m; sourceTree = "<group>"; };
 		571FD3D116CA6F3E0037E4B7 /* StatsSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsSubViewController.h; sourceTree = "<group>"; };
 		571FD3D216CA6F3E0037E4B7 /* StatsSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsSubViewController.m; sourceTree = "<group>"; };
 		571FD3D516CA76D40037E4B7 /* TileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileOverlay.h; sourceTree = "<group>"; };
@@ -326,10 +325,11 @@
 		579951EB169E3D7B00E3A480 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		57995201169E563D00E3A480 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		57995203169E565200E3A480 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		57B1052816CD68F2002B2667 /* StatusXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusXMLParser.h; path = TwitterView/StatusXMLParser.h; sourceTree = "<group>"; };
-		57B1052916CD68F2002B2667 /* StatusXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusXMLParser.m; path = TwitterView/StatusXMLParser.m; sourceTree = "<group>"; };
-		57B1052A16CD68F2002B2667 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLLoader.h; path = TwitterView/URLLoader.h; sourceTree = "<group>"; };
-		57B1052B16CD68F2002B2667 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLLoader.m; path = TwitterView/URLLoader.m; sourceTree = "<group>"; };
+		57B1052816CD68F2002B2667 /* StatusXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusXMLParser.h; sourceTree = "<group>"; };
+		57B1052916CD68F2002B2667 /* StatusXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusXMLParser.m; sourceTree = "<group>"; };
+		57B1052A16CD68F2002B2667 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLLoader.h; sourceTree = "<group>"; };
+		57B1052B16CD68F2002B2667 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLLoader.m; sourceTree = "<group>"; };
+		57B1052F16CD9A7E002B2667 /* SharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedData.m; sourceTree = "<group>"; };
 		57FCC2F916BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		57FCC2FD16BAA43A00D0C3F5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -454,7 +454,7 @@
 				573EE66616A4B2C600288EC8 /* CustomAnnotation.h */,
 				573EE66716A4B2C600288EC8 /* CustomAnnotation.m */,
 				571FD3CE16CA439D0037E4B7 /* SharedData.h */,
-				571FD3CF16CA439D0037E4B7 /* SharedData.m */,
+				57B1052F16CD9A7E002B2667 /* SharedData.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -472,7 +472,7 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		57727EB216CBB50F00DD3EA7 /* TwiiterView */ = {
+		57727EB216CBB50F00DD3EA7 /* XMLParser */ = {
 			isa = PBXGroup;
 			children = (
 				57B1052A16CD68F2002B2667 /* URLLoader.h */,
@@ -480,7 +480,7 @@
 				57B1052816CD68F2002B2667 /* StatusXMLParser.h */,
 				57B1052916CD68F2002B2667 /* StatusXMLParser.m */,
 			);
-			name = TwiiterView;
+			path = XMLParser;
 			sourceTree = "<group>";
 		};
 		57727F1A16CC5F8800DD3EA7 /* thumbs */ = {
@@ -608,7 +608,7 @@
 				579951DB169E3B7600E3A480 /* MainStoryboard.storyboard */,
 				5795943216BB3401007595A8 /* View */,
 				57FCC2F716BAA33300D0C3F5 /* NetworkPhotoAlbumView */,
-				57727EB216CBB50F00DD3EA7 /* TwiiterView */,
+				57727EB216CBB50F00DD3EA7 /* XMLParser */,
 				579951CA169E3B7600E3A480 /* Supporting Files */,
 			);
 			path = mtGuide;
@@ -922,7 +922,6 @@
 				5795942116BB2A84007595A8 /* CaptionedPhotoView.m in Sources */,
 				574D53F816C0F5C0006DD1A9 /* WeatherSubViewController.m in Sources */,
 				574D54B716C37402006DD1A9 /* CheckSubViewController.m in Sources */,
-				571FD3D016CA439D0037E4B7 /* SharedData.m in Sources */,
 				571FD3D316CA6F3F0037E4B7 /* StatsSubViewController.m in Sources */,
 				571FD3D916CA76D40037E4B7 /* TileOverlay.m in Sources */,
 				571FD3DA16CA76D40037E4B7 /* TileOverlayView.m in Sources */,
@@ -956,6 +955,7 @@
 				573684DA16CAE7E90056F5F8 /* NSString+NimbusCore.m in Sources */,
 				57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */,
 				57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */,
+				57B1053016CD9A7E002B2667 /* SharedData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

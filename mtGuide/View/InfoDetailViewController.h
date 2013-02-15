@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSDictionary *mtItem;
 
+@property(retain, nonatomic) NSArray *statuses;
 
 
 @end
