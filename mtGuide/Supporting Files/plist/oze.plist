@@ -18,27 +18,32 @@
 		<key>mtlongitude</key>
 		<string>139.285278</string>
 		<key>introduction</key>
-		<string>燧ヶ岳のイントロダクション</string>
+		<string>尾瀬を代表する山</string>
 		<key>height</key>
 		<string>2356</string>
 		<key>mtrange</key>
 		<string>越後山脈</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E7%87%A7%E3%83%B6%E5%B2%B3</string>
+		<string>燧ヶ岳（ひうちがたけ）は福島県にある火山。山頂は南会津郡檜枝岐村に属する。尾瀬国立公園内にあり、至仏山とともに尾瀬を代表する山でもある。東北地方最高峰（2,356m）であり日本百名山に選定されている。
+火口付近には柴安嵓（しばやすぐら、2,356m）、俎嵓（まないたぐら、2,346.0m）、ミノブチ岳、赤ナグレ岳、御池岳の5つのピークがある。尾瀬ヶ原からは左から柴安嵓、御池岳、赤ナグレ岳が見え、尾瀬沼からは左から柴安嵓、俎嵓の2つのピークが目立つ。登山道が通じているのは柴安嵓、俎嵓、ミノブチ岳の3つであり、この順番に登山道で結ばれている。俎嵓には二等三角点「燧岳」がある。燧ヶ岳は、2,300m以上の山として日本で最も北に位置する。日本国内では、燧ヶ岳より北にそれより高い地点はない。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス36</string>
+		<string>電車・バス：JR沼田駅→(関越交通バス1時間40分)、またはJR上毛高原駅→(関越交通バス2時間5分)
+ 車：国道３５２号線で御池駐車場まで入る。駐車場が満車の場合は、七入りでバスに乗り換えて御池に入ることになる。</string>
 		<key>season</key>
-		<string>季節36</string>
+		<string>6月〜10月</string>
 		<key>plan</key>
 		<string>登り方36</string>
 		<key>contact</key>
-		<string>問い合わせ36</string>
+		<string>福島県警察本部　地域課（桧枝岐村側）
+代表：024-522-2151</string>
 		<key>family</key>
 		<string>家族・ペット・障害36</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>御池コース</string>
+			<string>見晴新道コース</string>
+			<string>ナデッ窪コース</string>
+			<string>長英新道コース</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ36</string>
@@ -46,8 +51,27 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090508&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>大清水小屋</string>
+			<string>物見小屋</string>
+			<string>尾瀬沼山荘</string>
+			<string>東電小屋</string>
+			<string>元湯山荘</string>
+			<string>国民宿舎尾瀬沼ヒュッテ</string>
+			<string>長蔵小屋</string>
+			<string>第二長蔵小屋</string>
+			<string>尾瀬御池ロッジ</string>
+			<string>七入山荘</string>
+			<string>七入実川荘</string>
+			<string>富士見小屋</string>
+			<string>竜宮小屋</string>
+			<string>弥四郎小屋</string>
+			<string>燧小屋</string>
+			<string>桧枝岐小屋</string>
+			<string>原の小屋</string>
+			<string>尾瀬小屋</string>
+			<string>渋沢温泉小屋</string>
+			<string>温泉小屋</string>
+			<string>キャンプ場　多数</string>
 		</array>
 		<key>weather</key>
 		<string>100020</string>

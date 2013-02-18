@@ -111,7 +111,7 @@
     _detailData = [[NSArray alloc]initWithObjects:
                   @"山の基本情報",
                   @"登山ルート",
-                  @"自然・遊び",
+//                  @"自然・遊び",
                   @"周辺の温泉",
                   @"キャンプ場・山小屋", nil];
     
@@ -229,7 +229,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {        
     //さらに下層のInfoViewControllerに飛ばす予定のセルの表示内容設定
-    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 4) {
+    if (indexPath.row == 0) {
         static NSString *CellIdentififer = @"detailCell";
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
         cell.detailCellLabel.text = [_detailData objectAtIndex:indexPath.row];

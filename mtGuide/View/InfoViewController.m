@@ -16,7 +16,6 @@
 @interface InfoViewController ()
 <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UITableView *infoTableView;
 
 @end
@@ -54,9 +53,6 @@
 {
     // Update the user interface for the detail item.
     
-    if (self.infoItem) {
-        self.infoLabel.text = [self.infoItem description];
-    }
 }
 
 
@@ -68,7 +64,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     self.title = _detailStr;
-    self.infoLabel.text = _detailStr;
     
     self.infoTableView.dataSource = self;
     self.infoTableView.delegate = self;
@@ -78,28 +73,16 @@
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.infoTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
-    NSArray *mtTrails = [_mtItem objectForKey:@"trails"];
-    NSArray *mtCamping = [_mtItem objectForKey:@"camping"];
-
     if ([_detailStr isEqualToString:@"山の基本情報"]) {
         _infoData = [[NSArray alloc]initWithObjects:
                 @"概要",
                 @"アクセス",
                 @"登山適期",
-                @"登り方・楽しみ方",
+//                @"登り方・楽しみ方",
                 @"登山案内・管轄警察",
-                @"家族・ペット・障害者", nil];
+//                @"家族・ペット・障害者",
+                     nil];
     }
-    if ([_detailStr isEqualToString:@"登山ルート情報"]){
-        _infoData = mtTrails;
-
-    }
-    if ([_detailStr isEqualToString:@"キャンプ場・山小屋情報"]){
-        _infoData = mtCamping;
-
-    }
-    
-
 }
 
 - (void)viewDidUnload {

@@ -18,27 +18,32 @@
 		<key>mtlongitude</key>
 		<string>131.240833</string>
 		<key>introduction</key>
-		<string>九重山のイントロダクション</string>
+		<string>九州本土最高峰を従える火山群</string>
 		<key>height</key>
 		<string>1791</string>
 		<key>mtrange</key>
 		<string>九重火山群</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E4%B9%9D%E9%87%8D%E5%B1%B1</string>
+		<string>九重山（くじゅうさん）または九重連山（くじゅうれんざん）は、大分県玖珠郡九重町から竹田市北部にかけて広がる火山群の総称である。最高峰は九州本土最高峰でもある中岳 (1,791m) 。日本百名山の一つに数えられ、一帯は阿蘇くじゅう国立公園に指定されている。
+この地域の名称としては、「九重」（くじゅう、ここのえ）と「久住」（くじゅう）の2通りの表記及び読みが用いられてきた。
+その起源は、延暦年間（800年頃）にこの地に九重山白水寺と久住山猪鹿寺の2つの寺院が開かれたことにさかのぼる。近代に入ると、山群の北麓に九重町（ここのえまち）、南麓に久住町（くじゅうまち、現・竹田市久住町）が誕生したことから、それぞれの表記が特定の地域に結びつくことになり、地域全体を指す時にどちらの表記を用いるかという問題が大きくなった。
+現在では、火山群や周辺地域全体を指す場合に「九重山」や「九重連山」を用い、その主峰である単独の山を指す場合に「久住山」を用いるのが一般的である。
+また、近年では、混乱を避けるためにひらがなの「くじゅう」を用いることも多い。例えば、「阿蘇国立公園」にこの地域の名称を加えて改名する際には、「九重」と「久住」のどちらかにするかで長らく論争が続いたが、「阿蘇くじゅう国立公園」とすることで決着した。また、坊ガツル・タデ原のラムサール条約への登録名も「くじゅう坊ガツル・タデ原湿原」とされている。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス95</string>
+		<string>電車・バス：JR久大本線豊後中村駅から牧ノ戸峠まで日田バスで約1時間。 
+車：大分自動車道九重インターから県道40号、やまなみハイウェイで牧ノ戸峠へ。駐車場100台分あり（無料）。</string>
 		<key>season</key>
-		<string>季節95</string>
+		<string>4月〜11月</string>
 		<key>plan</key>
 		<string>登り方95</string>
 		<key>contact</key>
-		<string>問い合わせ95</string>
+		<string>大分県警察本部　地域課
+代表：097-536-2131</string>
 		<key>family</key>
 		<string>家族・ペット・障害95</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>【牧の戸峠】⇒【久住山】⇒【長者原】コース</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ95</string>
@@ -46,8 +51,18 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=441402&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>久住分れ避難小屋</string>
+			<string>池ノ小屋</string>
+			<string>大船山避難小屋</string>
+			<string>黒嶽荘</string>
+			<string>坊ガツル避難小屋</string>
+			<string>法華院温泉山荘</string>
+			<string>あせび小屋</string>
+			<string>すがもり越避難小屋</string>
+			<string>竹田市営沢水キャンプ場</string>
+			<string>くじゅうやまなみキャンプ村</string>
+			<string>久住高原オートビレッジ</string>
+			<string>坊ガツルキャンプ場</string>
 		</array>
 		<key>weather</key>
 		<string>440030</string>

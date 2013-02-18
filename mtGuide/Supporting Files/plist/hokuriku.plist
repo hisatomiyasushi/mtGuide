@@ -12,33 +12,74 @@
 		<key>region</key>
 		<string>北陸</string>
 		<key>prefecture</key>
-		<string>岐阜県</string>
+		<string>岐阜県・石川県</string>
 		<key>mtlatitude</key>
 		<string>36.155</string>
 		<key>mtlongitude</key>
 		<string>136.771389</string>
 		<key>introduction</key>
-		<string>白山のイントロダクション</string>
+		<string>日本三名山（日本三霊山）のひとつ</string>
 		<key>height</key>
 		<string>2702</string>
 		<key>mtrange</key>
 		<string>両白山地</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E7%99%BD%E5%B1%B1</string>
+		<string>白山（はくさん）は、白山国立公園内の石川県白山市と岐阜県大野郡白川村にまたがる、標高2,702mの山である。日本百名山、新日本百名山、花の百名山及び新・花の百名山に選定されている。最高点の御前峰（ごぜんがみね）には、一等三角点と白山比咩神社奥宮がある。 富士山、立山と共に日本三名山（日本三霊山）のひとつである。
+白山は、富山県、石川県、福井県、岐阜県の4県にまたがる両白山地の中央に位置し、その最高峰である。山頂周辺は、成層火山となっている。30万年から40万年前から火山活動を始め1659年（万治2年）の噴火が最も新しい。最高峰の御前峰（標高2,702m）・剣ヶ峰 (2,677m) ・大汝峰 (2,684m) の「白山三峰」を中心として、周辺の山峰の総称である。そのため厳密には、現在の県境は、石川・福井・岐阜・富山に跨る。また、別山・三ノ峰を加えて「白山五峰」という。「白山連峰」と呼ばれることもある。 北陸地方の中では標高の高い山であるため、他の山では残雪が消えた季節でも「白い山」として遠方からでも一目で判明できる山である。また、白くなった白山は北陸に晩秋が訪れた象徴ともなる。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス87</string>
+		<string>【鉄道（ＪＲ）を利用】
+＞富山・新潟・東京方面から
+　 上越新幹線（越後湯沢のりかえ）北陸線特急（はくたか）で金沢駅下車。
+　 翌朝、金沢駅から『白山登山バス』で別当出合。
+＞名古屋・米原方面から
+　　北陸線特急（しらさぎ、加越）で金沢駅下車。翌朝、金沢駅から『白山登山バス』で別当出合。
+
+＞大阪方面から
+　　 北陸線特急（サンダーバード・雷鳥）で金沢駅下車。翌朝、金沢駅から『白山登山バス』で別当出合。
+ 
+【飛行機を利用】
+＞小松空港から
+・タクシーの利用
+　　夏山シーズンは、小松タクシー『白山登山エクスプレス』（予約制）が便利です。
+　　予約・時刻表はこちら。
+
+・レンタカー利用（約２時間）
+　　国道３６０号線で小松市内・白山市鳥越を通り抜けて白山市吉野谷で勝山・白峰方面へ右折し、
+　　国道１５７号線に入ります。その後の道順はこちら、自家用車・マイクロバスなどを利用
+　　（注）マイカー規制中は市ノ瀬の駐車場（無料）で駐車し、別当出合登山口まではシャトルバス
+　　（有料）の利用となります。交通（マイカー）規制
+
+　　または、小松空港より連絡バスで金沢駅へ。
+　　早朝金沢駅東口（１番のりば）から北陸鉄道バス『白山登山バス』で別当出合登山口（終点）下車。</string>
 		<key>season</key>
-		<string>季節87</string>
+		<string>6月下旬〜9月</string>
 		<key>plan</key>
 		<string>登り方87</string>
 		<key>contact</key>
-		<string>問い合わせ87</string>
+		<string>石川県警察本部　地域課（白山市側）
+代表：076-225-0110
+岐阜県警察本部　地域課（白川村、高山、郡上市側）
+代表：058-271-2424</string>
 		<key>family</key>
 		<string>家族・ペット・障害87</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>砂防新道</string>
+			<string>南龍道</string>
+			<string>観光新道</string>
+			<string>釈迦新道</string>
+			<string>中宮道</string>
+			<string>岩間道</string>
+			<string>楽々新道</string>
+			<string>別山・市ノ瀬道</string>
+			<string>エコーライン</string>
+			<string>トンビ岩コース</string>
+			<string>展望歩道</string>
+			<string>加賀禅定道</string>
+			<string>北縦走路</string>
+			<string>平瀬道</string>
+			<string>南縦走路（石徹白道）</string>
+			<string>鳩ケ湯新道</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ87</string>
@@ -46,8 +87,25 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=192302&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>室堂センター ※要予約</string>
+			<string>甚之助避難小屋・新甚之助避難小屋</string>
+			<string>殿ヶ池避難小屋</string>
+			<string>チブリ尾根避難小屋</string>
+			<string>南竜山荘</string>
+			<string>南竜休憩所 ※避難小屋</string>
+			<string>奥長倉避難小屋</string>
+			<string>小桜平避難小屋</string>
+			<string>市営くろゆり荘</string>
+			<string>シナノキ平避難小屋</string>
+			<string>ゴマ平避難小屋</string>
+			<string>白水湖畔ロッジ</string>
+			<string>大倉山避難小屋</string>
+			<string>神鳩ノ宮避難小屋</string>
+			<string>三ノ峰避難小屋</string>
+			<string>市ノ瀬キャンプ場</string>
+			<string>南竜キャンプ場</string>
+			<string>大白川野営場</string>
+			<string>小池公園野営場</string>
 		</array>
 		<key>weather</key>
 		<string>170010</string>

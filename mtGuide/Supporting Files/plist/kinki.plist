@@ -18,27 +18,32 @@
 		<key>mtlongitude</key>
 		<string>135.941</string>
 		<key>introduction</key>
-		<string>大峰山のイントロダクション</string>
+		<string>古来より女人禁制を守り続ける、修験道の総本山</string>
 		<key>height</key>
 		<string>1915</string>
 		<key>mtrange</key>
 		<string>紀伊山地</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E5%A4%A7%E5%B3%B0%E5%B1%B1</string>
+		<string>大峰山（おおみねさん）は奈良県の南部にある山。現在では広義には大峰山脈を、狭義には山上ヶ岳（さんじょうがたけ）をさしていう。歴史的には、大峰山は大峰山脈のうち山上ヶ岳の南にある小篠（おざさ）から熊野までの峰々をさす。対して小篠から山上ヶ岳を含み尾根沿いに吉野川河岸までを金峰山という。
+吉野から熊野に至る大峯奥駈道は、古来よりの自然信仰と渾然一体となった渡来の神仙思想や道教や仏教の修行のために、藤原や平城の都からこの地を訪れた僧侶（修験者）によって切り開かれたことに始まった。熊野修験が勢力を伸ばす中で長久年間（1040年 - 1044年）に修験者（義叡、長円）により熊野から吉野までの大峯奥駈道が体系付けられた。熊野から吉野まで詣でることを順峯。吉野から熊野まで詣でることを逆峯と呼んでいる。 なお大峯山では「峯」の文字を使用しており、これは「山久しくして平らかなり。」という意味を示している。
+この一帯は1936年（昭和11年）、吉野熊野国立公園に指定され、さらに2004年（平成16年）7月、ユネスコの世界遺産に「紀伊山地の霊場と参詣道」の文化的景観を示す主要な構成要素として史跡「大峯山寺」、史跡「大峯奥駈道」ほかが登録された。1984年（昭和59年）8月、大峰山寺の解体修理に伴う外陣回りの発掘調査で、山岳宗教史上の大発見として黄金仏2体が検出された。
+深田久弥の随筆『日本百名山』やそれを元にした各種一覧表では、大峰山（1,915m）とあるが、これは広義でいう大峰山の最高峰「八経ヶ岳」（八剣山）の標高である。『日本百名山』において深田久弥は山麓の吉野郡天川村洞川（どろがわ）から山上ヶ岳に登る。宿坊で泊まり翌朝山頂に立つとそこから南へと大峰山脈縦走路（大峯奥駈道）に入り大普賢岳、行者還岳を経て夕方に弥山（みせん）の山小屋に着、翌朝に近畿の最高地点である八経ヶ岳の山頂に登った。縦走路はさらに南へ続くが大峰山最高峰到達に満足し山を下ったとされる。
+大峰山の麓、天川村には日本三大弁財天の一つ（異説もあるが）で古い歴史を持つ天河大弁財天社があり、弥山の山頂にはその奥宮がある。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス91</string>
+		<string>電車・バス：近鉄下市口駅から天川川合まで奈良交通バスで1時間。そこから行者還トンネル西口までタクシーで約30分。
+ 車：西名阪自動車道柏原インターから国道165号、309号で行者還トンネル西口へ。登山口に駐車場あり20台（無料）。</string>
 		<key>season</key>
-		<string>季節91</string>
+		<string>4月〜12月</string>
 		<key>plan</key>
 		<string>登り方91</string>
 		<key>contact</key>
-		<string>問い合わせ91</string>
+		<string>奈良県警察本部　地域課
+代表：0742-23-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害91</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>川上ルート</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ91</string>
@@ -46,8 +51,18 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=290802&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>弥山小屋</string>
+			<string>一ノ垰避難小屋</string>
+			<string>栃尾辻避難小屋</string>
+			<string>狼平避難小屋</string>
+			<string>前鬼小仲坊</string>
+			<string>深仙小屋</string>
+			<string>楊枝ノ宿小屋</string>
+			<string>河原小屋</string>
+			<string>円空の里 なごみ村キャンプ場</string>
+			<string>白の平オートキャンプ場</string>
+			<string>天川村みのずみオートキャンプ場</string>
+			<string>天の川青少年旅行村</string>
 		</array>
 		<key>weather</key>
 		<string>290020</string>

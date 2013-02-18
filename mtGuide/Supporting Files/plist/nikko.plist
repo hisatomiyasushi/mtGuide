@@ -12,33 +12,41 @@
 		<key>region</key>
 		<string>日光・足尾・上州</string>
 		<key>prefecture</key>
-		<string>栃木県</string>
+		<string>栃木県・群馬県</string>
 		<key>mtlatitude</key>
 		<string>36.798611</string>
 		<key>mtlongitude</key>
 		<string>139.375833</string>
 		<key>introduction</key>
-		<string>日光白根山のイントロダクション</string>
+		<string>関東以北の最高峰にして活火山</string>
 		<key>height</key>
 		<string>2578</string>
 		<key>mtrange</key>
 		<string>日光連山</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1</string>
+		<string>日光白根山（にっこうしらねさん）は、栃木県日光市と群馬県利根郡片品村の境界にある標高2,578mの山。日光白根山の山体は成層火山であるが、最高峰の奥白根（おくしらね）は安山岩のみから成る溶岩円頂丘である。関東地方の最高峰で、国内ではこれより北や東に日光白根山より高い山はない。深田久弥の日本百名山のひとつ。
+『白根山』とは、古来より峯が雪で白く染まる様を形容した名称であるため、同名の山が日本各地にあり、その他の白根山と区別するため日光白根山と呼ばれるが、国土地理院発行の5万分の1地形図『男体山』には白根山とのみ記載されている。
+白根火山群周辺には五色沼や湯ノ湖、湯滝、戦場ヶ原、小田代ヶ原など自然の造形物が在り、また貴重な高山植物の植生も見られるため、山域は日光国立公園に指定され保護されている。しかしながら、この山に多く自生することから名付けられた植物のシラネアオイも現在ではほとんど見ることはできず、また周辺山域には立ち枯れが多く見られ、その原因を首都圏からの大気汚染物質の飛来とする研究もあるなど、自然環境の変化が進んでいる。
+日光白根山は白根火山群の各山々（新第三紀火山）に周囲を囲まれており、また一年を通して雲に隠れていることが多く、関東地方からは日光連山の稜線上に、奥白根山頂部のドーム状（第四紀火山）の突起物が載っている程度にしか見えない。冬季、天候条件が整えば黒い山肌に雪を纏う日光表連山の山々に比し雪に覆われてひときわ白い山体を現す。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス39</string>
+		<string>電車・バス：JR上越線沼田駅　関越交通バス→鎌田　関越交通バス→丸沼高原スキー場→日光白根山ロープウエイ→山頂駅</string>
 		<key>season</key>
-		<string>季節39</string>
+		<string>6月〜10月</string>
 		<key>plan</key>
 		<string>登り方39</string>
 		<key>contact</key>
-		<string>問い合わせ39</string>
+		<string>群馬県警察本部　地域課（片品村側）
+代表：027-243-0110
+栃木県警察本部　地域課（日光市側）
+代表：028-621-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害39</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>山頂往復コース（ロープウェー利用）</string>
+			<string>座禅山経由山頂コース（ロープウェー利用）</string>
+			<string>山頂経由五色沼コース（ロープウェー利用）</string>
+			<string>菅沼往復コース</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ39</string>
@@ -46,8 +54,12 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090508&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>大日如来避難小屋（丸沼高原コース）</string>
+			<string>五色沼避難小屋（湯元温泉コース）</string>
+			<string>丸沼高原オートキャンプ場</string>
+			<string>奥日光湯元キャンプ場</string>
+			<string>戦場ヶ原キャンプ場</string>
+			<string>菅沼キャンプ村</string>
 		</array>
 		<key>weather</key>
 		<string>090010</string>

@@ -18,27 +18,34 @@
 		<key>mtlongitude</key>
 		<string>137.804444</string>
 		<key>introduction</key>
-		<string>木曽駒ヶ岳のイントロダクション</string>
+		<string>360度の展望が楽しめる中央アルプス最高峰</string>
 		<key>height</key>
 		<string>2956</string>
 		<key>mtrange</key>
 		<string>木曽山脈</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E6%9C%A8%E6%9B%BD%E9%A7%92%E3%83%B6%E5%B2%B3</string>
+		<string>木曽駒ヶ岳（きそこまがたけ）は長野県上松町・木曽町・宮田村の境界にそびえる標高2,956 mの山で、木曽山脈（中央アルプス）の最高峰。日本百名山、新日本百名山、花の百名山に選定されている。木曾駒ヶ岳とも表記される。また省略して「木曽駒」とも呼ばれる。
+駒ヶ岳の名を冠する山は日本の全国に多数あり、その最高峰である南アルプスの甲斐駒ヶ岳とこの木曽駒ヶ岳に挟まれる伊那谷では、この山を西駒ヶ岳または西駒、甲斐駒ヶ岳を東駒ヶ岳または東駒と呼ぶこともある。木曽前岳 (2,826 m)、中岳 (2,925 m)、伊那前岳 (2,883 m)、宝剣岳 (2,931 m) を含めて木曽駒ヶ岳と総称する場合もある。
+木曽駒ヶ岳には、雪解けの時期にはいくつかの雪形が見られ、昔から農業の目安にされてきた。中岳には山名の元にもなった駒（馬）、極楽平の南には島田娘と種蒔き爺などが現れる。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス74</string>
+		<string>電車・バス： JR中央線・飯田線で岡谷～駒ヶ根 または高速バスで新宿～駒ヶ根 。駒ヶ根駅～しらび平 
+車： 中央自動車道高井戸IC～駒ヶ根IC。駒ヶ根ICを出て右折し、約３km進んだ地点が駐車場。 （バス）菅の台～しらび平 （マイカー規制あり）</string>
 		<key>season</key>
-		<string>季節74</string>
+		<string>7月〜10月</string>
 		<key>plan</key>
 		<string>登り方74</string>
 		<key>contact</key>
-		<string>問い合わせ74</string>
+		<string>長野県警察本部　地域課
+代表：026-233-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害74</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>上松コース</string>
+			<string>福島口コース</string>
+			<string>こがらコース</string>
+			<string>奈良井コース</string>
+			<string>宮田口コース</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ74</string>
@@ -46,8 +53,25 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=163205&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>駒ケ岳頂上山荘</string>
+			<string>頂上木曽小屋</string>
+			<string>宝剣山荘</string>
+			<string>天狗荘</string>
+			<string>檜尾避難小屋</string>
+			<string>アルプス山荘</string>
+			<string>敬神の滝小屋</string>
+			<string>金懸小屋</string>
+			<string>玉ノ窪山荘</string>
+			<string>木曽駒荘</string>
+			<string>木曽駒ケ岳七合目避難小屋</string>
+			<string>ヒュッテ奥原</string>
+			<string>山の宿こまくさ</string>
+			<string>アルパイン</string>
+			<string>ヒルトップ</string>
+			<string>西駒山荘</string>
+			<string>大樽避難小屋</string>
+			<string>駒ケ岳キャンプ場</string>
+			<string>小黒川渓谷キャンプ場</string>
 		</array>
 		<key>weather</key>
 		<string>200030</string>

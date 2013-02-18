@@ -12,33 +12,44 @@
 		<key>region</key>
 		<string>秩父・奥秩父</string>
 		<key>prefecture</key>
-		<string>埼玉県</string>
+		<string>埼玉県・東京都・山梨県</string>
 		<key>mtlatitude</key>
 		<string>35.855556</string>
 		<key>mtlongitude</key>
 		<string>138.943889</string>
 		<key>introduction</key>
-		<string>雲取山のイントロダクション</string>
+		<string>三つの都県にまたがる東京都最高峰</string>
 		<key>height</key>
 		<string>2017</string>
 		<key>mtrange</key>
 		<string>奥秩父山塊</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E9%9B%B2%E5%8F%96%E5%B1%B1</string>
+		<string>雲取山（くもとりやま）は東京都・埼玉県・山梨県の境界にある標高2,017mの山。
+奥多摩と奥秩父の二つの山域の境界に位置し、東京都の最高峰・最西端である。山頂には一等三角点がある。奥多摩山域の中では比較的人里から奥深くにある山である。妙法が岳、白岩山とともに三峰山の三山の一つである。日本百名山の一つに選ばれている。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス44</string>
+		<string>JR奥多摩駅→西東京バス丹波行き（40分）バス停：お祭下車
+JR奥多摩駅→西東京バス丹波行き・西鴨沢行き（35分）バス停：鴨沢下車</string>
 		<key>season</key>
-		<string>季節44</string>
+		<string>4月〜12月</string>
 		<key>plan</key>
 		<string>登り方44</string>
 		<key>contact</key>
-		<string>問い合わせ44</string>
+		<string>山梨県警察本部　地域課（丹波山村側）
+代表：055-235-2121
+埼玉県警察本部　地域課（秩父市側）
+代表：048-832-0110
+警視庁　青梅警察署　警備係（奥多摩町側）
+代表：0428-22-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害44</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>三峰神社ルート
+稜線上の最短ルート、大駐車完備、アクセス良好</string>
+			<string>鴨沢ルート
+針葉樹林帯が続く、ブナ坂から展望が開ける</string>
+			<string>三条の湯ルート
+後山林道を3時間歩く、水無尾根のトラバースが続く</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ44</string>
@@ -46,8 +57,10 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=150302&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>雲取山荘</string>
+			<string>雲取奥多摩小屋</string>
+			<string>七ツ石小屋</string>
+			<string>三条ノ湯</string>
 		</array>
 		<key>weather</key>
 		<string>130010</string>

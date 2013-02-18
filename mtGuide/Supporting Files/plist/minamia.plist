@@ -18,27 +18,30 @@
 		<key>mtlongitude</key>
 		<string>138.238889</string>
 		<key>introduction</key>
-		<string>北岳のイントロダクション</string>
+		<string>日本第二の高峰</string>
 		<key>height</key>
 		<string>3193</string>
 		<key>mtrange</key>
 		<string>赤石山脈</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E5%8C%97%E5%B2%B3</string>
+		<string>北岳（きただけ）は、山梨県南アルプス市にある標高3,193mの山。
+富士山に次ぐ日本第二の高峰であり、火山でない山としては日本で最も高い。日本百名山、新・花の百名山及び山梨百名山に選定されており、同じく日本百名山の一峰の間ノ岳、日本二百名山の農鳥岳とともに白峰三山を構成する。「南アルプスの盟主」とも呼ばれる。野呂川 (早川の支流) の源流の山であり、山体は他の県と接しておらず山梨県内に含まれる。全山古生層の堆積岩から成る。山体の東側斜面は北岳バットレスと呼ばれる岩壁があり、登攀対象ともなっている。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス80</string>
+		<string>甲府駅━（路線バス：山梨交通）━広河原</string>
 		<key>season</key>
-		<string>季節80</string>
+		<string>7月〜9月</string>
 		<key>plan</key>
 		<string>登り方80</string>
 		<key>contact</key>
-		<string>問い合わせ80</string>
+		<string>山梨県警察本部　地域課
+代表：055-235-2121</string>
 		<key>family</key>
 		<string>家族・ペット・障害80</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>八本歯ノコル　左俣コース（北岳バットレスの眺望良好）</string>
+			<string>右俣コース（お花畑を通る登山初心者向けコース）</string>
+			<string>草すべりコース</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ80</string>
@@ -46,8 +49,14 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=151102&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>広河原山荘</string>
+			<string>白根御池小屋</string>
+			<string>北岳肩ノ小屋</string>
+			<string>大門沢小屋</string>
+			<string>農鳥小屋</string>
+			<string>北岳山荘</string>
+			<string>池山御池小屋</string>
+			<string>両俣小屋</string>
 		</array>
 		<key>weather</key>
 		<string>190010</string>

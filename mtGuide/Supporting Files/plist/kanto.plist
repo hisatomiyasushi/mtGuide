@@ -4,56 +4,6 @@
 <array>
 	<dict>
 		<key>id</key>
-		<string>49</string>
-		<key>name</key>
-		<string>那須岳</string>
-		<key>yomi</key>
-		<string>なすだけ</string>
-		<key>region</key>
-		<string>関東周辺</string>
-		<key>prefecture</key>
-		<string>福島県</string>
-		<key>mtlatitude</key>
-		<string>37.124806</string>
-		<key>mtlongitude</key>
-		<string>139.963139</string>
-		<key>introduction</key>
-		<string>那須岳のイントロダクション</string>
-		<key>height</key>
-		<string>1917</string>
-		<key>mtrange</key>
-		<string>那須連山</string>
-		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E9%82%A3%E9%A0%88%E5%B2%B3</string>
-		<key>access</key>
-		<string>アクセス49</string>
-		<key>season</key>
-		<string>季節49</string>
-		<key>plan</key>
-		<string>登り方49</string>
-		<key>contact</key>
-		<string>問い合わせ49</string>
-		<key>family</key>
-		<string>家族・ペット・障害49</string>
-		<key>trails</key>
-		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
-		</array>
-		<key>fun</key>
-		<string>楽しみ49</string>
-		<key>hotsprings</key>
-		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=080502&amp;xml_ptn=1</string>
-		<key>camping</key>
-		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
-		</array>
-		<key>weather</key>
-		<string>090020</string>
-	</dict>
-	<dict>
-		<key>id</key>
 		<string>52</string>
 		<key>name</key>
 		<string>富士山</string>
@@ -68,27 +18,37 @@
 		<key>mtlongitude</key>
 		<string>138.727365</string>
 		<key>introduction</key>
-		<string>富士山のイントロダクション</string>
+		<string>誰もが認める日本一の名峰</string>
 		<key>height</key>
 		<string>3776</string>
 		<key>mtrange</key>
 		<string>独立峰</string>
 		<key>information</key>
-		<string>概要52</string>
+		<string>富士山（ふじさん、英語表記：Mount Fuji）は、静岡県（富士宮市、裾野市、富士市、御殿場市、駿東郡小山町）と山梨県（富士吉田市、南都留郡鳴沢村）に跨る活火山である。
+標高3,776 mの日本最高峰（剣ヶ峰）[注釈 1]であるとともに、日本三名山（三霊山）、日本百名山[4]、日本の地質百選に選定されている。また、1936年（昭和11年）富士箱根伊豆国立公園に指定されている[注釈 2]。1952年（昭和27年）に特別名勝に指定され、2011年（平成23年）には史跡に指定された。
+富士山は日本最高峰の独立峰で、その優美な風貌は日本国内のみならず日本国外でも日本の象徴として広く知られている。数多くの芸術作品の題材とされ、芸術面でも大きな影響を与えた。懸垂曲線の山容を有した玄武岩質成層火山で構成され、その山体は駿河湾の海岸まで及ぶ。
+古来より霊峰とされ、特に浅間大神が鎮座するとされた山頂部は神聖視された。噴火を沈静化するため律令国家により浅間神社が祭祀され、浅間信仰が確立された。また、富士山修験道の開祖とされる富士上人により修験道の側面が築かれ、登拝が行われるようになった。これら富士信仰は時代により多様化し、村山修験や富士講といった一派を形成するに至る。現在、富士山麓周辺には観光名所が多くある他、夏季には富士登山が盛んである。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス52</string>
+		<string>電車・バス：富士急行線河口湖駅から富士山5合目まで富士急山梨バスで約１時間。
+ 車：中央道河口湖インターから富士スバルライン経由して河口湖五合目駐車場へ（8月上旬から中旬までは富士スバルラインがマイカー規制あり）。</string>
 		<key>season</key>
-		<string>季節52</string>
+		<string>7月〜9月</string>
 		<key>plan</key>
 		<string>登り方52</string>
 		<key>contact</key>
-		<string>問い合わせ52</string>
+		<string>山梨県警察本部　地域課（富士河口湖町、富士吉田市側）
+代表：055-235-2121
+静岡県警察本部　地域課（小山町、御殿場、裾野、富士、富士宮市側）
+代表：054-271-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害52</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>富士宮口（表口）登山道</string>
+			<string>御殿場口登山道</string>
+			<string>須走口登山道</string>
+			<string>精進口登山道</string>
+			<string>吉田口登山道</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ52</string>
@@ -96,8 +56,7 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=150602&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>多数</string>
 		</array>
 		<key>weather</key>
 		<string>190020</string>

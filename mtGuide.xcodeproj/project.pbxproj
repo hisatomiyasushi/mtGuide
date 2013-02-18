@@ -122,6 +122,9 @@
 		57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052916CD68F2002B2667 /* StatusXMLParser.m */; };
 		57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052B16CD68F2002B2667 /* URLLoader.m */; };
 		57B1053016CD9A7E002B2667 /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1052F16CD9A7E002B2667 /* SharedData.m */; };
+		57B1053E16D2CCD7002B2667 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1053916D2CCD7002B2667 /* NIAttributedLabel.m */; };
+		57B1053F16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B1053D16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.m */; };
+		57B1054116D2D22F002B2667 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B1054016D2D22F002B2667 /* CoreText.framework */; };
 		57FCC2FB16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */; };
 		57FCC31016BAA43A00D0C3F5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FE16BAA43A00D0C3F5 /* AFHTTPClient.m */; };
 		57FCC31116BAA43A00D0C3F5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC30016BAA43A00D0C3F5 /* AFHTTPRequestOperation.m */; };
@@ -330,6 +333,13 @@
 		57B1052A16CD68F2002B2667 /* URLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLLoader.h; sourceTree = "<group>"; };
 		57B1052B16CD68F2002B2667 /* URLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLLoader.m; sourceTree = "<group>"; };
 		57B1052F16CD9A7E002B2667 /* SharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedData.m; sourceTree = "<group>"; };
+		57B1053816D2CCD7002B2667 /* NIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIAttributedLabel.h; sourceTree = "<group>"; };
+		57B1053916D2CCD7002B2667 /* NIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIAttributedLabel.m; sourceTree = "<group>"; };
+		57B1053A16D2CCD7002B2667 /* NimbusAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusAttributedLabel.h; sourceTree = "<group>"; };
+		57B1053B16D2CCD7002B2667 /* NimbusAttributedLabel+Namespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NimbusAttributedLabel+Namespace.h"; sourceTree = "<group>"; };
+		57B1053C16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+NimbusAttributedLabel.h"; sourceTree = "<group>"; };
+		57B1053D16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+NimbusAttributedLabel.m"; sourceTree = "<group>"; };
+		57B1054016D2D22F002B2667 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		57FCC2F916BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		57FCC2FD16BAA43A00D0C3F5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -358,6 +368,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B1054116D2D22F002B2667 /* CoreText.framework in Frameworks */,
 				574D53F416C0DF05006DD1A9 /* QuartzCore.framework in Frameworks */,
 				5795943116BB319A007595A8 /* MobileCoreServices.framework in Frameworks */,
 				5795942F16BB3192007595A8 /* SystemConfiguration.framework in Frameworks */,
@@ -590,6 +601,7 @@
 		579951C2169E3B7600E3A480 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57B1054016D2D22F002B2667 /* CoreText.framework */,
 				574D53F316C0DF05006DD1A9 /* QuartzCore.framework */,
 				5795943016BB319A007595A8 /* MobileCoreServices.framework */,
 				5795942E16BB3192007595A8 /* SystemConfiguration.framework */,
@@ -630,9 +642,23 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		57B1053716D2CCB3002B2667 /* attributedlabel */ = {
+			isa = PBXGroup;
+			children = (
+				57B1053816D2CCD7002B2667 /* NIAttributedLabel.h */,
+				57B1053916D2CCD7002B2667 /* NIAttributedLabel.m */,
+				57B1053A16D2CCD7002B2667 /* NimbusAttributedLabel.h */,
+				57B1053B16D2CCD7002B2667 /* NimbusAttributedLabel+Namespace.h */,
+				57B1053C16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.h */,
+				57B1053D16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.m */,
+			);
+			path = attributedlabel;
+			sourceTree = "<group>";
+		};
 		57C9A86F16B4B420008175E4 /* Nimbus */ = {
 			isa = PBXGroup;
 			children = (
+				57B1053716D2CCB3002B2667 /* attributedlabel */,
 				5736846316CADB060056F5F8 /* Resource */,
 				578C8B2316BA6E6F00135A92 /* models */,
 				57C9A90316B4B902008175E4 /* pagingscrollview */,
@@ -956,6 +982,8 @@
 				57B1052C16CD68F2002B2667 /* StatusXMLParser.m in Sources */,
 				57B1052D16CD68F2002B2667 /* URLLoader.m in Sources */,
 				57B1053016CD9A7E002B2667 /* SharedData.m in Sources */,
+				57B1053E16D2CCD7002B2667 /* NIAttributedLabel.m in Sources */,
+				57B1053F16D2CCD7002B2667 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,33 +12,37 @@
 		<key>region</key>
 		<string>上信越</string>
 		<key>prefecture</key>
-		<string>新潟県</string>
+		<string>新潟県・群馬県</string>
 		<key>mtlatitude</key>
 		<string>36.978611</string>
 		<key>mtlongitude</key>
 		<string>138.964167</string>
 		<key>introduction</key>
-		<string>巻機山のイントロダクション</string>
+		<string>ピークの草原は天上の楽園</string>
 		<key>height</key>
 		<string>1967</string>
 		<key>mtrange</key>
 		<string>三国山脈</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E5%B7%BB%E6%A9%9F%E5%B1%B1</string>
+		<string>巻機山（まきはたやま）は新潟県南魚沼市と群馬県利根郡みなかみ町の境の三国山脈にある標高1,967mの山。深田久弥の日本百名山の一つ。
+主要な登山道は南西側の南魚沼市清水から通じている。</string>
 		<key>access</key>
-		<string>アクセス26</string>
+		<string>電車：JR塩沢駅から車で30分
+車：関越自動車道「塩沢石打IC」から車で25分</string>
 		<key>season</key>
-		<string>季節26</string>
+		<string>6月〜9月</string>
 		<key>plan</key>
 		<string>登り方26</string>
 		<key>contact</key>
-		<string>問い合わせ26</string>
+		<string>新潟県警察本部　地域課
+代表：025-285-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害26</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>井戸尾根ルート</string>
+			<string>ヌクビ沢ルート（中・上級者向け）</string>
+			<string>天狗尾根、割引岳ルート（中・上級者向け）</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ26</string>
@@ -46,8 +50,11 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=171305&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>巻機山避難小屋（前巻機付近）</string>
+			<string>巻機山麓キャンプ場</string>
+			<string>五十沢キャンプ場</string>
+			<string>しゃくなげ湖オートキャンプ場</string>
+			<string>わらびのオートキャンプ場</string>
 		</array>
 		<key>weather</key>
 		<string>100020</string>
@@ -62,33 +69,42 @@
 		<key>region</key>
 		<string>上信越</string>
 		<key>prefecture</key>
-		<string>新潟県</string>
+		<string>新潟県・群馬県</string>
 		<key>mtlatitude</key>
 		<string>36.837222</string>
 		<key>mtlongitude</key>
 		<string>138.93</string>
 		<key>introduction</key>
-		<string>谷川岳のイントロダクション</string>
+		<string>一ノ倉沢は日本のロッククライミングのメッカ</string>
 		<key>height</key>
 		<string>1977</string>
 		<key>mtrange</key>
 		<string>三国山脈</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E8%B0%B7%E5%B7%9D%E5%B2%B3</string>
+		<string>谷川岳（たにがわだけ）は群馬・新潟の県境にある三国山脈の山である。日本百名山のひとつ。周囲の万太郎山・仙ノ倉山・茂倉岳などを総じて谷川連峰という。
+頂部は二峰に分かれており、それぞれトマの耳（標高1,963m）、オキの耳（標高1,977m）と呼ばれる。元来この山はトマ・オキの二つ耳と呼ばれ、谷川岳の名は隣の俎嵒（マナイタグラ）に与えられていた。しかし、国土地理院の5万分の1地図の誤記のために、トマ・オキの二つ耳が谷川岳と呼ばれるようになってしまった。なお、トマの耳には薬師岳、オキの耳には谷川富士の別称がある。
+広義には、一ノ倉岳などの周囲の山域も含めて「谷川岳」と呼ぶこともある。
+一ノ倉沢などの谷川岳の岩場は、その険しさから剱岳・穂高岳とともに日本三大岩場の一つに数えられ、ロッククライミングのメッカとなっている。また、山麓はスキーのメッカでもあり、谷川岳天神平スキー場は関東でも有名なスキー場のひとつ。冬場はスキー客と登山客が同じゴンドラで天神平を目指すこともしばしば。谷川岳ロープウェイ「てんじんだいら」駅のそばにはレストハウスがある。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス27</string>
+		<string>電車・バス：上越新幹線上毛高原駅あるいはＪＲ上越線水上駅よりバスかタクシー。
+ 車：関越自動車道水上ＩＣ下車左折。そのまま国道２９１号を北上。</string>
 		<key>season</key>
-		<string>季節27</string>
+		<string>6月〜9月</string>
 		<key>plan</key>
 		<string>登り方27</string>
 		<key>contact</key>
-		<string>問い合わせ27</string>
+		<string>新潟県警察本部　地域課（湯沢町、南魚沼市側）
+代表：025-285-0110
+群馬県警察本部　地域課（みなかみ町側）
+代表：027-243-0110</string>
 		<key>family</key>
 		<string>家族・ペット・障害27</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>天神尾根ルート（高低差少ない初心者向けコース）</string>
+			<string>西黒尾根ルート（鎖場ありの中級者向けコース）</string>
+			<string>巌剛新道ルート（健脚者向けコース）</string>
+			<string>一ノ倉トレッキングコース　（谷川岳を楽しむ初級者向けコース）</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ27</string>
@@ -96,8 +112,17 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=090402&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>肩の小屋</string>
+			<string>蓬ヒュッテ</string>
+			<string>熊穴沢避難小屋</string>
+			<string>一ノ倉岳避難小屋</string>
+			<string>茂倉岳避難小屋</string>
+			<string>清水峠避難小屋</string>
+			<string>オジカ避難小屋</string>
+			<string>大障子避難小屋</string>
+			<string>湯島オートキャンプ場（みなかみ）</string>
+			<string>大源太キャニオンキャンプ場（湯沢）</string>
+			<string>巻機山麓キャンプ場（南魚沼）</string>
 		</array>
 		<key>weather</key>
 		<string>100020</string>

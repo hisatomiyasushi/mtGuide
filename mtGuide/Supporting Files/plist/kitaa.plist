@@ -12,33 +12,43 @@
 		<key>region</key>
 		<string>北アルプス</string>
 		<key>prefecture</key>
-		<string>長野県</string>
+		<string>長野県・富山県</string>
 		<key>mtlatitude</key>
 		<string>36.758611</string>
 		<key>mtlongitude</key>
 		<string>137.758611</string>
 		<key>introduction</key>
-		<string>白馬岳のイントロダクション</string>
+		<string>岩と雪、お花畑、温泉と、登山の醍醐味が揃う</string>
 		<key>height</key>
 		<string>2932</string>
 		<key>mtrange</key>
 		<string>後立山連峰</string>
 		<key>information</key>
-		<string>http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:%E3%83%87%E3%83%BC%E3%82%BF%E6%9B%B8%E3%81%8D%E5%87%BA%E3%81%97/%E7%99%BD%E9%A6%AC%E5%B2%B3</string>
+		<string>白馬岳（しろうまだけ）は、飛騨山脈（北アルプス）北部の後立山連峰にある標高2,932 mの山。長野県と富山県とにまたがり、中部山岳国立公園内にある。
+南に続く後立山連峰の山々とともに、南北に伸びる稜線の両側の傾斜が著しく異なる非対称山稜が発達している特徴的な山容を持つ。山頂を含む南北700 mの地帯は県境が設定されていない。山頂には一等三角点があり[1]、一等三角点百名山に選定されている。 東側の谷筋には冬季の膨大な積雪と周囲の山塊からの雪崩が集積した日本最大の雪渓である白馬大雪渓がある。雪渓の上部は夏期には日本有数の高山植物のお花畑が広がる。日本百名山、新日本百名山、花の百名山及び新・花の百名山に選定されている。 鑓ヶ岳中腹の標高2,100 m地点には、日本有数の高所にある温泉である白馬鑓温泉があり、白馬大池の北麓には蓮華温泉がある。雪渓、お花畑、岩場、山の温泉と様々に楽しめる要素があり、交通の便も比較的良いことから、夏季にはたくさんの登山者が訪れて混雑する。なお、山頂直下に位置する白馬山荘は日本最大の収容人員を誇る山小屋である。夏期の登山者の大半は大雪渓を経由して登るため、夏休みの時期には大雪渓上は長蛇の列となることが多い。しかし、雪渓上は数年ごとに落石事故によって死傷者が出ているので、注意が必要である。（wikipediaより引用）</string>
 		<key>access</key>
-		<string>アクセス54</string>
+		<string>電車：JR糸魚川駅からバスで110分、またはJR大糸線平岩駅からバスで60分 
+車：北陸自動車道 糸魚川ICから車で90分</string>
 		<key>season</key>
-		<string>季節54</string>
+		<string>7月（残雪の程度によっては下旬）〜9月</string>
 		<key>plan</key>
 		<string>登り方54</string>
 		<key>contact</key>
-		<string>問い合わせ54</string>
+		<string>長野県警察本部　地域課（白馬、小谷村側）
+代表：026-233-0110
+富山県警察本部　地域課（朝日町、黒部側）
+代表：076-441-2211</string>
 		<key>family</key>
 		<string>家族・ペット・障害54</string>
 		<key>trails</key>
 		<array>
-			<string>トレイルA</string>
-			<string>トレイルB</string>
+			<string>猿倉-白馬尻-白馬岳（大雪渓ルート）</string>
+			<string>猿倉-白馬鑓温泉-鑓ヶ岳</string>
+			<string>栂池-白馬乗鞍岳-白馬大池</string>
+			<string>蓮華温泉-白馬大池</string>
+			<string>蓮華温泉-三国境-白馬岳</string>
+			<string>欅平-祖母谷温泉-清水岳-白馬岳</string>
+			<string>唐松岳方面-鑓ヶ岳-杓子岳-白馬岳-小蓮華岳-白馬大池</string>
 		</array>
 		<key>fun</key>
 		<string>楽しみ54</string>
@@ -46,8 +56,24 @@
 		<string>http://jws.jalan.net/APICommon/OnsenSearch/V1/?key=cyg13c97aa2a42&amp;s_area=162002&amp;xml_ptn=1</string>
 		<key>camping</key>
 		<array>
-			<string>キャンプ場A</string>
-			<string>山小屋A</string>
+			<string>白馬山荘（日本最大の山小屋、収容人数1,200人）</string>
+			<string>白馬大池山荘</string>
+			<string>白馬尻小屋</string>
+			<string>栂池ヒュッテ</string>
+			<string>白馬鑓温泉小屋</string>
+			<string>五竜山荘</string>
+			<string>キレット小屋</string>
+			<string>白馬岳頂上宿舎</string>
+			<string>猿倉荘</string>
+			<string>天狗山荘</string>
+			<string>八方池山荘</string>
+			<string>祖母谷温泉小屋（黒部峡谷側登山口）</string>
+			<string>不帰岳避難小屋</string>
+			<string>雪倉岳避難小屋</string>
+			<string>朝日小屋</string>
+			<string>白馬岳蓮華温泉ロッジ</string>
+			<string>唐松岳頂上山荘</string>
+			<string>キャンプ場　多数</string>
 		</array>
 		<key>weather</key>
 		<string>200010</string>

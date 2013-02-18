@@ -70,9 +70,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Master" id="JBf-Tw-lSV">
-                        <barButtonItem key="rightBarButtonItem" title="Find" id="Ng2-lk-iPr"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Master" id="JBf-Tw-lSV"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <connections>
@@ -128,10 +126,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mzu-UQ-8lr">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mzu-UQ-8lr">
                                                 <rect key="frame" x="0.0" y="200" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -502,12 +500,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tuO-WX-H3t">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zzG-qg-Ovs">
-                                    <rect key="frame" x="0.0" y="72" width="320" height="44"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="infoCell" rowHeight="50" id="8XC-F6-JHu" customClass="DetailCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="50"/>
@@ -544,7 +536,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="infoLabel" destination="zzG-qg-Ovs" id="las-7m-plL"/>
                         <outlet property="infoTableView" destination="tuO-WX-H3t" id="zDg-xl-cNZ"/>
                     </connections>
                 </viewController>
@@ -578,14 +569,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKE-Up-m3r">
-                                <rect key="frame" x="20" y="5" width="280" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text" id="ydg-tC-jnE">
-                                <rect key="frame" x="12" y="44" width="296" height="372"/>
+                                <rect key="frame" x="0.0" y="10" width="320" height="406"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -598,7 +583,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="infodetailLabel" destination="vKE-Up-m3r" id="nzp-tH-aXN"/>
                         <outlet property="myTextView" destination="ydg-tC-jnE" id="ObF-EO-MLT"/>
                     </connections>
                 </viewController>
@@ -615,6 +599,95 @@
         <image name="icon-notepad.png" width="22" height="28"/>
         <image name="tsurugidake.jpg" width="1024" height="684"/>
     </resources>
+    <classes>
+        <class className="CheckSubViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckSubViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="fcbDidTouch:"/>
+                <relationship kind="action" name="hcbDidTouch:"/>
+                <relationship kind="action" name="itbDidTouch:"/>
+                <relationship kind="action" name="mcbDidTouch:"/>
+                <relationship kind="action" name="shbDidTouch:"/>
+                <relationship kind="outlet" name="favCheckButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="hikeCheckButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itiButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapCheckButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailCellImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="detailCellLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoCellImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infoCellLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mySubLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ckButton:"/>
+                <relationship kind="action" name="mtButton:"/>
+                <relationship kind="action" name="segmentedValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="stButton:"/>
+                <relationship kind="action" name="weButton:"/>
+                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="detailMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="detailTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="detailsegmentedcontrol" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="twitterLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="twitterTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="InfoDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InfoDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="InfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="infoTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="JSONFlickrViewController" superclassName="NetworkPhotoAlbumViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JSONFlickrViewController.h"/>
+        </class>
+        <class className="NIToolbarPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NIToolbarPhotoViewController.h"/>
+        </class>
+        <class className="NetworkPhotoAlbumViewController" superclassName="NIToolbarPhotoViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NetworkPhotoAlbumViewController.h"/>
+        </class>
+        <class className="StatsSubViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StatsSubViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="statsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentedValueChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="myMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="WeatherSubViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WeatherSubViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissButtonDidTouch:"/>
+                <relationship kind="outlet" name="dismissButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="weatherLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

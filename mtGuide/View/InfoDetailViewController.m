@@ -11,12 +11,12 @@
 #import "DetailViewController.h"
 #import "URLLoader.h"
 #import "StatusXMLParser.h"
+#import "NimbusAttributedLabel.h"
 
 @interface InfoDetailViewController ()
-<NSXMLParserDelegate>
+<NSXMLParserDelegate, NIAttributedLabelDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *myTextView;
-@property (weak, nonatomic) IBOutlet UILabel *infodetailLabel;
 
 @end
 
@@ -42,8 +42,12 @@
     [super viewDidLoad];
 
     self.title = _infodetailStr;
-    self.infodetailLabel.text = _infodetailStr;
+//    self.myTextView.text = _infodetailStr;
 
+    NSArray *mtTrails = [_mtItem objectForKey:@"trails"];
+    NSArray *mtCamping = [_mtItem objectForKey:@"camping"];
+
+        
     //テキストビューの初期化と編集不可に設定
     _myTextView.text = @"";
     _myTextView.editable = NO;
@@ -54,21 +58,54 @@
     self.myTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
 
-    // 「概要」か「温泉情報」の場合、XMLパース処理の呼び出し処理を開始
+    // 「温泉情報」かそれ以外の場合で、XMLパース処理の呼び出しをするorしない処理を開始
     if ([_infodetailStr isEqualToString:@"概要"]) {
-        self.infodetailLabel.text = _infodetailStr;
         
-        //wikiXMLパース処理の呼び出し
-        [self loadTimeLineByUserName:@"Wikipedia"];
+        _myTextView.text = [_mtItem objectForKey:@"information"];
+
+    }
+    
+    else if ([_infodetailStr isEqualToString:@"アクセス"]){
+        
+        _myTextView.text = [_mtItem objectForKey:@"access"];
+        
+    }
+
+    else if ([_infodetailStr isEqualToString:@"登山適期"]){
+        
+        _myTextView.text = [_mtItem objectForKey:@"season"];
+        
+    }
+
+    else if ([_infodetailStr isEqualToString:@"登山案内・管轄警察"]){
+        
+        _myTextView.text = [_mtItem objectForKey:@"contact"];
+        
     }
     
     else if ([_infodetailStr isEqualToString:@"周辺の温泉"]) {
-        NSString *mtName = [_mtItem objectForKey:@"name"];
-        self.infodetailLabel.text = [NSString stringWithFormat:@"%@周辺の温泉",mtName];
+
         //温泉XMLパース処理の呼び出し
         [self loadTimeLineByUserName:@"Onsen"];
     }
+    
+    else if ([_infodetailStr isEqualToString:@"登山ルート"]){
+        for (int i = 0; i < [mtTrails count]; i++) {
+            NSString *trailsText = [mtTrails objectAtIndex:i];
+            _myTextView.text = [_myTextView.text stringByAppendingFormat:@"●%@\n",trailsText];
+        }
+        
+    }
+    else if ([_infodetailStr isEqualToString:@"キャンプ場・山小屋"]){
+        for (int i = 0; i < [mtTrails count]; i++) {
+            NSString *campingText = [mtCamping objectAtIndex:i];
+            _myTextView.text = [_myTextView.text stringByAppendingFormat:@"●%@\n",campingText];
+        }
+    }
+
 }
+    
+
 
 //XML読み込み/////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,68 +165,70 @@
     StatusXMLParser *parser = [[StatusXMLParser alloc] init];
     self.statuses = [parser parseStatuses:xmlData];
 
-    
-//    // Wikipedia情報の表示
-//    if ([_infodetailStr isEqualToString:@"概要"]) {
-//        
-//        NSString *wikiText = [[_statuses objectAtIndex:0] objectForKey:@"wikiText"];
-//
-//            //正規表現のオブジェクトを生成する
-//            //options:0は、正規表現のmatch範囲をできるだけ狭くするように指定
-//            NSError *error = nil;
-//            
-//            NSRegularExpression *regexp_first = [[NSRegularExpression alloc] initWithPattern:@"('{3})(.|[\r\n])*?(== )"
-//                                                                                 options:0
-//                                                                                   error:&error];//大雪山
-//            if (error != nil) {
-//                NSLog(@"正規表現エラーです。%@",error);
-//            
-//            } else {
-//
-//                //正規表現を対象xmlにかけてみる
-//                //正規表現にマッチした件数分、結果が取得できる
-//                NSArray *results_first = [regexp_first matchesInString:wikiText
-//                                                       options:0
-//                                                         range:NSMakeRange(0, [wikiText length])];
-//                
-//                
-//                for ( int i = 0; i < results_first.count; i++){
-//                    NSTextCheckingResult *result_first = [results_first objectAtIndex:i];
-//                    _wikiText_second = [wikiText substringWithRange:[result_first rangeAtIndex:0]];
-//                }
-//            }
-//            
-//            //得られた抽出テキストから不要部分を削除するためにさらに正規表現置き換え処理
-//            error = nil;
-//            NSString *template = @""; //置換（＝削除）用文字列の設定
-//            
-//            NSRegularExpression *regexp_second = [[NSRegularExpression alloc] initWithPattern:@"(\'\'\'|==|概要|\\[|\\]|<ref.*?/>|<ref.*?ref>)"
-//                                                                                 options:0
-//                                                                                   error:&error];
-//            if (error != nil) {
-//                NSLog(@"正規表現エラーです。%@",error);
-//            } else {
-//                
-//                NSString *replaced = [regexp_second stringByReplacingMatchesInString:_wikiText_second
-//                                                                        options:0
-//                                                                          range:NSMakeRange(0,_wikiText_second.length)
-//                                                                   withTemplate:template];
-//                
-//                _myTextView.text = [_myTextView.text stringByAppendingFormat:@"%@",replaced];
-//                
-//            }
-    
     if ([_infodetailStr isEqualToString:@"周辺の温泉"]) {
         
         // 温泉情報の表示
         for (int i = 0; i < [_statuses count]; i++) {
             
-        NSString *OnsenName = [[_statuses objectAtIndex:i] objectForKey:@"OnsenName"];
-        NSString *NatureOfOnsen = [[_statuses objectAtIndex:i] objectForKey:@"NatureOfOnsen"];
-        NSString *OnsenAreaCaption = [[_statuses objectAtIndex:i] objectForKey:@"OnsenAreaCaption"];
+            NSString *onsenName = [[_statuses objectAtIndex:i] objectForKey:@"OnsenName"];
+            NSString *natureOfOnsen = [[_statuses objectAtIndex:i] objectForKey:@"NatureOfOnsen"];
+            NSString *onsenAreaCaption = [[_statuses objectAtIndex:i] objectForKey:@"OnsenAreaCaption"];
 
-        _myTextView.text = [_myTextView.text stringByAppendingFormat:@"温泉名：%@\n泉質：%@\n概要：%@\n\n",OnsenName,NatureOfOnsen,OnsenAreaCaption];
+            _myTextView.text = [_myTextView.text stringByAppendingFormat:@"\n温泉名：%@\n泉質：%@\n概要：%@\n",onsenName,natureOfOnsen,onsenAreaCaption];
         }
+        
+        
+        //クレジット表示（リンク）設定
+        NIAttributedLabel *_creditLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+        
+        _creditLabel.numberOfLines = 0;
+
+        _creditLabel.text = @"じゃらん Web サービス";
+
+        #if __IPHONE_OS_VERSION_MIN_REQUIRED < NIIOS_6_0
+        _creditLabel.lineBreakMode = UILineBreakModeWordWrap;
+        #else
+        _creditLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        #endif
+        
+        [_creditLabel sizeToFit]; //ラベルサイズの自動調整
+        [_creditLabel setBackgroundColor:[UIColor clearColor]]; //背景を透過
+        _creditLabel.textAlignment = NSTextAlignmentRight; //文字を右寄せ
+        _creditLabel.font = [UIFont systemFontOfSize:12]; //フォント設定
+
+        _creditLabel.autoresizingMask = UIViewAutoresizingFlexibleDimensions;
+
+        //ラベルを右上に寄せて表示
+        CGRect newRect = _creditLabel.frame;
+        newRect.origin.x = _myTextView.frame.size.width - _creditLabel.frame.size.width -10;
+        newRect.origin.y = 5;
+        _creditLabel.frame = newRect;
+        
+        // When the user taps a link we can change the way the link text looks.
+        _creditLabel.attributesForHighlightedLink = [NSDictionary dictionaryWithObject:(id)RGBCOLOR(255, 0, 0).CGColor forKey:(NSString *)kCTForegroundColorAttributeName];
+        
+        // In order to handle the events generated by the user tapping a link we must implement the
+        // delegate.
+        _creditLabel.delegate = self;
+        
+        // By default the label will not automatically detect links. Turning this on will cause the label
+        // to pass through the text with an NSDataDetector, highlighting any detected URLs.
+        _creditLabel.autoDetectLinks = YES;
+        
+        // By default links do not have underlines and this is generally accepted as the standard on iOS.
+        // If, however, you do wish to show underlines, you can enable them like so:
+        _creditLabel.linksHaveUnderlines = YES;
+        
+        
+        NSRange linkRange = [_creditLabel.text rangeOfString:@"じゃらん Web サービス"];
+        
+        // Explicitly adds a link at a given range.
+        [_creditLabel addLink:[NSURL URLWithString:@"http://www.jalan.net/jw/jwp0000/jww0001.do"]
+                        range:linkRange];
+        
+        [_myTextView addSubview:_creditLabel];
+        
+
     }
 }
 
@@ -203,6 +242,14 @@
                           otherButtonTitles:nil];
     [alert show];
 }
+
+//タップしたURL（じゃらんWEBサービス）にジャンプ
+- (void)attributedLabel:(NIAttributedLabel*)attributedLabel didSelectTextCheckingResult:(NSTextCheckingResult *)result atPoint:(CGPoint)point {
+    // In a later example we will show how to push a Nimbus web controller onto the navigation stack
+    // rather than punt the user out of the application to Safari.
+    [[UIApplication sharedApplication] openURL:result.URL];
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
