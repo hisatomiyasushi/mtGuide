@@ -8,7 +8,6 @@
 
 #import "WeatherSubViewController.h"
 #import "UIViewController+KNSemiModal.h"
-#import "DetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface WeatherSubViewController ()
@@ -139,8 +138,10 @@
 - (IBAction)dismissButtonDidTouch:(id)sender {
     // Here's how to call dismiss button on the parent ViewController
     // be careful with view hierarchy
+    
     UIViewController *parent = [self.view containingViewController];
     if ([parent respondsToSelector:@selector(dismissSemiModalView)]) {
+
         [parent dismissSemiModalView];
     }
 }

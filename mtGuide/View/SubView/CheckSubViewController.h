@@ -19,10 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *itiButton;
 @property (nonatomic, copy) NSString *mtIdForKey;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
 - (IBAction)mcbDidTouch:(id)sender;
 - (IBAction)fcbDidTouch:(id)sender;
 - (IBAction)hcbDidTouch:(id)sender;
 - (IBAction)shbDidTouch:(id)sender;
 - (IBAction)itbDidTouch:(id)sender;
+- (IBAction)dismissButtonDidTouch:(id)sender;
 @end

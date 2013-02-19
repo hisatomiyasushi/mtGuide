@@ -28,7 +28,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
-@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
+
 @property (nonatomic, retain) TileOverlay *overlay;
 
 - (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
@@ -42,7 +43,6 @@
 
 @implementation DetailViewController
 {
-    IBOutlet UISegmentedControl *detailsegmentedcontrol;
     WeatherSubViewController *semiVC;
     CheckSubViewController *semiCheckVC;
     StatsSubViewController *semiStatsVC;
@@ -171,7 +171,7 @@
     [_detailMapView setRegion:cr animated:YES];
 
     //詳細TOPと詳細地図表示切り替えボタンの初期設定
-    detailsegmentedcontrol.selectedSegmentIndex = 0;
+    _detailsegmentedcontrol.selectedSegmentIndex = 0;
 
     //天気情報ビューの初期化
     UIStoryboard *storyboard = self.storyboard;
@@ -304,6 +304,7 @@
     
     NSString *mtId = [_mtItem objectForKey:@"id"];
     [semiCheckVC setMtIdForKey: mtId];
+//    self.detailMapView.hidden = YES;
     [self presentSemiViewController:semiCheckVC withOptions:@{
      KNSemiModalOptionKeys.pushParentBack       : @(YES),
      KNSemiModalOptionKeys.animationDuration    : @(0.3),

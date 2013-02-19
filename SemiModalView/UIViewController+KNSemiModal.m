@@ -302,7 +302,7 @@ const struct KNSemiModalOptionKeys KNSemiModalOptionKeys = {
 	NSTimeInterval duration = [[self ym_optionOrDefaultForKey:KNSemiModalOptionKeys.animationDuration] doubleValue];
 	UIViewController *vc = objc_getAssociatedObject(self, kSemiModalViewController);
 	KNTransitionCompletionBlock dismissBlock = objc_getAssociatedObject(self, kSemiModalDismissBlock);
-	
+
 	// child controller containment
 	[vc willMoveToParentViewController:nil];
 	if ([vc respondsToSelector:@selector(beginAppearanceTransition:animated:)]) {
@@ -391,16 +391,28 @@ const struct KNSemiModalOptionKeys KNSemiModalOptionKeys = {
 
 - (id) traverseResponderChainForUIViewController {
     id nextResponder = [self nextResponder];
+    NSLog(@"self>>>>>>>>>>>%@",self);
+    NSLog(@"nextResponder>>>>>>>>>>>%@",nextResponder);
     BOOL isViewController = [nextResponder isKindOfClass:[UIViewController class]];
     BOOL isTabBarController = [nextResponder isKindOfClass:[UITabBarController class]];
+//    BOOL isNavigationController = [nextResponder isKindOfClass:[UINavigationController class]];
     if (isViewController && !isTabBarController) {
+        NSLog(@">>>>>>>>>>> 1");
         return nextResponder;
     } else if(isTabBarController){
         UITabBarController *tabBarController = nextResponder;
+        NSLog(@">>>>>>>>>>> 2");
         return [tabBarController selectedViewController];
+//    } else if(isNavigationController){
+//        UINavigationController *navigationController = nextResponder;
+//        NSLog(@">>>>>>>>>>> 3"); 
+//        NSLog(@">>>>>>>>>>> テスト%@",[navigationController topViewController]);
+//        return [navigationController topViewController];
     } else if ([nextResponder isKindOfClass:[UIView class]]) {
+        NSLog(@">>>>>>>>>>> 4");
         return [nextResponder traverseResponderChainForUIViewController];
     } else {
+        NSLog(@">>>>>>>>>>> 5");
         return nil;
     }
 }

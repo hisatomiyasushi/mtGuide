@@ -11,13 +11,8 @@
 
 @interface InfoViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-//@property (nonatomic, retain) NSString *mtStr;
 @property (strong, nonatomic) id infoItem;
 @property (nonatomic, retain) NSString *detailStr;
-//@property (nonatomic, retain) NSArray *mttrails;
-//@property (nonatomic, retain) NSArray *mtcamping;
-//@property (nonatomic, retain) NSString *mtInformation;
-
 
 @property (nonatomic, retain) NSDictionary *mtItem;
 

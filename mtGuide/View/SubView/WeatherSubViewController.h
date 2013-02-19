@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class DetailViewController;
 
 @interface WeatherSubViewController : UIViewController
 

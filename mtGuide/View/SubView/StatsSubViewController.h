@@ -18,6 +18,8 @@
 @property (nonatomic, copy) NSString *mtHeight;
 @property (nonatomic, copy) NSString *mtRange;
 @property (nonatomic, copy) NSString *mtPrefecture;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
+- (IBAction)dismissButtonDidTouch:(id)sender;
 
 @end

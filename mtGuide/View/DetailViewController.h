@@ -24,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *twitterTextView;
 @property(retain, nonatomic) NSArray *statuses;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
 
 @end

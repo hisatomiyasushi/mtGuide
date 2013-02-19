@@ -14,17 +14,17 @@
 #import "AppDelegate.h"
 
 @interface ViewController ()
-<UITableViewDataSource, UITableViewDelegate,MKMapViewDelegate, CLLocationManagerDelegate>
+<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet MKMapView *myMapView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedcontrol;
 - (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
 
 @end
 
 @implementation ViewController
 {
-    IBOutlet UISegmentedControl *segmentedcontrol;
     NSArray *_myregKeys;
     NSArray *_dataArray;
     NSDictionary *_mydataSource;
@@ -59,7 +59,7 @@
 
     
     //一覧リストと全体地図表示切り替えボタンの初期設定
-    segmentedcontrol.selectedSegmentIndex = 0;
+    _segmentedcontrol.selectedSegmentIndex = 0;
 
 }
 
