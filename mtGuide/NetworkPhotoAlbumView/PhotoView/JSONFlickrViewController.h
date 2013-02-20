@@ -15,7 +15,6 @@
 
 - (id)initWith:(id)object;
 
-//@property (nonatomic, retain) NSString *mtStr;
 @property (nonatomic, readwrite, copy) NSString* flickrAlbumId;
 @property (nonatomic, retain) NSDictionary *mtItem;
 

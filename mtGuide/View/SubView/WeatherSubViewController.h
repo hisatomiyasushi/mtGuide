@@ -12,11 +12,15 @@
 
 @interface WeatherSubViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *weatherTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
 @property (nonatomic, copy) NSString *weatherSpotKeyNumber;
+
+@property (nonatomic, copy) NSString *mtName;
+
 
 - (IBAction)dismissButtonDidTouch:(id)sender;
 

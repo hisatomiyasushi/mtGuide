@@ -10,10 +10,12 @@
 #import "DetailViewController.h"
 #import "CaptionedPhotoView.h"
 #import "AFNetworking.h"
-
+#import "NIPhotoAlbumScrollViewDataSource.h"
+#import "NIPhotoScrubberView.h"
+#import "NIOperations.h"
 
 @interface JSONFlickrViewController ()
-<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDataDelegate,NIPhotoAlbumScrollViewDataSource,NIPhotoScrubberViewDataSource,NIOperationDelegate>
+<UITableViewDataSource, UITableViewDelegate, NSURLConnectionDataDelegate, NIPhotoAlbumScrollViewDataSource, NIPhotoScrubberViewDataSource,NIOperationDelegate>
 
 @end
 
@@ -72,9 +74,12 @@
     array = [[NSMutableArray alloc]init];
 
     NSString *mtName = [_mtItem objectForKey:@"name"];
+    NSString *mtlat = [_mtItem objectForKey:@"mtlatitude"];
+    NSString *mtlon = [_mtItem objectForKey:@"mtlongitude"];
+
     static NSString *const API_Key = @"cd10ad976306f5c6df8e5c99a94aa8af";
     NSString *mtUrlName = [mtName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *mtUrl = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&text=%@&per_page=20&licence=1,2,3,4,5,6&format=json&nojsoncallback=1&extras=url_sq,url_t,url_s,url_q,url_m,url_n,url_z,url_c,url_l,url_o",API_Key,mtUrlName];
+    NSString *mtUrl = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&text=%@&per_page=20&licence=1,2,3,4,5,6&lat=%@&lon=%@&radius=30&format=json&nojsoncallback=1&extras=url_sq,url_t,url_s,url_q,url_m,url_n,url_z,url_c,url_l,url_o,owner_name",API_Key,mtUrlName,mtlat,mtlon];
         
     NSURL *url = [NSURL URLWithString:mtUrl];
     
@@ -138,7 +143,7 @@
 //        NSLog(@"thumbnailImageSource>>>>>>>>>%@", thumbnailImageSource);
 
         CGSize dimensions = CGSizeMake(75, 75);
-        NSString* caption = [diction objectForKey:@"title"];
+        NSString* caption = [NSString stringWithFormat:@"Photo: %@ by %@",[diction objectForKey:@"title"],[diction objectForKey:@"ownername"]];
         NSDictionary* prunedPhotoInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                          originalImageSource, @"originalSource",
 //                                         thumbnailImageSource, @"thumbnailSource",

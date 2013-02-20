@@ -13,6 +13,7 @@
 
 @interface StatsSubViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *statsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statsTitleLabel;
 @property (nonatomic, copy) NSString *mtName;
 @property (nonatomic, copy) NSString *mtYomi;
 @property (nonatomic, copy) NSString *mtHeight;

@@ -56,6 +56,8 @@
     // 背景に画像をセットする
     UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    
+    _weatherTitleLabel.text = [NSString stringWithFormat:@"%@付近の天気予報",_mtName];
 
 }
 
@@ -127,11 +129,31 @@
     
     for (int i = 0; i < [_weatherInformation count]; i++) {
         
-        weatherLabel.text = [weatherLabel.text stringByAppendingFormat:@"%@\n%@\n最低気温：%@ 最高気温：%@\n",
-                            [[_weatherInformation objectAtIndex:i] objectForKey:@"date"],
+        NSString *dateTxt = [[_weatherInformation objectAtIndex:i] objectForKey:@"date"];
+        NSArray* values = [dateTxt componentsSeparatedByString:@"-"];
+        NSString *dateY = [[values objectAtIndex:0] stringByAppendingString:@"年"];
+        NSString *dateM = [[values objectAtIndex:1] stringByAppendingString:@"月"];
+        NSString *dateD = [[values objectAtIndex:2] stringByAppendingString:@"日"];
+        
+        
+        NSString *lowTemp = [[_weatherInformation objectAtIndex:i] objectForKey:@"lowTemp"];
+        if ([lowTemp isEqual:[NSNull null]]) {
+            lowTemp = [NSString stringWithFormat:@" - "];
+        }
+        
+        NSString *highTemp = [[_weatherInformation objectAtIndex:i] objectForKey:@"highTemp"];
+        if ([highTemp isEqual:[NSNull null]]) {
+            highTemp = [NSString stringWithFormat:@" - "];
+        }
+
+        
+        weatherLabel.text = [weatherLabel.text stringByAppendingFormat:@"\n%@%@%@\n天気：%@\n最低気温：%@℃　最高気温：%@℃\n",
+                            dateY,
+                            dateM,
+                            dateD,
                             [[_weatherInformation objectAtIndex:i] objectForKey:@"tenki"],
-                            [[_weatherInformation objectAtIndex:i] objectForKey:@"lowTemp"],
-                            [[_weatherInformation objectAtIndex:i] objectForKey:@"highTemp"]];
+                            lowTemp,
+                            highTemp];
     }
 
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

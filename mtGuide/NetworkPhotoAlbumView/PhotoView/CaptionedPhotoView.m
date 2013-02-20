@@ -83,6 +83,7 @@ static UIEdgeInsets kWellPadding = {0}; // see +initialize
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setCaption:(NSString *)caption {
+    
     if (_captionLabel.text != caption) {
         _captionLabel.text = caption;
         [self setNeedsLayout];

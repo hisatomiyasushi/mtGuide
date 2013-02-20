@@ -290,7 +290,8 @@
     
     NSString *mtweather = [_mtItem objectForKey:@"weather"];
     [semiVC setWeatherSpotKeyNumber: mtweather];
-    
+    NSString *mtName = [_mtItem objectForKey:@"name"];
+    [semiVC setMtName: mtName];
     [self presentSemiViewController:semiVC withOptions:@{
      KNSemiModalOptionKeys.pushParentBack       : @(YES),
      KNSemiModalOptionKeys.animationDuration    : @(0.3),
