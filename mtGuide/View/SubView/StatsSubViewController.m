@@ -31,6 +31,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+
     _statsLabel.text = [NSString stringWithFormat:@"山名：%@ (%@)\n標高：%@m\n山系：%@\n都道府県：%@",_mtName,_mtYomi,_mtHeight,_mtRange,_mtPrefecture];
     
 }

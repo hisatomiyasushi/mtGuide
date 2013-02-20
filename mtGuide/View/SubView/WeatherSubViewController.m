@@ -53,6 +53,10 @@
 
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+
 }
 
 - (void)viewDidUnload {

@@ -4,7 +4,6 @@
 
 #import "NSObject+YMOptionsAndDefaults.h"
 #import <objc/runtime.h>
-#import "UIViewController+KNSemiModal.h"
 
 @implementation NSObject (YMOptionsAndDefaults)
 
@@ -23,16 +22,7 @@
 {
 	NSDictionary *options = objc_getAssociatedObject(self, (__bridge const void *)(kYMStandardOptionsTableName));
 	NSDictionary *defaults = objc_getAssociatedObject(self, (__bridge const void *)(kYMStandardDefaultsTableName));
-    if (defaults == nil) {
-        defaults = @{
-                     KNSemiModalOptionKeys.animationDuration : @(0.3),
-                     KNSemiModalOptionKeys.parentAlpha : @(0.3),
-                     KNSemiModalOptionKeys.pushParentBack : @(YES),
-                     KNSemiModalOptionKeys.shadowOpacity : @(0.8),
-                     KNSemiModalOptionKeys.disableCancel : @(NO),
-                     };
-        
-    }	NSAssert(defaults, @"Defaults must have been set when accessing options.");
+	NSAssert(defaults, @"Defaults must have been set when accessing options.");
 	return options[optionKey] ?: defaults[optionKey];
 }
 
