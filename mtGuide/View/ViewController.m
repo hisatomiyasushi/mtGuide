@@ -64,20 +64,21 @@
     self.myMapView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
     
-    // segmentedcontrolボタンの初期設定
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Trending", @"News", @"Library"]];
-    [segmentedControl setFrame:CGRectMake(0, 0, 320, 45)];
+    // 上部segmentedcontrolボタンの初期設定
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"List", @"Map"]];
+    [segmentedControl setFrame:CGRectMake(0, 0, 320, 34)];
+    [segmentedControl setSelectionIndicatorHeight:4.0f];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [segmentedControl setTextColor:[UIColor whiteColor]];
+    [segmentedControl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
+    [segmentedControl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
+    [segmentedControl setSelectedSegmentIndex:0];
+    [segmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segmentedControl];
-
-    _segmentedcontrol.selectedSegmentIndex = 0;
-    
+    [self.view addSubview:segmentedControl];    
     
     // MapView上のボタン設置
     _mapSegCtl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"All", @"Favorite", @"Visit"]];
-//    [_mapSegCtl setIndexChangeBlock:^(NSInteger index) {
-//        NSLog(@"Selected index %i (via block)", index);
-//    }];
     [_mapSegCtl setSelectionIndicatorHeight:4.0f];
     [_mapSegCtl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
     [_mapSegCtl setTextColor:[UIColor whiteColor]];
@@ -178,7 +179,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //　上部segmentedcontrolボタンの動作設定
 //　-----------------------
 
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender {
+- (void)segmentedControlChangedValue:(UISegmentedControl *)sender {
 
     // タップされたセルによって分岐させる
     switch (sender.selectedSegmentIndex) {

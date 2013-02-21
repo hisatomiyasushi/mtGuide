@@ -28,10 +28,10 @@
 @property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
+//@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
 @property (nonatomic, retain) TileOverlay *overlay;
 
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
+//- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
 - (IBAction)mtButton:(id)sender;
 - (IBAction)weButton:(id)sender;
 - (IBAction)ckButton:(id)sender;

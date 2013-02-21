@@ -19,6 +19,7 @@
 #import "TileOverlayView.h"
 #import "URLLoader.h"
 #import "StatusXMLParser.h"
+#import "HMSegmentedControl.h"
 
 
 @interface DetailViewController ()
@@ -53,11 +54,12 @@
 }
 
 
-//文字データ・その他を読み込み、表示する
+//　-----------------------
+//　文字データ・その他を読み込み、表示する
+//　-----------------------
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     [_detailMapView setDelegate:self];
     [self configureView];
     
@@ -67,22 +69,34 @@
     _scrollView.delegate = self;
     [self.view addSubview: _scrollView];
     
-    //テキストビューの初期化と編集不可に設定
+    // 背景に画像をセットする
+    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    self.twitterTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    
+    //Twitterテキスト表示部分の初期化と編集不可に設定
     _twitterTextView.text = @"";
     _twitterTextView.editable = NO;
 
     //Twitterタイムライン読み込み
     [self loadTimeLineByUserName:@"NorthernAlps"];
 
-    
-    MKMapRect visibleRect = [_detailMapView mapRectThatFits:_overlay.boundingMapRect];
-    _detailMapView.visibleMapRect = visibleRect;
-    visibleRect.size.width /= 2;
-    visibleRect.size.height /= 2;
-    visibleRect.origin.x += visibleRect.size.width / 2;
-    visibleRect.origin.y += visibleRect.size.height / 2;
-    _detailMapView.visibleMapRect = visibleRect;
+    // 上部segmentedcontrolボタンの初期設定
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Guide", @"Map"]];
+    [segmentedControl setFrame:CGRectMake(0, 0, 320, 34)];
+    [segmentedControl setSelectionIndicatorHeight:4.0f];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [segmentedControl setTextColor:[UIColor whiteColor]];
+    [segmentedControl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
+    [segmentedControl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
+    [segmentedControl setSelectedSegmentIndex:0];
+    [segmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl];
 
+    // タイトルバー、その他テキスト表示部分の設定
     NSString *mtName = [_mtItem objectForKey:@"name"];
     NSString *mtIntro = [_mtItem objectForKey:@"introduction"];
     self.title = mtName;
@@ -93,12 +107,20 @@
     _detailData = [[NSArray alloc]initWithObjects:
                   @"山の基本情報",
                   @"登山ルート",
-//                  @"自然・遊び",
+                //@"自然・遊び",
                   @"周辺の温泉",
                   @"キャンプ場・山小屋", nil];
     
-    //詳細地図での緯度・経度の取り出しと全体地図にピン表示
+    // 国土地理院地図のオーバーレイ初期設定
+    MKMapRect visibleRect = [_detailMapView mapRectThatFits:_overlay.boundingMapRect];
+    _detailMapView.visibleMapRect = visibleRect;
+    visibleRect.size.width /= 2;
+    visibleRect.size.height /= 2;
+    visibleRect.origin.x += visibleRect.size.width / 2;
+    visibleRect.origin.y += visibleRect.size.height / 2;
+    _detailMapView.visibleMapRect = visibleRect;
     
+    //詳細地図での緯度・経度の取り出しと全体地図にピン表示
     NSString *mtlatStr = [_mtItem objectForKey:@"mtlatitude"];
     NSString *mtlngStr = [_mtItem objectForKey:@"mtlongitude"];
     NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
@@ -150,10 +172,7 @@
     cr.span.latitudeDelta = maxLat - minLat + 0.1;
     cr.span.longitudeDelta = maxLng - minLng + 0.1;
     ;
-    [_detailMapView setRegion:cr animated:YES];
-
-    //詳細TOPと詳細地図表示切り替えボタンの初期設定
-    _detailsegmentedcontrol.selectedSegmentIndex = 0;
+    [_detailMapView setRegion:cr];
 
     //天気情報ビューの初期化
     UIStoryboard *storyboard = self.storyboard;
@@ -165,16 +184,12 @@
     //Statsビューの初期化
     semiStatsVC = [storyboard instantiateViewControllerWithIdentifier:@"StatsSubViewController"];
 
-    
-    // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.twitterTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-
 }
 
+
+//　-----------------------
+//　国土地理院地図オーバーレイの動作設定
+//　-----------------------
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl
 {
     TileOverlayView *view = [[TileOverlayView alloc] initWithOverlay:ovl];
@@ -182,34 +197,25 @@
     return view;
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload]; // Release any retained subviews of the main view.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
+//　-----------------------
+//　テーブル表示設定
+//　-----------------------
 #pragma mark - Table View
 
-// tableview datasource delegate methods..
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1; //セクション数
+//セクション数
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_detailData count]; //項目数
+//項目数
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_detailData count]; 
 }
 
 //各セルの表示内容設定
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{        
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {        
     //さらに下層のInfoViewControllerに飛ばす予定のセルの表示内容設定
     if (indexPath.row == 0) {
         static NSString *CellIdentififer = @"detailCell";
@@ -231,15 +237,15 @@
 }
 
 
-//セルタップデリゲートメソッド
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+// セルをタップした後に選択状態をすぐ解除する
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
 }
 
-//詳細TOPと詳細地図表示切り替えボタンの動作設定
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender
-{
+//　-----------------------
+//　上部segmentedcontrolボタンの動作設定
+//　-----------------------
+- (void)segmentedControlChangedValue:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.detailMapView.hidden = YES;
@@ -249,7 +255,7 @@
             self.detailMapView.hidden = NO;
             self.scrollView.hidden = YES;
             
-            //apple地図に国土地理院地図をオーバーレイ
+            // apple地図に国土地理院地図をオーバーレイ
             _overlay = [[TileOverlay alloc] initOverlay];
             [_detailMapView addOverlay:_overlay];
 
@@ -261,13 +267,15 @@
 }
 
 
+//　-----------------------
+//　サブビュー表示ボタンがタップされたときの処理
+//　-----------------------
 
-
-//Photoボタンがタップされたとき
+// Photoボタンがタップされたとき
 - (IBAction)mtButton:(id)sender {
 }
 
-//Weatherボタンがタップされたとき
+// Weatherボタンがタップされたとき
 - (IBAction)weButton:(id)sender {
     
     NSString *mtweather = [_mtItem objectForKey:@"weather"];
@@ -282,12 +290,11 @@
     
 }
 
-//Checkボタンがタップされたとき
+// Checkボタンがタップされたとき
 - (IBAction)ckButton:(id)sender {
     
     NSString *mtId = [_mtItem objectForKey:@"id"];
     [semiCheckVC setMtIdForKey: mtId];
-//    self.detailMapView.hidden = YES;
     [self presentSemiViewController:semiCheckVC withOptions:@{
      KNSemiModalOptionKeys.pushParentBack       : @(YES),
      KNSemiModalOptionKeys.animationDuration    : @(0.3),
@@ -295,7 +302,7 @@
 	 }];
 }
 
-//Statsボタンがタップされたとき
+// Statsボタンがタップされたとき
 - (IBAction)stButton:(id)sender {
     NSString *mtName = [_mtItem objectForKey:@"name"];
     NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
@@ -316,9 +323,11 @@
 }
 
 
-//Twitterタイムライン読み込み/////////////////////////////////////////////////////////////////////////////////////////////////
+//　-----------------------
+//　Twitterタイムライン解析処理
+//　-----------------------
 
-// （6）
+// URL設定、読み込み完了・エラー通知
 - (void) loadTimeLineByUserName: (NSString *) userName {
     static NSString *urlFormat = @"http://twitter.com/status/user_timeline/NorthernAlps";
     
@@ -341,7 +350,7 @@
     [loder loadFromUrl:url method: @"GET"];
 }
 
-// （7）
+// 読み込み解析完了、表示処理
 - (void) loadTimeLineDidEnd: (NSNotification *)notification {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     URLLoader *loder = (URLLoader *)[notification object];
@@ -363,7 +372,7 @@
     
 }
 
-// （8）
+// 読み込み解析エラー表示処理
 - (void) loadTimeLineFailed: (NSNotification *)notification {
     
     UIAlertView *alert = [[UIAlertView alloc]
@@ -375,6 +384,8 @@
     [alert show];
 }
 
+
+// 通知の解除
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
@@ -394,14 +405,15 @@
                                                     name:@"connectionDidFailWithError"
                                                   object:nil];
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-//詳細ビューに対応する文字データの値を書き込む
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+
+//　-----------------------
+//　画面遷移時に遷移先のビューで必要な対応する値をセットする
+//　-----------------------
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"infoSegue"]) {
         InfoViewController *viewController = [segue destinationViewController];
         NSInteger selectedIndex = [[self.detailTableView indexPathForSelectedRow] row];
@@ -420,5 +432,20 @@
     }
 
 }
+
+//　-----------------------
+//　メモリ管理
+//　-----------------------
+- (void)viewDidUnload {
+    [super viewDidUnload]; // Release any retained subviews of the main view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 
 @end

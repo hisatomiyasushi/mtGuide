@@ -61,9 +61,9 @@
 		573EE64516A366BB00288EC8 /* InfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573EE64416A366BB00288EC8 /* InfoDetailViewController.m */; };
 		573EE66816A4B2C600288EC8 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 573EE66716A4B2C600288EC8 /* CustomAnnotation.m */; };
 		574C446616D5FBC9006317B8 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 574C446516D5FBC9006317B8 /* HMSegmentedControl.m */; };
-		574C446B16D6B7AC006317B8 /* back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 574C446A16D6B7AC006317B8 /* back.jpg */; };
 		574C446E16D6C291006317B8 /* nav_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 574C446C16D6C291006317B8 /* nav_back.png */; };
 		574C446F16D6C291006317B8 /* nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 574C446D16D6C291006317B8 /* nav_back@2x.png */; };
+		574C447116D6CB50006317B8 /* back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 574C447016D6CB50006317B8 /* back.jpg */; };
 		574D53F416C0DF05006DD1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574D53F316C0DF05006DD1A9 /* QuartzCore.framework */; };
 		574D53F816C0F5C0006DD1A9 /* WeatherSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 574D53F716C0F5C0006DD1A9 /* WeatherSubViewController.m */; };
 		574D54B716C37402006DD1A9 /* CheckSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 574D54B616C37402006DD1A9 /* CheckSubViewController.m */; };
@@ -252,9 +252,9 @@
 		573EE66716A4B2C600288EC8 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		574C446416D5FBC9006317B8 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		574C446516D5FBC9006317B8 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
-		574C446A16D6B7AC006317B8 /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
 		574C446C16D6C291006317B8 /* nav_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_back.png; sourceTree = "<group>"; };
 		574C446D16D6C291006317B8 /* nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back@2x.png"; sourceTree = "<group>"; };
+		574C447016D6CB50006317B8 /* back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpg; sourceTree = "<group>"; };
 		574D53F316C0DF05006DD1A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		574D53F616C0F5C0006DD1A9 /* WeatherSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherSubViewController.h; sourceTree = "<group>"; };
 		574D53F716C0F5C0006DD1A9 /* WeatherSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherSubViewController.m; sourceTree = "<group>"; };
@@ -429,13 +429,13 @@
 			children = (
 				574C446C16D6C291006317B8 /* nav_back.png */,
 				574C446D16D6C291006317B8 /* nav_back@2x.png */,
+				574C447016D6CB50006317B8 /* back.jpg */,
 				57727F1A16CC5F8800DD3EA7 /* thumbs */,
 				57727F0016CC5F7800DD3EA7 /* icon-chat.png */,
 				57727F0116CC5F7800DD3EA7 /* icon-heart.png */,
 				57727F0216CC5F7800DD3EA7 /* icon-flag.png */,
 				57727F0316CC5F7800DD3EA7 /* icon-map.png */,
 				57727F0416CC5F7800DD3EA7 /* icon-notepad.png */,
-				574C446A16D6B7AC006317B8 /* back.jpg */,
 				57727F0616CC5F7800DD3EA7 /* haguremetal.gif */,
 				57727F0716CC5F7800DD3EA7 /* Icon-mtGuide_57.png */,
 				57727F0816CC5F7800DD3EA7 /* Icon-mtGuide_114.png */,
@@ -925,9 +925,9 @@
 				57727F3A16CC5FB600DD3EA7 /* 87_thumb.jpg in Resources */,
 				57727F3B16CC5FB600DD3EA7 /* 91_thumb.jpg in Resources */,
 				57727F3C16CC5FB600DD3EA7 /* 95_thumb.jpg in Resources */,
-				574C446B16D6B7AC006317B8 /* back.jpg in Resources */,
 				574C446E16D6C291006317B8 /* nav_back.png in Resources */,
 				574C446F16D6C291006317B8 /* nav_back@2x.png in Resources */,
+				574C447116D6CB50006317B8 /* back.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
