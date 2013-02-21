@@ -9,15 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "HMSegmentedControl.h"
 
 
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet MKMapView *myMapView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedcontrol;
-@property (weak, nonatomic) IBOutlet UIButton *favMapButton;
+//@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedcontrol;
+//@property (weak, nonatomic) IBOutlet UIButton *favMapButton;
 - (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
-- (IBAction)favMapButtonDidTouch:(id)sender;
+//- (IBAction)favMapButtonDidTouch:(id)sender;
+
+@property (strong, nonatomic) HMSegmentedControl *mapSegCtl;
 
 @end

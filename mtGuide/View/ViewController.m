@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
+#import "SharedData.h"
 #import "DetailCell.h"
 #import "DetailViewController.h"
 #import "CustomAnnotation.h"
-#import "SharedData.h"
-#import "AppDelegate.h"
+#import "HMSegmentedControl.h"
 
 @interface ViewController ()
 @end
@@ -24,7 +25,6 @@
     NSString *_tappedAnnotation;
 @private
     NSString *_fkeyStr;
-//    NSMutableArray *_favArray;
 }
 
 
@@ -65,7 +65,31 @@
 
     
     // segmentedcontrolボタンの初期設定
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Trending", @"News", @"Library"]];
+    [segmentedControl setFrame:CGRectMake(0, 0, 320, 45)];
+    [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl];
+
     _segmentedcontrol.selectedSegmentIndex = 0;
+    
+    
+    // MapView上のボタン設置
+    _mapSegCtl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"All", @"Favorite", @"Visit"]];
+//    [_mapSegCtl setIndexChangeBlock:^(NSInteger index) {
+//        NSLog(@"Selected index %i (via block)", index);
+//    }];
+    [_mapSegCtl setSelectionIndicatorHeight:4.0f];
+    [_mapSegCtl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [_mapSegCtl setTextColor:[UIColor whiteColor]];
+    [_mapSegCtl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
+    [_mapSegCtl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
+    [_mapSegCtl setSelectedSegmentIndex:0];
+    [_mapSegCtl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    [_mapSegCtl setCenter:CGPointMake(_myMapView.bounds.size.width / 2, _myMapView.bounds.size.height - 60)];
+    [_mapSegCtl addTarget: self
+                   action: @selector(segmentDidChange:)
+         forControlEvents:UIControlEventValueChanged];
+    [self.myMapView addSubview:_mapSegCtl];
 
 }
 
@@ -151,7 +175,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
 //　-----------------------
-//　segmentedcontrolボタンの動作設定
+//　上部segmentedcontrolボタンの動作設定
 //　-----------------------
 
 - (IBAction)segmentedValueChanged:(UISegmentedControl *)sender {
@@ -191,6 +215,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             double maxLng = -9999.0;
             double lat, lng;
 
+            _myMapView.showsUserLocation = NO;
+
             for (id<MKAnnotation> annotation in _myMapView.annotations){
                 lat = annotation.coordinate.latitude;
                 lng = annotation.coordinate.longitude;
@@ -214,26 +240,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
             MKCoordinateRegion cr = _myMapView.region;
             cr.center = co;
-            cr.span.latitudeDelta = maxLat - minLat + 0.5;
-            cr.span.longitudeDelta = maxLng - minLng + 0.5;
+            cr.span.latitudeDelta = maxLat - minLat + 1.0;
+            cr.span.longitudeDelta = maxLng - minLng + 1.0;
             
-            [_myMapView setRegion:cr animated:YES];
+            [_myMapView setRegion:cr];
         }
-        
-            // favボタンデザインの設定
-            [_favMapButton setImage:[UIImage imageNamed:@"icon-heart.png"] forState:UIControlStateNormal];
-            
-            UIEdgeInsets insets;
-            UIEdgeInsets conInsets;
-            insets.top = insets.bottom = 0;
-            insets.left =15;
-            insets.right = 5;
-            conInsets.right = 5;
-            conInsets.top = conInsets.bottom = conInsets.left = 0;
-            _favMapButton.titleLabel.numberOfLines = 0;
-            _favMapButton.titleEdgeInsets = insets;
-            _favMapButton.contentEdgeInsets = conInsets;
-            
         break;
 
     default:
@@ -241,52 +252,123 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-
 //　-----------------------
-//　favMapButtonをタップしたときのアクション
+//　Map下部segmentedcontrolボタンをタップしたときのアクション
 //　-----------------------
 
-- (IBAction)favMapButtonDidTouch:(id)sender {
-    
-    // NSUserDefaultsからすべてのデータを取り出す
-    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-    // お気に入り登録した山を格納する配列を生成
-    NSMutableArray *favArray = [[NSMutableArray alloc] init];
+- (void) segmentDidChange:(id)sender {
+// タップされたセルによって分岐させる
+    switch (_mapSegCtl.selectedSegmentIndex) {
+            
+    //　-----------------------
+    //　Allボタンタップ時
+    //　-----------------------
+        case 0: {
+            //緯度・経度の取り出しと全体地図にピン表示
+            [_myMapView removeAnnotations: _myMapView.annotations];
+            
+            for(int i = 0; i < [_dataArray count]; i++){
+                NSMutableArray *annotations = [[NSMutableArray alloc] init];
+                CustomAnnotation *myAnnotation = [[CustomAnnotation alloc] init];
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = [[[_dataArray objectAtIndex:i] objectForKey:@"mtlatitude"] doubleValue];
+                coordinate.longitude = [[[_dataArray objectAtIndex:i] objectForKey:@"mtlongitude"] doubleValue];
+                myAnnotation.coordinate = coordinate;
+                myAnnotation.annotationTitle = [[_dataArray objectAtIndex:i] objectForKey:@"name"];
+                myAnnotation.annotationSubtitle = [[_dataArray objectAtIndex:i] objectForKey:@"yomi"];
+                [_myMapView addAnnotation:myAnnotation];
+                [annotations addObject:myAnnotation];
+            }
 
-    // データベースからFAVかつYESの要素だけを抽出し、配列に登録
-    for (id key in dic) {
-        NSMutableString *keyName = [NSMutableString stringWithString:key];
-        if ([key rangeOfString:@"KEY_FAV_"].location != NSNotFound && [[dic objectForKey:key] boolValue] == 1 ) {
-            [keyName deleteCharactersInRange: NSMakeRange(0, 8)];
-            [favArray addObject:keyName];
         }
+            break;
+            
+    //　-----------------------
+    //　Favorite表示ボタンタップ時
+    //　-----------------------
+        case 1: {
+            // NSUserDefaultsからすべてのデータを取り出す
+            NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+            // お気に入り登録した山を格納する配列を生成
+            NSMutableArray *favArray = [[NSMutableArray alloc] init];
+            
+            // データベースからFAVかつYESの要素だけを抽出し、配列に登録
+            for (id key in dic) {
+                NSMutableString *keyName = [NSMutableString stringWithString:key];
+                if ([key rangeOfString:@"KEY_FAV_"].location != NSNotFound && [[dic objectForKey:key] boolValue] == 1 ) {
+                    [keyName deleteCharactersInRange: NSMakeRange(0, 8)];
+                    [favArray addObject:keyName];
+                }
+            }
+            
+            //お気に入り登録した山の配列から各要素を取り出し、緯度・経度の取り出しと全体地図にピン表示
+            [_myMapView removeAnnotations: _myMapView.annotations];
+            
+            for(int i = 0; i < [favArray count]; i++){
+                NSMutableArray *favAnnotations = [[NSMutableArray alloc] init];
+                CustomAnnotation *myFavAnnotation = [[CustomAnnotation alloc] init];
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
+                                        objectForKey:@"mtlatitude"] doubleValue];
+                coordinate.longitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
+                                         objectForKey:@"mtlongitude"] doubleValue];
+                
+                myFavAnnotation.coordinate = coordinate;
+                myFavAnnotation.annotationTitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"name"];
+                myFavAnnotation.annotationSubtitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"yomi"];
+                [_myMapView addAnnotation:myFavAnnotation];
+                [favAnnotations addObject:myFavAnnotation];
+            }            
+        }
+            break;
+            
+    //　-----------------------
+    //　Visit表示ボタンタップ時
+    //　-----------------------
+        case 2: {
+            // NSUserDefaultsからすべてのデータを取り出す
+            NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+            // お気に入り登録した山を格納する配列を生成
+            NSMutableArray *hikeArray = [[NSMutableArray alloc] init];
+            
+            // データベースからFAVかつYESの要素だけを抽出し、配列に登録
+            for (id key in dic) {
+                NSMutableString *keyName = [NSMutableString stringWithString:key];
+                if ([key rangeOfString:@"KEY_HIKE_"].location != NSNotFound && [[dic objectForKey:key] boolValue] == 1 ) {
+                    [keyName deleteCharactersInRange: NSMakeRange(0, 9)];
+                    [hikeArray addObject:keyName];
+                }
+            }
+            
+            //お気に入り登録した山の配列から各要素を取り出し、緯度・経度の取り出しと全体地図にピン表示
+            [_myMapView removeAnnotations: _myMapView.annotations];
+            for(int i = 0; i < [hikeArray count]; i++){
+                NSMutableArray *hikeAnnotations = [[NSMutableArray alloc] init];
+                CustomAnnotation *myHikeAnnotation = [[CustomAnnotation alloc] init];
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[hikeArray objectAtIndex:i]]]
+                                        objectForKey:@"mtlatitude"] doubleValue];
+                coordinate.longitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[hikeArray objectAtIndex:i]]]
+                                         objectForKey:@"mtlongitude"] doubleValue];
+                
+                myHikeAnnotation.coordinate = coordinate;
+                myHikeAnnotation.annotationTitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[hikeArray objectAtIndex:i]]] objectForKey:@"name"];
+                myHikeAnnotation.annotationSubtitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[hikeArray objectAtIndex:i]]] objectForKey:@"yomi"];
+                [_myMapView addAnnotation:myHikeAnnotation];
+                [hikeAnnotations addObject:myHikeAnnotation];
+            }
     }
-        
-    //お気に入り登録した山の配列から各要素を取り出し、緯度・経度の取り出しと全体地図にピン表示
-    [_myMapView removeAnnotations: _myMapView.annotations];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    for(int i = 0; i < [favArray count]; i++){
-        NSMutableArray *favAnnotations = [[NSMutableArray alloc] init];
-        CustomAnnotation *myFavAnnotation = [[CustomAnnotation alloc] init];
-        CLLocationCoordinate2D coordinate;
-        coordinate.latitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
- objectForKey:@"mtlatitude"] doubleValue];
-        coordinate.longitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
-                                objectForKey:@"mtlongitude"] doubleValue];
-        
-        myFavAnnotation.coordinate = coordinate;
-        myFavAnnotation.annotationTitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"name"];
-        myFavAnnotation.annotationSubtitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"yomi"];
-        [_myMapView addAnnotation:myFavAnnotation];
-        [favAnnotations addObject:myFavAnnotation];
+            break;
+
+        default:
+            break;
     }
 }
-
 
 // アノテーションをタップしたときのアクション
 -(void)mapView:(MKMapView *)mapView
 annotationView:(MKAnnotationView *)view
-calloutAccessoryControlTapped:(UIControl *)control{
+calloutAccessoryControlTapped:(UIControl *)control {
     _tappedAnnotation = view.annotation.title;
     [self performSegueWithIdentifier:@"detailSegueFromMap" sender:self];
 }

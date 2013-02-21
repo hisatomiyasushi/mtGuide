@@ -17,7 +17,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-return YES;
+    UIImage *image = [UIImage imageNamed:@"nav_back.png"];
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.188 green:0.188 blue:0.188 alpha:1.0]];
+    
+    return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
