@@ -11,9 +11,9 @@
 
 @interface InfoViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *infoTableView;
 @property (strong, nonatomic) id infoItem;
 @property (nonatomic, retain) NSString *detailStr;
-
 @property (nonatomic, retain) NSDictionary *mtItem;
 
 

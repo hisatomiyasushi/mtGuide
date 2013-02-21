@@ -14,13 +14,6 @@
 #import "AppDelegate.h"
 
 @interface ViewController ()
-<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
-@property (weak, nonatomic) IBOutlet MKMapView *myMapView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedcontrol;
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
-
 @end
 
 @implementation ViewController
@@ -29,25 +22,38 @@
     NSArray *_dataArray;
     NSDictionary *_mydataSource;
     NSString *_tappedAnnotation;
+@private
+    NSString *_fkeyStr;
+//    NSMutableArray *_favArray;
 }
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 
-    //山情報を取り出し
-    SharedData *cc = [[SharedData alloc] init]; // クラス呼び出し
-    [cc SetMountainsMethod]; // メソッド呼び出し
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate]; // デリゲート呼び出し
-    _myregKeys = appDelegate.myregKeys; // 代入
-    _dataArray = appDelegate.dataArray; // 代入
-    _mydataSource = appDelegate.mydataSource; // 代入
+    //　-----------------------
+    //　山データの取り出しとページ整形
+    //　-----------------------
 
-    [_myMapView setDelegate:self];
+    // SharedData内のデータをAppDelegateを介して取得
+    // クラス呼び出し
+    SharedData *cc = [[SharedData alloc] init];
+    // メソッド呼び出し
+    [cc SetMountainsMethod];
+    // デリゲート呼び出し
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    // 地域名リストを代入
+    _myregKeys = appDelegate.myregKeys;
+    // 個々の山の配列代入
+    _dataArray = appDelegate.dataArray;
+    // 地域別の山配列辞書代入
+    _mydataSource = appDelegate.mydataSource;
 
+
+    // ページタイトル設定
     self.title = @"日本百名山";
+    
+    [_myMapView setDelegate:self];
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
     
@@ -58,14 +64,17 @@
     self.myMapView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
     
-    //一覧リストと全体地図表示切り替えボタンの初期設定
+    // segmentedcontrolボタンの初期設定
     _segmentedcontrol.selectedSegmentIndex = 0;
 
 }
 
 
-//アノテーションビューが作られたときのデリゲート。addAnotationするときに呼ばれる
-- (void)mapView:(MKMapView*)mapView didAddAnnotationViews:(NSArray*)views{
+//　-----------------------
+//　addAnotation時のコールアウトボタン追加処理
+//　-----------------------
+
+- (void)mapView:(MKMapView*)mapView didAddAnnotationViews:(NSArray*)views {
     // アノテーションビューを取得する
     for (MKAnnotationView* annotationView in views) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -74,37 +83,29 @@
     }
 }
 
-- (void)viewDidUnload {
-    [super viewDidUnload]; // Release any retained subviews of the main view.
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 
 #pragma mark - Table View
 
-// tableview datasource delegate methods..
+//　-----------------------
+//　テーブル内容の設定
+//　-----------------------
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [_myregKeys count]; //セクション数（地域数）
+//セクション数（地域数）の設定
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [_myregKeys count];
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [_myregKeys objectAtIndex:section]; //セクション名（地域名）
+//セクション名（地域名）の設定
+-(NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+    return [_myregKeys objectAtIndex:section];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+//各セクションの項目数の設定
+-(NSInteger)tableView:(UITableView *)tableView
+numberOfRowsInSection:(NSInteger)section {
     id key = [_myregKeys objectAtIndex:section];
-    return [[_mydataSource objectForKey:key] count]; //各セクションの項目数
+    return [[_mydataSource objectForKey:key] count];
 }
 
 //セクションの表示カスタマイズのはず
@@ -119,10 +120,9 @@
 //    return v;
 //}
 
-//各セルの表示内容設定
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
+//各セルの表示内容の設定
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentififer = @"Cell";
     DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
     if (!cell) {
@@ -143,23 +143,30 @@
     return cell;
 }
 
-//セルタップデリゲートメソッド
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES]; // 選択状態の解除
+// セルをタップした後に選択状態をすぐ解除する
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//一覧リストと全体地図表示切り替えボタンの動作設定
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender
-{
+
+//　-----------------------
+//　segmentedcontrolボタンの動作設定
+//　-----------------------
+
+- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender {
+
+    // タップされたセルによって分岐させる
     switch (sender.selectedSegmentIndex) {
+        
+        // リスト表示ボタンタップ時
         case 0:
             self.myMapView.hidden = YES; // マップ非表示
             self.myTableView.hidden = NO; // リスト表示
             break;
-
-        case 1:{
             
+        // マップ表示ボタンタップ時
+        case 1:{
             self.myMapView.hidden = NO; // マップ表示
             self.myTableView.hidden = YES; // リスト非表示
 
@@ -202,8 +209,8 @@
             }
      
             CLLocationCoordinate2D co;
-            co.latitude = (maxLat + minLat) / 2.0; // 緯度
-            co.longitude = (maxLng + minLng) / 2.0; // 経度
+            co.latitude = (maxLat + minLat) / 2.0;
+            co.longitude = (maxLng + minLng) / 2.0;
 
             MKCoordinateRegion cr = _myMapView.region;
             cr.center = co;
@@ -213,6 +220,20 @@
             [_myMapView setRegion:cr animated:YES];
         }
         
+            // favボタンデザインの設定
+            [_favMapButton setImage:[UIImage imageNamed:@"icon-heart.png"] forState:UIControlStateNormal];
+            
+            UIEdgeInsets insets;
+            UIEdgeInsets conInsets;
+            insets.top = insets.bottom = 0;
+            insets.left =15;
+            insets.right = 5;
+            conInsets.right = 5;
+            conInsets.top = conInsets.bottom = conInsets.left = 0;
+            _favMapButton.titleLabel.numberOfLines = 0;
+            _favMapButton.titleEdgeInsets = insets;
+            _favMapButton.contentEdgeInsets = conInsets;
+            
         break;
 
     default:
@@ -221,16 +242,64 @@
 }
 
 
-//アノテーションをタップしたときのアクション
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+//　-----------------------
+//　favMapButtonをタップしたときのアクション
+//　-----------------------
+
+- (IBAction)favMapButtonDidTouch:(id)sender {
+    
+    // NSUserDefaultsからすべてのデータを取り出す
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+    // お気に入り登録した山を格納する配列を生成
+    NSMutableArray *favArray = [[NSMutableArray alloc] init];
+
+    // データベースからFAVかつYESの要素だけを抽出し、配列に登録
+    for (id key in dic) {
+        NSMutableString *keyName = [NSMutableString stringWithString:key];
+        if ([key rangeOfString:@"KEY_FAV_"].location != NSNotFound && [[dic objectForKey:key] boolValue] == 1 ) {
+            [keyName deleteCharactersInRange: NSMakeRange(0, 8)];
+            [favArray addObject:keyName];
+        }
+    }
+        
+    //お気に入り登録した山の配列から各要素を取り出し、緯度・経度の取り出しと全体地図にピン表示
+    [_myMapView removeAnnotations: _myMapView.annotations];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    for(int i = 0; i < [favArray count]; i++){
+        NSMutableArray *favAnnotations = [[NSMutableArray alloc] init];
+        CustomAnnotation *myFavAnnotation = [[CustomAnnotation alloc] init];
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
+ objectForKey:@"mtlatitude"] doubleValue];
+        coordinate.longitude = [[[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]]
+                                objectForKey:@"mtlongitude"] doubleValue];
+        
+        myFavAnnotation.coordinate = coordinate;
+        myFavAnnotation.annotationTitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"name"];
+        myFavAnnotation.annotationSubtitle = [[_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"id"] indexOfObject:[favArray objectAtIndex:i]]] objectForKey:@"yomi"];
+        [_myMapView addAnnotation:myFavAnnotation];
+        [favAnnotations addObject:myFavAnnotation];
+    }
+}
+
+
+// アノテーションをタップしたときのアクション
+-(void)mapView:(MKMapView *)mapView
+annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control{
     _tappedAnnotation = view.annotation.title;
     [self performSegueWithIdentifier:@"detailSegueFromMap" sender:self];
 }
 
 
-//詳細ビューに対応する文字データの値を書き込む
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+//　-----------------------
+//　画面遷移時に遷移先のビューで必要な対応する値をセットする
+//　-----------------------
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+
+    // リストから山詳細TOPビューへの遷移
     if ([[segue identifier] isEqualToString:@"detailSegue"]) {
         DetailViewController *viewController = [segue destinationViewController];
         NSInteger selectedsection = [[self.myTableView indexPathForSelectedRow] section];
@@ -239,11 +308,24 @@
         viewController.mtItem = [[_mydataSource objectForKey:key] objectAtIndex:selectedIndex];
                         
     }
+    // 全体MAPから山詳細TOPビューへの遷移
     else if ([[segue identifier] isEqualToString:@"detailSegueFromMap"]) {
         DetailViewController *viewController = [segue destinationViewController];
         viewController.mtItem = [_dataArray objectAtIndex:[[_dataArray valueForKeyPath:@"name"] indexOfObject: _tappedAnnotation]];
     }
 
+}
+
+
+//　-----------------------
+//　メモリ管理
+//　-----------------------
+
+- (void)viewDidUnload {
+    [super viewDidUnload]; }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 

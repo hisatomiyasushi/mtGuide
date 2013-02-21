@@ -7,7 +7,6 @@
 //
 
 #import "DetailCell.h"
-#import "ViewController.h"
 #import "DetailViewController.h"
 #import "InfoViewController.h"
 #import "CustomAnnotation.h"
@@ -17,28 +16,12 @@
 #import "WeatherSubViewController.h"
 #import "CheckSubViewController.h"
 #import "StatsSubViewController.h"
-#import "TileOverlay.h"
 #import "TileOverlayView.h"
 #import "URLLoader.h"
 #import "StatusXMLParser.h"
 
 
 @interface DetailViewController ()
-<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
-
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UITableView *detailTableView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
-
-@property (nonatomic, retain) TileOverlay *overlay;
-
-- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
-- (IBAction)mtButton:(id)sender;
-- (IBAction)weButton:(id)sender;
-- (IBAction)ckButton:(id)sender;
-- (IBAction)stButton:(id)sender;
-
-
 @end
 
 @implementation DetailViewController
@@ -46,7 +29,6 @@
     WeatherSubViewController *semiVC;
     CheckSubViewController *semiCheckVC;
     StatsSubViewController *semiStatsVC;
-
 }
 
 #pragma mark - Managing the detail item

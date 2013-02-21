@@ -25,17 +25,6 @@
 
 }
 
-
-
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,6 +34,7 @@
     UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
+    // ボタンデザインの設定
     UIEdgeInsets insets;
     insets.top = insets.bottom = insets.left = insets.right = 5;
 

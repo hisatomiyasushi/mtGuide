@@ -14,10 +14,6 @@
 
 
 @interface InfoViewController ()
-<UITableViewDataSource, UITableViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UITableView *infoTableView;
-
 @end
 
 @implementation InfoViewController

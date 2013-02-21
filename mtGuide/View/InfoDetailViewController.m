@@ -11,13 +11,8 @@
 #import "DetailViewController.h"
 #import "URLLoader.h"
 #import "StatusXMLParser.h"
-#import "NimbusAttributedLabel.h"
 
 @interface InfoDetailViewController ()
-<NSXMLParserDelegate, NIAttributedLabelDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextView *myTextView;
-
 @end
 
 @implementation InfoDetailViewController

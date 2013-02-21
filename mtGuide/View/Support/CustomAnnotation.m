@@ -8,31 +8,23 @@
 #import "CustomAnnotation.h"
 
 @implementation CustomAnnotation
-@synthesize coordinate,
-            annotationTitle,
-            annotationSubtitle;
 
-- (NSString *)title {
-    return annotationTitle;
-}
-
-- (NSString *)subtitle {
-    return annotationSubtitle;
-}
-
-- (id)initWithLocationCoordinate:(CLLocationCoordinate2D) _coordinate
-                           title:(NSString *)_annotationTitle subtitle:(NSString *)_annotationSubtitle {
-    coordinate = _coordinate;
-    self.annotationTitle = _annotationTitle;
-    self.annotationSubtitle = _annotationSubtitle;
+- (id)initWithLocationCoordinate:(CLLocationCoordinate2D) coord
+                           title:(NSString *)annTitle
+                        subtitle:(NSString *)annSubtitle {
+    _coordinate = coord;
+    _annotationTitle = annTitle;
+    _annotationSubtitle = annSubtitle;
         
     return self;
 }
 
+- (NSString *)title {
+    return _annotationTitle;
+}
 
-
-
-
-
+- (NSString *)subtitle {
+    return _annotationSubtitle;
+}
 
 @end

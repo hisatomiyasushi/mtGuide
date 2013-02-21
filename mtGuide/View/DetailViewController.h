@@ -15,7 +15,8 @@
 @class CheckSubViewController;
 @class StatsSubViewController;
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+
 
 @property (strong, nonatomic) id detailItem;
 @property (nonatomic, retain) NSDictionary *mtItem;
@@ -25,5 +26,15 @@
 @property(retain, nonatomic) NSArray *statuses;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
+@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITableView *detailTableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
+@property (nonatomic, retain) TileOverlay *overlay;
+
+- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
+- (IBAction)mtButton:(id)sender;
+- (IBAction)weButton:(id)sender;
+- (IBAction)ckButton:(id)sender;
+- (IBAction)stButton:(id)sender;
 
 @end
