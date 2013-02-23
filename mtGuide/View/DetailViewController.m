@@ -70,7 +70,7 @@
     [self.view addSubview: _scrollView];
     
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
@@ -176,7 +176,7 @@
 
     //天気情報ビューの初期化
     UIStoryboard *storyboard = self.storyboard;
-    semiVC = [storyboard instantiateViewControllerWithIdentifier:@"WeatherSubViewController"];    
+    semiVC = [storyboard instantiateViewControllerWithIdentifier:@"WeatherSubViewController"];
     
     //Checkビューの初期化
     semiCheckVC = [storyboard instantiateViewControllerWithIdentifier:@"CheckSubViewController"];

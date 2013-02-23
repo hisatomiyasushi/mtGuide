@@ -17,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    UIImage *image = [UIImage imageNamed:@"nav_back.png"];
+    UIImage *image = [UIImage imageNamed:@"navBar-bg.png"];
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.188 green:0.188 blue:0.188 alpha:1.0]];
     

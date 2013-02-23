@@ -58,7 +58,7 @@
     self.myTableView.delegate = self;
     
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.myTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.myMapView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
@@ -160,7 +160,7 @@ numberOfRowsInSection:(NSInteger)section {
     //セクション名のセクションにあるrow番目のデータを取り出す
     NSString *text = [[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"name"];
     NSString *subtext = [[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"yomi"];
-    NSString *thumbtext = [NSString stringWithFormat:@"%@_thumb.jpg",[[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"id"]];
+    NSString *thumbtext = [NSString stringWithFormat:@"%@_thumb.png",[[[_mydataSource objectForKey:key] objectAtIndex:indexPath.row] objectForKey:@"id"]];
     cell.myLabel.text = text;
     cell.mySubLabel.text = subtext;
     cell.myImageView.image = [UIImage imageNamed: thumbtext];

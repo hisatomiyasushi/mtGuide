@@ -54,7 +54,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     
     _weatherTitleLabel.text = [NSString stringWithFormat:@"%@付近の天気予報",_mtName];

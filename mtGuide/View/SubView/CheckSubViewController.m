@@ -31,7 +31,7 @@
 	// Do any additional setup after loading the view.
 
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
     // ボタンデザインの設定

@@ -48,7 +48,7 @@
     _myTextView.editable = NO;
     
     // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"back.jpg"];
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     self.myTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
