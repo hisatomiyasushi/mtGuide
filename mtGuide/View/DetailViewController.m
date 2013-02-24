@@ -136,7 +136,7 @@
     // スクロールビューの初期化とコンテンツビューの設定
     scrollView = [[UIScrollView alloc]initWithFrame: self.view.frame];
     CGSize s = scrollView.frame.size;
-    CGRect contentRect = CGRectMake(0, 0, s.width, 760);
+    CGRect contentRect = CGRectMake(0, 34, s.width, 760);
     UIView *contentView = [[UIView alloc] initWithFrame:contentRect];
     
     
@@ -228,6 +228,13 @@
     self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     [contentView addSubview: _detailTableView];
     
+    // コンテンツビューにのるpartitionの表示
+    UIImage *partitionImage = [UIImage imageNamed:@"partition.png"];
+    UIImageView *partition = [[UIImageView alloc] initWithImage:partitionImage];
+    partition.opaque = NO;
+    partition.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    [partition setFrame:CGRectMake(0, 466, 320, 15)];
+    [contentView addSubview:partition];
 
     // コンテンツビューにのるTwitterマークの表示
     UIImage *twImage = [UIImage imageNamed:@"tw.png"];
