@@ -68,9 +68,9 @@
     HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"List", @"Map"]];
     [segmentedControl setFrame:CGRectMake(0, 0, 320, 34)];
     [segmentedControl setSelectionIndicatorHeight:4.0f];
-    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.04 green:0.15 blue:0.19 alpha:1]];
     [segmentedControl setTextColor:[UIColor whiteColor]];
-    [segmentedControl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
+    [segmentedControl setSelectionIndicatorColor:[UIColor whiteColor]];
     [segmentedControl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
     [segmentedControl setSelectedSegmentIndex:0];
     [segmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
@@ -80,9 +80,9 @@
     // MapView上のボタン設置
     _mapSegCtl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"All", @"Favorite", @"Visit"]];
     [_mapSegCtl setSelectionIndicatorHeight:4.0f];
-    [_mapSegCtl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
+    [_mapSegCtl setBackgroundColor:[UIColor colorWithRed:0.04 green:0.15 blue:0.19 alpha:1]];
     [_mapSegCtl setTextColor:[UIColor whiteColor]];
-    [_mapSegCtl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
+    [_mapSegCtl setSelectionIndicatorColor:[UIColor whiteColor]];
     [_mapSegCtl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
     [_mapSegCtl setSelectedSegmentIndex:0];
     [_mapSegCtl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];

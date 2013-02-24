@@ -18,23 +18,24 @@
 @interface DetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 
-@property (strong, nonatomic) id detailItem;
+//@property (strong, nonatomic) id detailItem;
 @property (nonatomic, retain) NSDictionary *mtItem;
 @property (nonatomic, retain) NSArray *detailData;
-@property (weak, nonatomic) IBOutlet UILabel *twitterLabel;
-@property (weak, nonatomic) IBOutlet UITextView *twitterTextView;
+//@property (weak, nonatomic) IBOutlet UILabel *twitterLabel;
+//@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
+//@property (weak, nonatomic) IBOutlet UITextView *twitterTextView;
 @property(retain, nonatomic) NSArray *statuses;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+//@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+//@property (weak, nonatomic) IBOutlet MKMapView *detailMapView;
+//@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 //@property (weak, nonatomic) IBOutlet UISegmentedControl *detailsegmentedcontrol;
 @property (nonatomic, retain) TileOverlay *overlay;
 
 //- (IBAction)segmentedValueChanged:(UISegmentedControl *)sender;
-- (IBAction)mtButton:(id)sender;
-- (IBAction)weButton:(id)sender;
-- (IBAction)ckButton:(id)sender;
-- (IBAction)stButton:(id)sender;
+//- (IBAction)mtButton:(id)sender;
+//- (IBAction)weButton:(id)sender;
+//- (IBAction)ckButton:(id)sender;
+//- (IBAction)stButton:(id)sender;
 
 @end

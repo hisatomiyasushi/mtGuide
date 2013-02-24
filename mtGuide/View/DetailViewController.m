@@ -30,29 +30,14 @@
     WeatherSubViewController *semiVC;
     CheckSubViewController *semiCheckVC;
     StatsSubViewController *semiStatsVC;
+    UILabel *twitterLabel;
+    UITextView *twitterTextView;
+    UILabel *twitterTimeLabel;
+    UIScrollView *scrollView;
+    MKMapView *detailMapView;
 }
 
 #pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-    
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
-}
-
 
 //　-----------------------
 //　文字データ・その他を読み込み、表示する
@@ -60,70 +45,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_detailMapView setDelegate:self];
-    [self configureView];
     
-    //画面縦幅（スクロールビュー）の設定
-    self.view.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 800.0);
-    _scrollView.delegate = self;
-    [self.view addSubview: _scrollView];
+    //　-----------------------
+    //　マップビューを設定する
+    //　-----------------------
     
-    // 背景に画像をセットする
-    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
-    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    self.twitterTextView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    
-    //Twitterテキスト表示部分の初期化と編集不可に設定
-    _twitterTextView.text = @"";
-    _twitterTextView.editable = NO;
-
-    //Twitterタイムライン読み込み
-    [self loadTimeLineByUserName:@"NorthernAlps"];
-
-    // 上部segmentedcontrolボタンの初期設定
-    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Guide", @"Map"]];
-    [segmentedControl setFrame:CGRectMake(0, 0, 320, 34)];
-    [segmentedControl setSelectionIndicatorHeight:4.0f];
-    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.1 green:0.4 blue:0.8 alpha:1]];
-    [segmentedControl setTextColor:[UIColor whiteColor]];
-    [segmentedControl setSelectionIndicatorColor:[UIColor colorWithRed:0.5 green:0.8 blue:1 alpha:1]];
-    [segmentedControl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
-    [segmentedControl setSelectedSegmentIndex:0];
-    [segmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
-    [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segmentedControl];
-
-    // タイトルバー、その他テキスト表示部分の設定
-    NSString *mtName = [_mtItem objectForKey:@"name"];
-    NSString *mtIntro = [_mtItem objectForKey:@"introduction"];
-    self.title = mtName;
-    self.detailDescriptionLabel.text = mtIntro;
-    self.detailTableView.dataSource = self;
-    self.detailTableView.delegate = self;
-    
-    _detailData = [[NSArray alloc]initWithObjects:
-                  @"山の基本情報",
-                  @"登山ルート",
-                //@"自然・遊び",
-                  @"周辺の温泉",
-                  @"キャンプ場・山小屋", nil];
+    // マップビューの初期化と表示設定
+    detailMapView = [[MKMapView alloc] init];
+    detailMapView.frame = 	CGRectMake(0,0,320,480);
+    detailMapView.delegate = self;
+    detailMapView.mapType = MKMapTypeHybrid;
+    detailMapView.showsUserLocation = YES;
+    [self.view addSubview:detailMapView];    
     
     // 国土地理院地図のオーバーレイ初期設定
-    MKMapRect visibleRect = [_detailMapView mapRectThatFits:_overlay.boundingMapRect];
-    _detailMapView.visibleMapRect = visibleRect;
+    MKMapRect visibleRect = [detailMapView mapRectThatFits:_overlay.boundingMapRect];
+    detailMapView.visibleMapRect = visibleRect;
     visibleRect.size.width /= 2;
     visibleRect.size.height /= 2;
     visibleRect.origin.x += visibleRect.size.width / 2;
     visibleRect.origin.y += visibleRect.size.height / 2;
-    _detailMapView.visibleMapRect = visibleRect;
+    detailMapView.visibleMapRect = visibleRect;
     
     //詳細地図での緯度・経度の取り出しと全体地図にピン表示
+    NSString *mtName = [_mtItem objectForKey:@"name"];
+    NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
     NSString *mtlatStr = [_mtItem objectForKey:@"mtlatitude"];
     NSString *mtlngStr = [_mtItem objectForKey:@"mtlongitude"];
-    NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
     
     NSMutableArray *annotations=[[NSMutableArray alloc] init];
     CustomAnnotation *myAnnotation = [[CustomAnnotation alloc] init];
@@ -133,7 +81,7 @@
     myAnnotation.coordinate = coordinate;
     myAnnotation.annotationTitle = mtName;
     myAnnotation.annotationSubtitle = mtYomi;
-    [_detailMapView addAnnotation:myAnnotation];
+    [detailMapView addAnnotation:myAnnotation];
     [annotations addObject:myAnnotation];
 
     
@@ -144,7 +92,7 @@
     double maxLng = -9999.0;
     double lat, lng;
     
-    for (id<MKAnnotation> annotation in _detailMapView.annotations){
+    for (id<MKAnnotation> annotation in detailMapView.annotations){
         lat = annotation.coordinate.latitude;
         lng = annotation.coordinate.longitude;
         
@@ -167,13 +115,213 @@
     co.longitude = (maxLng + minLng) / 2.0; // 経度
     
     
-    MKCoordinateRegion cr = _detailMapView.region;
+    MKCoordinateRegion cr = detailMapView.region;
     cr.center = co;
     cr.span.latitudeDelta = maxLat - minLat + 0.1;
     cr.span.longitudeDelta = maxLng - minLng + 0.1;
     ;
-    [_detailMapView setRegion:cr];
+    [detailMapView setRegion:cr];
+    
+    
+    
+    //　-----------------------
+    //　スクロールビューを設定する
+    //　-----------------------
 
+    // ベースのビュー設定
+    self.view.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    
+    // スクロールビューの初期化とコンテンツビューの設定
+    scrollView = [[UIScrollView alloc]initWithFrame: self.view.frame];
+    CGSize s = scrollView.frame.size;
+    CGRect contentRect = CGRectMake(0, 0, s.width, 760);
+    UIView *contentView = [[UIView alloc] initWithFrame:contentRect];
+    
+    
+    // コンテンツビューにのるメインビジュアルの表示
+    UIImageView *mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 240)];
+    NSString *mtId = [_mtItem objectForKey:@"id"];
+    NSString *mainVisualFileName = [NSString stringWithFormat:@"%@.png",mtId];
+    mainImageView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    mainImageView.image = [UIImage imageNamed:mainVisualFileName];
+    [contentView addSubview: mainImageView];
+    
+    // メインビジュアルにのるイントロテキストの表示
+    NSString *mtIntro = [_mtItem objectForKey:@"introduction"];
+    UILabel *detailDescriptionLabel = [[UILabel alloc]init];
+    detailDescriptionLabel.text = mtIntro;
+    detailDescriptionLabel.textAlignment = NSTextAlignmentCenter;
+    detailDescriptionLabel.font = [UIFont systemFontOfSize:14.0];
+    detailDescriptionLabel.textColor = [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1];
+    detailDescriptionLabel.Frame = CGRectMake(0, 180, 290, 40);
+    detailDescriptionLabel.adjustsFontSizeToFitWidth = YES;
+    UIImage *intorBgImage = [UIImage imageNamed:@"intro-bg.png"];
+    detailDescriptionLabel.backgroundColor=[UIColor colorWithPatternImage: intorBgImage];
+    [mainImageView addSubview:detailDescriptionLabel];
+    
+    // コンテンツビューにのるStatsボタン設定
+    UIButton *stButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    stButton.frame = CGRectMake(0, 240, 60, 44);
+    [stButton setTitle:@"Stats"forState:UIControlStateNormal];
+    stButton.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16.0f];
+    [stButton setTitleColor: [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1] forState:UIControlStateNormal];
+    [stButton setTitleColor: [UIColor colorWithRed:0.80 green:0.37 blue:0.71 alpha:1] forState:UIControlStateHighlighted];
+    UIImage *statsImage = [UIImage imageNamed:@"icon-stats-s.png"];
+    [stButton setImage:statsImage forState:UIControlStateNormal];
+    UIImage *statsHImage = [UIImage imageNamed:@"icon-stats-s-h.png"];
+    [stButton setImage:statsHImage forState:UIControlStateHighlighted];
+    [stButton addTarget:self action:@selector(stButton:)
+       forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview: stButton];
+    
+    // コンテンツビューにのるWeatherボタン設定
+    UIButton *weButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    weButton.frame = CGRectMake(60, 240, 100, 44);
+    [weButton setTitle:@"Weather"forState:UIControlStateNormal];
+    weButton.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16.0f];
+    [weButton setTitleColor: [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1] forState:UIControlStateNormal];
+    [weButton setTitleColor: [UIColor colorWithRed:0.80 green:0.37 blue:0.71 alpha:1] forState:UIControlStateHighlighted];
+    UIImage *weatherImage = [UIImage imageNamed:@"icon-weather-s.png"];
+    [weButton setImage:weatherImage forState:UIControlStateNormal];
+    UIImage *weatherHImage = [UIImage imageNamed:@"icon-weather-s-h.png"];
+    [weButton setImage:weatherHImage forState:UIControlStateHighlighted];
+    [weButton addTarget:self action:@selector(weButton:)
+       forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview: weButton];
+    
+    // コンテンツビューにのるPhotoボタン設定
+    UIButton *mtButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    mtButton.frame = CGRectMake(160, 240, 80, 44);
+    [mtButton setTitle:@"Photo"forState:UIControlStateNormal];
+    mtButton.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16.0f];
+    [mtButton setTitleColor: [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1] forState:UIControlStateNormal];
+    [mtButton setTitleColor: [UIColor colorWithRed:0.80 green:0.37 blue:0.71 alpha:1] forState:UIControlStateHighlighted];
+    UIImage *photoImage = [UIImage imageNamed:@"icon-photo.png"];
+    [mtButton setImage:photoImage forState:UIControlStateNormal];
+    UIImage *photoHImage = [UIImage imageNamed:@"icon-photo-h.png"];
+    [mtButton setImage:photoHImage forState:UIControlStateHighlighted];
+    [mtButton addTarget:self action:@selector(mtButton:)
+       forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview: mtButton];
+    
+    // コンテンツビューにのるCheckボタン設定
+    UIButton *ckButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    ckButton.frame = CGRectMake(240, 240, 80, 44);
+    [ckButton setTitle:@"Check"forState:UIControlStateNormal];
+    ckButton.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16.0f];
+    [ckButton setTitleColor: [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1] forState:UIControlStateNormal];
+    [ckButton setTitleColor: [UIColor colorWithRed:0.80 green:0.37 blue:0.71 alpha:1] forState:UIControlStateHighlighted];
+    UIImage *checkImage = [UIImage imageNamed:@"icon-check-s.png"];
+    [ckButton setImage:checkImage forState:UIControlStateNormal];
+    UIImage *checkHImage = [UIImage imageNamed:@"icon-check-s-h.png"];
+    [ckButton setImage:checkHImage forState:UIControlStateHighlighted];
+    [ckButton addTarget:self action:@selector(ckButton:)
+       forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview: ckButton];
+    
+    // コンテンツビューにのるテーブルビューの設置
+    self.detailTableView.frame = CGRectMake(0, 290, 320, 200);
+    self.detailTableView.dataSource = self;
+    self.detailTableView.delegate = self;
+    self.detailTableView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    [contentView addSubview: _detailTableView];
+    
+
+    // コンテンツビューにのるTwitterマークの表示
+    UIImage *twImage = [UIImage imageNamed:@"tw.png"];
+    UIImageView *tw = [[UIImageView alloc] initWithImage:twImage];
+    tw.opaque = NO;
+    tw.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    [tw setFrame:CGRectMake(25, 500, 43, 31)];
+    [contentView addSubview:tw];
+    
+    // コンテンツビューにのるTwitterアカウント名の表示
+    twitterLabel = [[UILabel alloc]init];
+    twitterLabel.textAlignment = NSTextAlignmentLeft;
+    twitterLabel.font = [UIFont systemFontOfSize:16.0];
+    twitterLabel.textColor = [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1];
+    twitterLabel.Frame = CGRectMake(80, 500, 240, 30);
+    twitterLabel.adjustsFontSizeToFitWidth = YES;
+    twitterLabel.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    [contentView addSubview: twitterLabel];
+ 
+    // コンテンツビューにのるTwitterつぶやき背景ビューの表示
+    UIView *twitterTextViewBg = [[UIView alloc]init];
+    twitterTextViewBg.Frame = CGRectMake(15, 530, 291, 138);
+    UIImage *twBg = [UIImage imageNamed:@"bubble.png"];
+    twitterTextViewBg.backgroundColor=[UIColor colorWithPatternImage: twBg];
+    [contentView addSubview: twitterTextViewBg];
+    
+    
+    // コンテンツビューにのるTwitterつぶやきの表示
+    twitterTextView = [[UITextView alloc]init];
+    twitterTextView.Frame = CGRectMake(15, 540, 291, 138);
+    twitterTextView.opaque = NO;
+    twitterTextView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    twitterTextView.textAlignment = NSTextAlignmentLeft;
+    twitterTextView.font = [UIFont systemFontOfSize:12.0];
+    twitterTextView.textColor = [UIColor colorWithRed:0.19 green:0.09 blue:0.17 alpha:1];
+    // Twitterテキスト表示部分の初期化と編集不可に設定
+    twitterTextView.text = @"";
+    twitterTextView.editable = NO;
+    [contentView addSubview: twitterTextView];
+    
+    // コンテンツビューにのるつぶやき時間の表示
+    twitterTimeLabel = [[UILabel alloc]init];
+    twitterTimeLabel.textAlignment = NSTextAlignmentRight;
+    twitterTimeLabel.font = [UIFont systemFontOfSize:12.0];
+    twitterTimeLabel.textColor = [UIColor grayColor];
+    twitterTimeLabel.Frame = CGRectMake(230, 635, 65, 30);
+    twitterTimeLabel.adjustsFontSizeToFitWidth = YES;
+    twitterTimeLabel.opaque = NO;
+    twitterTimeLabel.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    [contentView addSubview: twitterTimeLabel];
+    
+    // コンテンツビューを配置
+    [scrollView addSubview: contentView];
+    
+    
+    
+    // スクロールView上のコンテンツViewのサイズを指定します。
+    scrollView.contentSize = contentView.frame.size;
+    // 初期表示するコンテンツViewの場所を指定します。
+    scrollView.contentOffset = CGPointMake(0, 0);
+    scrollView.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    scrollView.delegate = self;
+    scrollView.userInteractionEnabled = YES;
+
+    // スクロールビューを配置
+    [self.view addSubview: scrollView];
+
+    
+    //Twitterタイムライン読み込み
+    [self loadTimeLineByUserName:@"NorthernAlps"];
+    
+    // 上部segmentedcontrolボタンの初期設定
+    HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"Guide", @"Map"]];
+    [segmentedControl setFrame:CGRectMake(0, 0, 320, 34)];
+    [segmentedControl setSelectionIndicatorHeight:4.0f];
+    [segmentedControl setBackgroundColor:[UIColor colorWithRed:0.04 green:0.15 blue:0.19 alpha:1]];
+    [segmentedControl setTextColor:[UIColor whiteColor]];
+    [segmentedControl setSelectionIndicatorColor:[UIColor whiteColor]];
+    [segmentedControl setSelectionIndicatorStyle:HMSelectionIndicatorFillsSegment];
+    [segmentedControl setSelectedSegmentIndex:0];
+    [segmentedControl setSegmentEdgeInset:UIEdgeInsetsMake(0, 20, 0, 20)];
+    [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl];
+    
+    // タイトルバー、その他テキスト表示部分の設定
+    self.title = mtName;
+    
+    _detailData = [[NSArray alloc]initWithObjects:
+                   @"山の基本情報",
+                   @"登山ルート",
+                   //@"自然・遊び",
+                   @"周辺の温泉",
+                   @"キャンプ場・山小屋", nil];
+    
     //天気情報ビューの初期化
     UIStoryboard *storyboard = self.storyboard;
     semiVC = [storyboard instantiateViewControllerWithIdentifier:@"WeatherSubViewController"];
@@ -202,7 +350,6 @@
 //　テーブル表示設定
 //　-----------------------
 #pragma mark - Table View
-
 
 //セクション数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -248,16 +395,16 @@
 - (void)segmentedControlChangedValue:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            self.detailMapView.hidden = YES;
-            self.scrollView.hidden = NO;
+            detailMapView.hidden = YES;
+            scrollView.hidden = NO;
             break;
         case 1:
-            self.detailMapView.hidden = NO;
-            self.scrollView.hidden = YES;
+            detailMapView.hidden = NO;
+            scrollView.hidden = YES;
             
             // apple地図に国土地理院地図をオーバーレイ
             _overlay = [[TileOverlay alloc] initOverlay];
-            [_detailMapView addOverlay:_overlay];
+            [detailMapView addOverlay:_overlay];
 
             break;
             
@@ -272,11 +419,12 @@
 //　-----------------------
 
 // Photoボタンがタップされたとき
-- (IBAction)mtButton:(id)sender {
+- (void)mtButton:(id)sender {
+    [self performSegueWithIdentifier:@"photoSegue" sender:self];    
 }
 
 // Weatherボタンがタップされたとき
-- (IBAction)weButton:(id)sender {
+- (void)weButton:(id)sender {
     
     NSString *mtweather = [_mtItem objectForKey:@"weather"];
     [semiVC setWeatherSpotKeyNumber: mtweather];
@@ -291,7 +439,7 @@
 }
 
 // Checkボタンがタップされたとき
-- (IBAction)ckButton:(id)sender {
+- (void)ckButton:(id)sender {
     
     NSString *mtId = [_mtItem objectForKey:@"id"];
     [semiCheckVC setMtIdForKey: mtId];
@@ -303,7 +451,7 @@
 }
 
 // Statsボタンがタップされたとき
-- (IBAction)stButton:(id)sender {
+- (void)stButton:(id)sender {
     NSString *mtName = [_mtItem objectForKey:@"name"];
     NSString *mtYomi = [_mtItem objectForKey:@"yomi"];
     NSString *mtHeight = [_mtItem objectForKey:@"height"];
@@ -360,14 +508,29 @@
     StatusXMLParser *parser = [[StatusXMLParser alloc] init];
     self.statuses = [parser parseStatuses:xmlData];
     
+    
+    // TwitterAPIの時間情報を分かりやすい表示に変換
+    NSString *dateStr = [[_statuses objectAtIndex:0] objectForKey:@"time"];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEE MMM dd HH:mm:ssz yyyy"];
+    NSDate *date = [dateFormat dateFromString:dateStr];
+    
+    // Convert date object to desired output format
+    [dateFormat setDateFormat:@"MM月dd日"];
+    
+    dateStr = [dateFormat stringFromDate:date];
+    
     NSString *name = [[_statuses objectAtIndex:0] objectForKey:@"name"];
     NSString *text = [[_statuses objectAtIndex:0] objectForKey:@"text"];
     
-    // ユーザー名
-    self.twitterLabel.text = name;
+    // アカウント名
+    twitterLabel.text = name;
     
     // テキスト
-    self.twitterTextView.text = text;
+    twitterTextView.text = text;
+
+    //日時
+    twitterTimeLabel.text = dateStr;
 
     
 }
