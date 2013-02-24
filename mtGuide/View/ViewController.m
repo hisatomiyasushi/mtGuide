@@ -51,7 +51,7 @@
 
 
     // ページタイトル設定
-    self.title = @"日本百名山";
+    self.title = @"日本百名山ガイド";
     
     [_myMapView setDelegate:self];
     self.myTableView.dataSource = self;

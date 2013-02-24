@@ -77,6 +77,8 @@
 		</array>
 		<key>weather</key>
 		<string>200010</string>
+		<key>twitter</key>
+		<string>NorthernAlps</string>
 	</dict>
 </array>
 </plist>

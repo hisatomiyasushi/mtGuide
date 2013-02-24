@@ -10,12 +10,13 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TileOverlay.h"
+#import "NimbusAttributedLabel.h"
 
 @class WeatherSubViewController;
 @class CheckSubViewController;
 @class StatsSubViewController;
 
-@interface DetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface DetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, NIAttributedLabelDelegate>
 
 
 //@property (strong, nonatomic) id detailItem;

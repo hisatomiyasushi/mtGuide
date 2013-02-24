@@ -226,6 +226,7 @@
 		57DBA8F016DA950900685153 /* icon-access@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DBA8EE16DA950900685153 /* icon-access@2x.png */; };
 		57DBA8F316DA9F0D00685153 /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DBA8F116DA9F0D00685153 /* icon-info.png */; };
 		57DBA8F416DA9F0D00685153 /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DBA8F216DA9F0D00685153 /* icon-info@2x.png */; };
+		57DBA8F916DAC96400685153 /* NimbusWebController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57DBA8F816DAC96300685153 /* NimbusWebController.bundle */; };
 		57FCC2FB16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */; };
 		57FCC31016BAA43A00D0C3F5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC2FE16BAA43A00D0C3F5 /* AFHTTPClient.m */; };
 		57FCC31116BAA43A00D0C3F5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FCC30016BAA43A00D0C3F5 /* AFHTTPRequestOperation.m */; };
@@ -543,6 +544,7 @@
 		57DBA8EE16DA950900685153 /* icon-access@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-access@2x.png"; sourceTree = "<group>"; };
 		57DBA8F116DA9F0D00685153 /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
 		57DBA8F216DA9F0D00685153 /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
+		57DBA8F816DAC96300685153 /* NimbusWebController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NimbusWebController.bundle; sourceTree = "<group>"; };
 		57FCC2F916BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		57FCC2FA16BAA37C00D0C3F5 /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		57FCC2FD16BAA43A00D0C3F5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -1056,6 +1058,7 @@
 		57C9A8F216B4B583008175E4 /* webcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				57DBA8F816DAC96300685153 /* NimbusWebController.bundle */,
 				5736848616CAE7C50056F5F8 /* NimbusWebController.h */,
 				5736848716CAE7C50056F5F8 /* NimbusWebController+Namespace.h */,
 				5736848816CAE7C50056F5F8 /* NIWebController.h */,
@@ -1320,6 +1323,7 @@
 				57DBA8F016DA950900685153 /* icon-access@2x.png in Resources */,
 				57DBA8F316DA9F0D00685153 /* icon-info.png in Resources */,
 				57DBA8F416DA9F0D00685153 /* icon-info@2x.png in Resources */,
+				57DBA8F916DAC96400685153 /* NimbusWebController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

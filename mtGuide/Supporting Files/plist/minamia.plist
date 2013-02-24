@@ -60,6 +60,8 @@
 		</array>
 		<key>weather</key>
 		<string>190010</string>
+		<key>twitter</key>
+		<string>info_minamialps</string>
 	</dict>
 </array>
 </plist>

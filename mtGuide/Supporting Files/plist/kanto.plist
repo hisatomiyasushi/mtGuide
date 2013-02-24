@@ -60,6 +60,8 @@
 		</array>
 		<key>weather</key>
 		<string>190020</string>
+		<key>twitter</key>
+		<string>Fuji_Tozan</string>
 	</dict>
 </array>
 </plist>

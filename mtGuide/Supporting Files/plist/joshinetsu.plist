@@ -58,6 +58,8 @@
 		</array>
 		<key>weather</key>
 		<string>100020</string>
+		<key>twitter</key>
+		<string>oyamano12</string>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -126,6 +128,8 @@
 		</array>
 		<key>weather</key>
 		<string>100020</string>
+		<key>twitter</key>
+		<string>oyamano12</string>
 	</dict>
 </array>
 </plist>
