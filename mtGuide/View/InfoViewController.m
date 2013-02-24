@@ -115,7 +115,20 @@
         cell = [[DetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentififer];
     }
     cell.infoCellLabel.text = [_infoData objectAtIndex:indexPath.row];
-    cell.infoCellImageView.image = [UIImage imageNamed:@"metalking.gif"];
+    
+    if (indexPath.row == 0) {
+        cell.infoCellImageView.image = [UIImage imageNamed:@"icon-gaiyo.png"];
+    }
+    if (indexPath.row == 1) {
+        cell.infoCellImageView.image = [UIImage imageNamed:@"icon-access.png"];
+    }
+    if (indexPath.row == 2) {
+        cell.infoCellImageView.image = [UIImage imageNamed:@"icon-season.png"];
+    }
+    if (indexPath.row == 3) {
+        cell.infoCellImageView.image = [UIImage imageNamed:@"icon-contact.png"];
+    }
+
     
     return cell;
 }

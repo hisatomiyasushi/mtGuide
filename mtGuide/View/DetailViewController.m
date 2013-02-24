@@ -368,7 +368,7 @@
         static NSString *CellIdentififer = @"detailCell";
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
         cell.detailCellLabel.text = [_detailData objectAtIndex:indexPath.row];
-        cell.detailCellImageView.image = [UIImage imageNamed:@"kingslime.gif"];
+        cell.detailCellImageView.image = [UIImage imageNamed:@"icon-info.png"];
         
         return cell;
     }
@@ -377,7 +377,15 @@
         static NSString *CellIdentififer = @"detailCell2";
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentififer];
         cell.detailCellLabel.text = [_detailData objectAtIndex:indexPath.row];
-        cell.detailCellImageView.image = [UIImage imageNamed:@"slimeknight.gif"];
+        if (indexPath.row == 1) {
+            cell.detailCellImageView.image = [UIImage imageNamed:@"icon-trails.png"];
+        }
+        if (indexPath.row == 2) {
+            cell.detailCellImageView.image = [UIImage imageNamed:@"icon-hotsprings.png"];
+        }
+        if (indexPath.row == 3) {
+            cell.detailCellImageView.image = [UIImage imageNamed:@"icon-camping.png"];
+        }
         
         return cell;
     }

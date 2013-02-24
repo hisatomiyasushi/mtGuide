@@ -33,27 +33,32 @@
     // 背景に画像をセットする
     UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-
-    // ボタンデザインの設定
-    UIEdgeInsets insets;
-    insets.top = insets.bottom = insets.left = insets.right = 5;
-
-    [_favCheckButton setImage:[UIImage imageNamed:@"icon-heart.png"] forState:UIControlStateNormal];
-    [_hikeCheckButton setImage:[UIImage imageNamed:@"icon-flag.png"] forState:UIControlStateNormal];
-
-    _favCheckButton.layer.cornerRadius  = 10.0f;
-    _favCheckButton.layer.masksToBounds = YES;
-
-    _hikeCheckButton.layer.cornerRadius  = 10.0f;
-    _hikeCheckButton.layer.masksToBounds = YES;
     
-    _favCheckButton.titleLabel.numberOfLines = 0;
-    _favCheckButton.titleEdgeInsets = insets;
-    _favCheckButton.contentEdgeInsets = insets;
-    
-    _hikeCheckButton.titleLabel.numberOfLines = 0;
-    _hikeCheckButton.titleEdgeInsets = insets;
-    _hikeCheckButton.contentEdgeInsets = insets;
+    UIImage *titleBg = [UIImage imageNamed:@"subViewTitle-bg.png"];
+    _checkTitleLabel.backgroundColor=[UIColor colorWithPatternImage: titleBg];
+    _checkTitleLabel.text = [NSString stringWithFormat:@"CHECK LIST 登録"];
+
+
+//    // ボタンデザインの設定
+//    UIEdgeInsets insets;
+//    insets.top = insets.bottom = insets.left = insets.right = 5;
+//
+//    [_favCheckButton setImage:[UIImage imageNamed:@"icon-heart.png"] forState:UIControlStateNormal];
+//    [_hikeCheckButton setImage:[UIImage imageNamed:@"icon-flag.png"] forState:UIControlStateNormal];
+//
+//    _favCheckButton.layer.cornerRadius  = 10.0f;
+//    _favCheckButton.layer.masksToBounds = YES;
+//
+//    _hikeCheckButton.layer.cornerRadius  = 10.0f;
+//    _hikeCheckButton.layer.masksToBounds = YES;
+//    
+//    _favCheckButton.titleLabel.numberOfLines = 0;
+//    _favCheckButton.titleEdgeInsets = insets;
+//    _favCheckButton.contentEdgeInsets = insets;
+//    
+//    _hikeCheckButton.titleLabel.numberOfLines = 0;
+//    _hikeCheckButton.titleEdgeInsets = insets;
+//    _hikeCheckButton.contentEdgeInsets = insets;
 
     // NSUserDefaults インスタンスを準備
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -88,8 +93,8 @@
 }
 
 
-- (IBAction)mcbDidTouch:(id)sender {
-}
+//- (IBAction)mcbDidTouch:(id)sender {
+//}
 
 
 // お気に入りボタンタップ時の処理
@@ -184,19 +189,19 @@
     }
 }
 
-- (IBAction)shbDidTouch:(id)sender {
-}
-
-- (IBAction)itbDidTouch:(id)sender {
-}
+//- (IBAction)shbDidTouch:(id)sender {
+//}
+//
+//- (IBAction)itbDidTouch:(id)sender {
+//}
 
 
 - (void)viewDidUnload {
-    [self setMapCheckButton:nil];
+//    [self setMapCheckButton:nil];
     [self setFavCheckButton:nil];
     [self setHikeCheckButton:nil];
-    [self setShareButton:nil];
-    [self setItiButton:nil];
+//    [self setShareButton:nil];
+//    [self setItiButton:nil];
     [super viewDidUnload];
 }
 
@@ -209,15 +214,15 @@
 }
 
 
-- (IBAction)dismissButtonDidTouch:(id)sender {
-    // Here's how to call dismiss button on the parent ViewController
-    // be careful with view hierarchy
-    
-    UIViewController *parent = [self.view containingViewController];
-    if ([parent respondsToSelector:@selector(dismissSemiModalView)]) {
-        [parent dismissSemiModalView];
-    }
-}
+//- (IBAction)dismissButtonDidTouch:(id)sender {
+//    // Here's how to call dismiss button on the parent ViewController
+//    // be careful with view hierarchy
+//    
+//    UIViewController *parent = [self.view containingViewController];
+//    if ([parent respondsToSelector:@selector(dismissSemiModalView)]) {
+//        [parent dismissSemiModalView];
+//    }
+//}
 
 
 @end

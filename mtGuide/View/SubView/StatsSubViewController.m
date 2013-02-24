@@ -35,8 +35,10 @@
     UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
 
+    UIImage *titleBg = [UIImage imageNamed:@"subViewTitle-bg.png"];
+    _statsTitleLabel.backgroundColor=[UIColor colorWithPatternImage: titleBg];
     _statsTitleLabel.text = [NSString stringWithFormat:@"%@の基本情報",_mtName];
-    
+
     _statsLabel.text = [NSString stringWithFormat:@"山名：%@ (%@)\n標高：%@m\n山系：%@\n都道府県：%@",_mtName,_mtYomi,_mtHeight,_mtRange,_mtPrefecture];
     
 }

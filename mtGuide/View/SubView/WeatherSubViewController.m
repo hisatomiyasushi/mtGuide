@@ -57,6 +57,8 @@
     UIImage *bgImage = [UIImage imageNamed:@"body-bg.png"];
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     
+    UIImage *titleBg = [UIImage imageNamed:@"subViewTitle-bg.png"];
+    _weatherTitleLabel.backgroundColor=[UIColor colorWithPatternImage: titleBg];
     _weatherTitleLabel.text = [NSString stringWithFormat:@"%@付近の天気予報",_mtName];
 
 }
@@ -146,7 +148,6 @@
             highTemp = [NSString stringWithFormat:@" - "];
         }
 
-        
         weatherLabel.text = [weatherLabel.text stringByAppendingFormat:@"\n%@%@%@\n天気：%@\n最低気温：%@℃　最高気温：%@℃\n",
                             dateY,
                             dateM,
