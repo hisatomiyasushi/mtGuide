@@ -579,7 +579,6 @@
     NSString *urlFormat = [NSString stringWithFormat:@"https://twitter.com/%@", twAccount];
     [twitterLabel addLink:[NSURL URLWithString: urlFormat] range:linkRange];
     
-    
 }
 
 //タップしたURLにジャンプ
